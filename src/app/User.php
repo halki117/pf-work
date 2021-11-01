@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -22,7 +22,7 @@ class User extends Authenticatable
             $model->{$model->getKeyName()} = (string) Str::orderedUuid();
         });
     }
-    
+
 
     /**
      * The attributes that are mass assignable.
