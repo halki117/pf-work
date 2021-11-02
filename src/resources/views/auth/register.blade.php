@@ -4,10 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="to_login text-right">ユーザー登録済の方は<a href="">こちら</a></div>
+            <div class="content">
+                <div class="page_title__resister">{{ __('Register') }}</div>
 
-                <div class="card-body">
+                <div class="page_content__resister">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -62,17 +63,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="prefecture" class="col-md-4 col-form-label text-md-right">{{ __('prefecture') }}</label>
+                            <label for="prefecture" class="col-md-4 col-form-label text-md-right">{{ __('Prefecture') }}</label>
 
                             <select type="text" class="form-control select-pref" name="prefecture" >
-                                <option hidden>選択してください</option>
+                                <option hidden class="text-center">---------- 選択してください ----------</option>
                                 @foreach(config('pref') as $key => $score)
                                     <option value="{{ $score }}">{{ $score }}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 text-right">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}

@@ -76,5 +76,8 @@
             @yield('content')
         </main>
     </div>
+    <footer class="footer">
+        Copyright © ○○○○ All Rights Reserved.
+    </footer>
 </body>
 </html>
