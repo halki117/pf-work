@@ -1,0 +1,11 @@
+{
+  "Register": "ユーザー新規登録",
+  "Login": "ログイン",
+  "Name": "ユーザー名",
+  "E-Mail Address": "メールアドレス",
+  "Password": "パスワード",
+  "Confirm Password": "パスワード再入力",
+  "Prefecture": "在住中の都道府県",
+  "Remember Me": "ログイン状態を保存",
+  "Forgot Your Password?": "パスワードをお忘れですか？"
+}

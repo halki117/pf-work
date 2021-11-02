@@ -5,10 +5,24 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
+    
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = (string) Str::orderedUuid();
+        });
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','prefecture','profile_photo','profile_introduction','admin','token'
     ];
 
     /**
