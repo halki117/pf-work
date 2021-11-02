@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="to_login text-right">ユーザー登録済の方は<a href="">こちら</a></div>
+            <div class="to_login text-right">すでに登録済の方は<a href="{{ route('login') }}">こちら</a></div>
             <div class="content">
                 <div class="page_title__resister">{{ __('Register') }}</div>
 
@@ -75,7 +75,7 @@
 
                         <div class="form-group row mb-0 text-right">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn-gradient-radius">
                                     {{ __('Register') }}
                                 </button>
                             </div>

@@ -10983,10 +10983,30 @@ a.text-dark:focus {
   margin-left: 550px;
 }
 
+.btn-gradient-radius {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: 0.4s;
+  font-weight: bold;
+  text-shadow: 1px 0 0 black, 0 1px 0 black, -1px 0 0 black, 0 -1px 0 black;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+.form-group {
+  margin-bottom: 35px;
 }
 
