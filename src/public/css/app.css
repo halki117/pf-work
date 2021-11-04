@@ -10999,6 +10999,20 @@ a.text-dark:focus {
   background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
 }
 
+.hero {
+  background-color: #ffffff;
+  height: 800px;
+}
+
+.hero .hero_right__contents {
+  margin-top: 400px;
+  margin-right: 450px;
+}
+
+.new_spot {
+  margin-top: 50px;
+}
+
 footer {
   position: absolute;
   bottom: 0;
