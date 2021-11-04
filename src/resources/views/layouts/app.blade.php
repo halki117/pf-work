@@ -56,7 +56,7 @@
                             <a class="nav-link" href="#">{{ __('Notification') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Upoload') }}</a>
+                            <a class="nav-link" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ __('Mypage') }}</a>
