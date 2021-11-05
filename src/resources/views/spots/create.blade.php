@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-
+      
       <form action="" method="POST">
         <div class="spots_place mt-5">
           <label for="address" class="">■所在地</label>
@@ -18,13 +18,19 @@
                   @enderror
               </div>
               <div class="col-4">
-                <button class="btn btn-primary">住所検索</button>
+                <button class="btn btn-primary"　id="map-search">検索する</button>
               </div>
             </div>
           </div>
   
-          <div class="place_map">
-          </div>
+          {{-- <div class="place_map" id="map">
+          </div> --}}
+
+          <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&amp;q=大阪'
+            width='100%'
+            height='600'
+            frameborder='0'>
+          </iframe>
         </div>
   
   
@@ -105,8 +111,9 @@
           </div>
         </div>
         
-        <button type="submit" class="btn btn-success">投稿する</button>
+        <button type="submit" class="btn btn-success btn-block">投稿する</button>
       </form> 
 
     </div>
+
 @endsection
