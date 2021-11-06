@@ -8,6 +8,8 @@ require('./bootstrap');
 
 require("./fontawesome");
 
+require("./sample");
+
 window.Vue = require('vue');
 
 /**

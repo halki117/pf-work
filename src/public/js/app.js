@@ -54300,6 +54300,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
 
+__webpack_require__(/*! ./sample */ "./resources/js/sample.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -54459,6 +54461,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "./resources/js/sample.js":
+/*!********************************!*\
+  !*** ./resources/js/sample.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.container').click(function () {
+    console.log('ok');
+  });
+});
 
 /***/ }),
 
