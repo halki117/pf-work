@@ -54302,6 +54302,8 @@ __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
 
 __webpack_require__(/*! ./sample */ "./resources/js/sample.js");
 
+__webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -54464,6 +54466,42 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/image_upload.js":
+/*!**************************************!*\
+  !*** ./resources/js/image_upload.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('#image').change(function () {
+    if (!this.files.length) {
+      return;
+    }
+
+    $('#preview').text('');
+    var $files = $(this).prop('files');
+    var len = $files.length;
+
+    for (var i = 0; i < len; i++) {
+      var file = $files[i];
+      var fr = new FileReader();
+
+      fr.onload = function (e) {
+        var src = e.target.result;
+        var img = '<div class="img"><img src="' + src + '"></div>';
+        $('#preview').append(img);
+      };
+
+      fr.readAsDataURL(file);
+    }
+
+    $('#preview').css('display', 'block');
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/sample.js":
 /*!********************************!*\
   !*** ./resources/js/sample.js ***!
@@ -54471,11 +54509,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(function () {
-  $('.container').click(function () {
-    console.log('ok');
-  });
-});
+// $(function(){
+//   $('.container').click(function(){
+//     console.log('ok');
+//   });
+// });
 
 /***/ }),
 

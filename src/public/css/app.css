@@ -11023,6 +11023,25 @@ a.text-dark:focus {
   background-color: cornsilk;
 }
 
+#header {
+  background-color: darkblue;
+  padding: 3px;
+  width: 1195px;
+  font-family: Meriyo UI;
+  font-size: 14px;
+  color: white;
+}
+
+#target {
+  width: 1200px;
+  height: 700px;
+}
+
+.preview img {
+  max-width: 350px;
+  max-height: 350px;
+}
+
 footer {
   margin-top: 50px;
   bottom: 0;

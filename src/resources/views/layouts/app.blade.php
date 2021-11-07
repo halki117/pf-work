@@ -96,9 +96,17 @@
 
     {{-- google map api用js --}}
     <script src="{{ asset('/js/result.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
+
+    {{-- マップ表示 --}}
     {{-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer>
     </script> --}}
+
+    {{-- 住所から場所検索 --}}
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
+
+    {{-- 逆ジオコーディング --}}
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script> --}}
+
 
     <script>
         // function setMap(){
