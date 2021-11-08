@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Spot extends Model
 {
-    //
+    protected $casts = [
+        'image' => 'json',
+    ];
 }

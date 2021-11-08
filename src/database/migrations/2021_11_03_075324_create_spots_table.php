@@ -16,7 +16,7 @@ class CreateSpotsTable extends Migration
         Schema::create('spots', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address');
-            $table->string('image');
+            $table->json('image');
             $table->text('review');
             $table->boolean('public');
             $table->float('longitude');

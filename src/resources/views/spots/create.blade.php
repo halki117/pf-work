@@ -12,6 +12,7 @@
 
       
       <form action="{{ route('spots.store') }}" method="POST">
+        @csrf
         <div class="spots_place mt-5">
           <label for="address" class="">■所在地表示</label>
           <div class="place_input">
@@ -93,7 +94,7 @@
           {{-- <button class="btn btn-primary mt-3">写真の追加</button> --}}
         </div>
   
-        <div class="spots_tag mt-5">
+        {{-- <div class="spots_tag mt-5">
           <label for="tag" class="">■タグ</label>
           <div class="tag_input">
             <div class="form-group row">
@@ -111,7 +112,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
   
   
         <div class="spots_public mt-5">
