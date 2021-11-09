@@ -28,8 +28,6 @@ class SpotsController extends Controller
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
             $file->storeAs('public', $file_name);
-            $spot_arry = $spot->image;
-            $spot_arry[] = $file_name;
         }
 
         $spot->review = $request->review;
