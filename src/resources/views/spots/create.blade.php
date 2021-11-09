@@ -11,7 +11,7 @@
       <div id="target"></div>
 
       
-      <form action="{{ route('spots.store') }}" method="POST">
+      <form action="{{ route('spots.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="spots_place mt-5">
           <label for="address" class="">■所在地表示</label>
@@ -90,7 +90,7 @@
             </div> --}}
           </div>
           
-          <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );"　multiple="multiple">
+          <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
           {{-- <button class="btn btn-primary mt-3">写真の追加</button> --}}
         </div>
   

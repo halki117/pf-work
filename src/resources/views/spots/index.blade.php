@@ -14,10 +14,14 @@
     <div class="row">
       <div class="card col-4">
         <div class="card-body">
-            <img  class="" src="" alt="">
+          @if (!($spots->isEmpty()))
+            <img  class="review" src="" alt="">
             <i class="fas fa-heart"></i>
-            <p>所在地</p>
-            <p>レビュー</p>
+            <p>{{ $spots->address}}</p>
+            <p>{{ $spots->review}}</p>
+          @else
+            <p>何も投稿がありません</p>
+          @endif
         </div>
       </div>
     </div>

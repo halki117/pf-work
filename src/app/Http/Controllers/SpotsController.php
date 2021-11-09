@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class SpotsController extends Controller
 {
     public function index(){
-        return view('spots.index');
+        $spots = Spot::all();
+        return view('spots.index', compact('spots'));
     }
 
-    public function create(){
+    public function create(){ 
         return view('spots.create');
     }
 
@@ -21,13 +22,24 @@ class SpotsController extends Controller
         $spot = new Spot;
         
         $spot->address = $request->address;
-        $spot->image = $request->image;
+
+        $files = $request->file('image');
+
+        foreach($files as $file){
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('public', $file_name);
+            $spot_arry = $spot->image;
+            $spot_arry[] = $file_name;
+        }
+
         $spot->review = $request->review;
+
         if($request->public == "1"){
             $spot->public = true;
         } else {
             $spot->public = false;
         }
+
         $spot->latitude = $request->latitude;
         $spot->longitude = $request->longitude;
         $spot->user_id = Auth::id();
