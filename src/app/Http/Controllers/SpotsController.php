@@ -18,17 +18,21 @@ class SpotsController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $spot = new Spot;
         
         $spot->address = $request->address;
 
-        $files = $request->file('image');
+        $image_data = array();
 
+        $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
             $file->storeAs('public', $file_name);
+            $image_data[] = $file_name;
         }
+
+        $spot->image = $image_data;
 
         $spot->review = $request->review;
 
