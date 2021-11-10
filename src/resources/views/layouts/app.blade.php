@@ -21,9 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-light" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -41,16 +41,29 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">{{ __('Contact') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">{{ __('Notification') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">{{ __('Mypage') }}</a>
+                        </li>
+
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -72,12 +85,52 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="main">
             @yield('content')
         </main>
     </div>
     <footer class="footer">
         Copyright © ○○○○ All Rights Reserved.
     </footer>
+
+
+    {{-- google map api用js --}}
+    <script src="{{ asset('/js/result.js') }}"></script>
+
+    {{-- マップ表示 --}}
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer>
+    </script> --}}
+
+    {{-- 住所から場所検索 --}}
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
+
+    {{-- 逆ジオコーディング --}}
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script> --}}
+
+
+    <script>
+        // function setMap(){
+        //     var textbox = document.getElementById("address");
+        //     var value = textbox.value;
+
+        //     var map = document.getElementById('map');
+        //     var oldsrc = map.getAttribute('src');
+        //     var newsrc = oldsrc.replace('大阪', value);
+        //     map.setAttribute('src', newsrc);
+
+        //     // XMLHttpRequestオブジェクトの作成
+        //     var request = new XMLHttpRequest();
+
+        //     // URLを開く
+        //     request.open('GET', newsrc, true);
+
+        //     // リクエストをURLに送信
+        //     request.send();
+        // }
+
+    //   var SearchButton = document.getElementById("map-search");
+    //   console.log(SearchButton);
+    //   SearchButton.addEventListener('click', setMap);
+    </script>
 </body>
 </html>

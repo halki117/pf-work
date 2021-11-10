@@ -6,6 +6,12 @@
 
 require('./bootstrap');
 
+require("./fontawesome");
+
+require("./sample");
+
+require("./image_upload");
+
 window.Vue = require('vue');
 
 /**

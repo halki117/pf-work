@@ -9,8 +9,16 @@
 
 @import 'resister';
 
+@import 'spots/index';
+@import 'spots/create';
+
+
+.navbar{
+  
+}
+
 footer{
-  position: absolute;
+  margin-top: 50px;
   bottom: 0;
   width: 100%;
   text-align: center;
