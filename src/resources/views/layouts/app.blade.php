@@ -59,7 +59,7 @@
                             <a class="nav-link text-light" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Mypage') }}</a>
+                            <a class="nav-link text-light" href="{{ route('users.show', Auth::id() ) }}">{{ __('Mypage') }}</a>
                         </li>
 
                             <li class="nav-item dropdown">

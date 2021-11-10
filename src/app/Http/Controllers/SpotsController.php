@@ -49,5 +49,40 @@ class SpotsController extends Controller
         $spot->save();
 
         return redirect('/spots');
-    }   
+    }
+
+    public function edit($id){
+        $spot = Spot::find($id);
+        return view('spots.edit', compact('spot'));
+    }
+
+    public function update($id, Request $request){
+        $spot = Spot::find($id);
+        $spot->address = $request->address;
+
+        $image_data = array();
+
+        $files = $request->file('image');
+        foreach($files as $file){
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('public', $file_name);
+            $image_data[] = $file_name;
+        }
+
+        $spot->image = $image_data;
+
+        $spot->review = $request->review;
+
+        if($request->public == "1"){
+            $spot->public = true;
+        } else {
+            $spot->public = false;
+        }
+
+        $spot->latitude = $request->latitude;
+        $spot->longitude = $request->longitude;
+
+        $spot->update();
+        return redirect('/spots');
+    }
 }

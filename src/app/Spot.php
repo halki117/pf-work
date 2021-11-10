@@ -10,3 +10,4 @@ class Spot extends Model
         'image' => 'json',
     ];
 }
+

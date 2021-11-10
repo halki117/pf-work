@@ -14,49 +14,53 @@
   <div class="new_spot">
     <h3>新着スポット</h3>
     <div class="row">
-      <div class="card col-4">
-        <div class="card-body">
-          @if (!($spots->isEmpty()))
-            @foreach ($spots as $spot)
-              @php
-                $images = $spot->image
-              @endphp
-              <div class="new_spot">
-                <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
-              </div>
-              <i class="fas fa-heart"></i>
-              <p>{{ $spot->address}}</p>
-              <p>{{ $spot->review}}</p>
-            @endforeach
-          @else
-            <p>何も投稿がありません</p>
-          @endif
+      @if (!($spots->isEmpty()))
+      @foreach ($spots as $spot)
+        @if ($spot->public == true)
+          <div class="card col-4">
+            <div class="card-body">
+                  @php
+                    $images = $spot->image
+                  @endphp
+                  <div class="new_spot">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  </div>
+                  <i class="fas fa-heart"></i>
+                  <p>{{ $spot->address}}</p>
+                  <p>{{ $spot->review}}</p>
+            </div>
         </div>
-      </div>
+        @endif
+      @endforeach
+      @else
+        <p>何も投稿がありません</p>
+      @endif
     </div>
   </div>
   <div class="popular_spot mt-5">
     <h3>人気のスポット</h3>
     <div class="row">
-      <div class="card col-4">
-        <div class="card-body">
-          @if (!($spots->isEmpty()))
-            @foreach ($spots as $spot)
-              @php
-                $images = $spot->image
-              @endphp
-              <div class="new_spot">
-                <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
-              </div>
-              <i class="fas fa-heart"></i>
-              <p>{{ $spot->address}}</p>
-              <p>{{ $spot->review}}</p>
-            @endforeach
-          @else
-            <p>何も投稿がありません</p>
-          @endif
-        </div>
-      </div>
+      @if (!($spots->isEmpty()))
+      @foreach ($spots as $spot)
+        @if ($spot->public == true)
+          <div class="card col-4">
+            <div class="card-body">
+                  @php
+                    $images = $spot->image
+                  @endphp
+                  <div class="new_spot">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  </div>
+                  <i class="fas fa-heart"></i>
+                  <p>{{ $spot->address}}</p>
+                  <p>{{ $spot->review}}</p>
+            </div>
+          </div>
+        @endif
+      @endforeach
+      @else
+        <p>何も投稿がありません</p>
+      @endif
     </div>
   </div>
 </div>
