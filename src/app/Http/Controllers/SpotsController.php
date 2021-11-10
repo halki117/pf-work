@@ -13,6 +13,11 @@ class SpotsController extends Controller
         return view('spots.index', compact('spots'));
     }
 
+    public function show($id){
+        $spot = Spot::find($id);
+        return view('spots.show', compact('spot'));
+    }
+
     public function create(){ 
         return view('spots.create');
     }

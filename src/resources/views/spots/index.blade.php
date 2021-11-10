@@ -18,18 +18,21 @@
       @foreach ($spots as $spot)
         @if ($spot->public == true)
           <div class="card col-4">
-            <div class="card-body">
-                  @php
-                    $images = $spot->image
-                  @endphp
-                  <div class="new_spot">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
-                  </div>
-                  <i class="fas fa-heart"></i>
-                  <p>{{ $spot->address}}</p>
-                  <p>{{ $spot->review}}</p>
-            </div>
-        </div>
+            <a href="{{ route('spots.show', $spot->id) }}">
+              <div class="card-body">
+                @php
+                  $images = $spot->image
+                @endphp
+                <div class="new_spot">
+                  <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                </div>
+                <i class="fas fa-heart"></i>
+                <p>{{ $spot->address}}</p>
+                <p>{{ $spot->review}}</p>
+              </div>
+            </a>
+          </div>
+          
         @endif
       @endforeach
       @else
@@ -44,17 +47,19 @@
       @foreach ($spots as $spot)
         @if ($spot->public == true)
           <div class="card col-4">
-            <div class="card-body">
-                  @php
-                    $images = $spot->image
-                  @endphp
-                  <div class="new_spot">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
-                  </div>
-                  <i class="fas fa-heart"></i>
-                  <p>{{ $spot->address}}</p>
-                  <p>{{ $spot->review}}</p>
-            </div>
+            <a href="{{ route('spots.show', $spot->id) }}">
+              <div class="card-body">
+                @php
+                  $images = $spot->image
+                @endphp
+                <div class="new_spot">
+                  <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                </div>
+                <i class="fas fa-heart"></i>
+                <p>{{ $spot->address}}</p>
+                <p>{{ $spot->review}}</p>
+              </div>
+            </a>
           </div>
         @endif
       @endforeach
