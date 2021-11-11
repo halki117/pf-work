@@ -67,33 +67,7 @@
           <div class="place_images row mt-3">
 
             <div id="preview" class="preview" style="display:none"></div>
-
-            {{-- <div class="place_image1 col-4">
-              <label for="place_image">写真１</label>
-              <div class="image">
-                <p class="float-right">X</p>
-                <img src="" alt="">
-              </div>
-            </div>
-            <div class="place_image2 col-4">
-              <label for="place_image">写真２</label>
-              <div class="image">
-                <p class="float-right">X</p>
-                <img src="" alt="">
-              </div>
-            </div>
-            <div class="place_image3 col-4">
-              <label for="place_image">写真３</label>
-              <div class="image">
-                <p class="float-right">X</p>
-                <img src="" alt="">
-              </div>
-            </div> --}}
           </div>
-
-          @foreach ($spot->image as $file)
-            <img src="{{ asset('storage/'.$file) }}" alt="">
-          @endforeach
           
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
           {{-- <button class="btn btn-primary mt-3">写真の追加</button> --}}
