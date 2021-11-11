@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class SpotsController extends Controller
 {
     public function index(){
-        $spots = Spot::all();
+        $spots = Spot::orderBy('created_at', 'desc')->limit(3)->get();
         return view('spots.index', compact('spots'));
     }
 

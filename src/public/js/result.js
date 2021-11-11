@@ -1,3 +1,4 @@
+
 // function initMap() {
 //   //地図を表示する領域の div 要素のオブジェクトを変数に代入
 //   var target = document.getElementById('map');  
@@ -48,6 +49,7 @@
 
 
 // 名称から場所を検索特定する
+        
       var map;
       var marker;
       var infoWindow;
@@ -130,7 +132,7 @@
             map: map,
             icon: iconUrl
           });
-        }
+      }
 
         //マーカーを削除する
         function deleteMakers() {
@@ -141,7 +143,7 @@
         }
 
         // マーカーへの吹き出しの追加
-        function setInfoW(place, latlng, address) {
+      function setInfoW(place, latlng, address) {
           infoWindow = new google.maps.InfoWindow({
           content: "<a href='http://www.google.com/search?q=" + place + "' target='_blank'>" + place + "</a><br><br>" + latlng + "<br><br>" + address + "<br><br><a href='http://www.google.com/search?q=" + place + "&tbm=isch' target='_blank'>画像検索 by google</a>"
         });
