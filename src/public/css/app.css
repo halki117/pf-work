@@ -11063,6 +11063,11 @@ a.text-dark:focus {
   max-height: 350px;
 }
 
+.address_likes {
+  display: flex;
+  justify-content: space-between;
+}
+
 .mypage_content {
   margin-top: 100px;
 }

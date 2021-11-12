@@ -3,20 +3,22 @@
 @section('content')
     <div class="container">
       <h1>詳細画面</h1>
+      <p>投稿者: {{ $spot->user->name }}</p>
         <div class="spot_show__contant">
-          
-            <div class="new_spot">
-              <ul class="d-flex">
-                @php
-                  $images = $spot->image
-                @endphp
-                @foreach ($images as $image)
-                <li class="mx-3"><img class="new_spot__img" src="{{ asset('storage/'.$image )}}" alt=""></li>
-                @endforeach
-              </ul>
-            </div>
-          <i class="fas fa-heart"></i>
-          <p>{{ $spot->address}}</p>
+          <div class="new_spot">
+            <ul class="d-flex">
+              @php
+                $images = $spot->image
+              @endphp
+              @foreach ($images as $image)
+              <li class="mx-3"><img class="new_spot__img" src="{{ asset('storage/'.$image )}}" alt=""></li>
+              @endforeach
+            </ul>
+          </div>
+          <div class="address_likes">
+            <p>{{ $spot->address}}</p>
+            <i class="fas fa-heart"></i>
+          </div>
           <p>{{ $spot->review}}</p>
 
           <div id="spot{{$spot->id}}_point"></div>
@@ -26,6 +28,18 @@
 
         <div id="show_{{$spot->id}}_map" style="height:500px">
         </div>
+        @if ($spot->user_id === Auth::id())
+        <div class="buttons d-flex">
+          <div class="button">
+            <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
+          </div>
+          <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
+            @csrf
+            {{ method_field('delete') }}
+            <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
+          </form>
+        </div>
+        @endif
     </div>
 @endsection
 

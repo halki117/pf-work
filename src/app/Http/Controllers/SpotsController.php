@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Spot;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class SpotsController extends Controller
 {
@@ -34,6 +35,7 @@ class SpotsController extends Controller
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
             $file->storeAs('public', $file_name);
+            // Image::make($file)->resize(1080, null, function ($constraint) {$constraint->aspectRatio();})->storeAs('public', $file_name);
             $image_data[] = $file_name;
         }
 
@@ -88,6 +90,15 @@ class SpotsController extends Controller
         $spot->longitude = $request->longitude;
 
         $spot->update();
-        return redirect('/spots');
+        return redirect('spots');
+    }
+
+    public function destroy($id){
+        $spot = Spot::find($id);
+        if (Auth::id() !== $spot->user_id){
+            return redirect(route('posts.index'))->with('danger', '許可されていない操作です');
+        }
+        $spot->delete();
+        return redirect(route('spots.index'))->with('success', '投稿を削除しました');
     }
 }

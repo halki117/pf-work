@@ -31,9 +31,6 @@
                   <div class="likes">
                     <i class="fas fa-heart"></i>x0
                   </div>
-                  <div class="buttons">
-                    <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5">編集</a>
-                  </div>
                 </div>
               </div> 
             </a>

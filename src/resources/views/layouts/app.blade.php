@@ -84,7 +84,15 @@
                 </div>
             </div>
         </nav>
-
+        @if (session('success'))
+            <div class="alert alert-success mb-0" role="alert">
+                {{ session('success') }}
+            </div>
+        @elseif (session('danger'))
+            <div class="alert alert-danger mb-0" role="alert">
+                {{ session('danger') }}
+            </div>
+        @endif
         <main class="main">
             @yield('content')
         </main>
