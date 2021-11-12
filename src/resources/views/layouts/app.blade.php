@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div class="footerFixed" id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ url('/') }}">
@@ -59,7 +59,7 @@
                             <a class="nav-link text-light" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Mypage') }}</a>
+                            <a class="nav-link text-light" href="{{ route('users.show', Auth::id() ) }}">{{ __('Mypage') }}</a>
                         </li>
 
                             <li class="nav-item dropdown">
@@ -84,22 +84,31 @@
                 </div>
             </div>
         </nav>
-
+        @if (session('success'))
+            <div class="alert alert-success mb-0" role="alert">
+                {{ session('success') }}
+            </div>
+        @elseif (session('danger'))
+            <div class="alert alert-danger mb-0" role="alert">
+                {{ session('danger') }}
+            </div>
+        @endif
         <main class="main">
             @yield('content')
         </main>
+        <footer class="footer">
+            <p>Copyright © ○○○○ All Rights Reserved.</p>
+        </footer>
     </div>
-    <footer class="footer">
-        Copyright © ○○○○ All Rights Reserved.
-    </footer>
 
+    
+
+    {{-- マップ表示 --}}
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=pointMap" async defer>
+    </script> --}}
 
     {{-- google map api用js --}}
     <script src="{{ asset('/js/result.js') }}"></script>
-
-    {{-- マップ表示 --}}
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer>
-    </script> --}}
 
     {{-- 住所から場所検索 --}}
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
@@ -134,3 +143,5 @@
     </script>
 </body>
 </html>
+
+
