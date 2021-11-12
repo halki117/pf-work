@@ -17,7 +17,7 @@
           </div>
           <div class="address_likes">
             <p>{{ $spot->address}}</p>
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart ml-5 mt-1"></i>x0
           </div>
           <p>{{ $spot->review}}</p>
 

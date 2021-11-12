@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::resource('spots', 'SpotsController')->middleware('verified');
 
 Route::resource('users', 'usersController');
+
+Route::resource('comments', 'commentsController');
