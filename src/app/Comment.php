@@ -10,4 +10,9 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function spot()
+    {
+        return $this->belongsTo('App\Spot');
+    }
 }

@@ -11067,6 +11067,10 @@ a.text-dark:focus {
   display: flex;
 }
 
+.user_name p {
+  margin-top: auto;
+}
+
 .mypage_content {
   margin-top: 100px;
 }
