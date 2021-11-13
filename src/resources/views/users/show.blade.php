@@ -6,9 +6,9 @@
     
     <div class="row mypage_content">
       <div class="col-8 mypage_leftcontent">
-        <div class="">
-          <button type="button" class="btn btn-info">投稿したスポット</button>
-          <button type="button" class="btn btn-light">いいねしたスポット</button>
+        <div class="btn-group">
+          <a href="#!" class="btn btn-info active">投稿したスポット</a>
+          <a href="#!" class="btn btn-light">いいねしたスポット</a>
         </div>
         @if (!($spots->isEmpty()))
         @foreach ($spots as $spot)

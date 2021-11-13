@@ -53,7 +53,7 @@
           <p>コメント一覧</p>
           @if ($spot->comments)
               @foreach ($spot->comments as $comment)
-                <div class="comment card">
+                <div class="comment card mt-3">
                   <div class="card-body">
                     <div class="user_name d-flex">
                       <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50">
