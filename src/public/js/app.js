@@ -6487,10 +6487,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      IsClicked: false
+    };
+  },
   methods: {
     click: function click() {
-      console.log('ok');
+      this.IsClicked = true;
     }
   }
 });
@@ -6550,7 +6557,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       isLikedBy: this.initialIsLikedBy,
-      countLikes: this.initialCountLikes
+      countLikes: this.initialCountLikes,
+      gotToLike: false
     };
   },
   methods: {
@@ -6573,17 +6581,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(_this.isLikedBy);
-                _context.next = 3;
+                _context.next = 2;
                 return axios.put(_this.endpoint);
 
-              case 3:
+              case 2:
                 response = _context.sent;
                 _this.isLikedBy = true;
-                console.log(_this.isLikedBy);
                 _this.countLikes = response.data.countLikes;
+                _this.gotToLike = true;
 
-              case 7:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -6607,8 +6614,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
                 _this2.isLikedBy = false;
                 _this2.countLikes = response.data.countLikes;
+                _this2.gotToLike = false;
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -43020,11 +43028,16 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("button", {
-      staticClass: "btn btn-primary",
-      attrs: { type: "button" },
-      on: { click: _vm.click },
-    }),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        class: { "btn-lg": _vm.IsClicked },
+        attrs: { type: "button" },
+        on: { click: _vm.click },
+      },
+      [_vm._v("\n  aaa\n  ")]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -43053,16 +43066,15 @@ var render = function () {
     _c(
       "button",
       {
-        staticClass: "btn m-0 p-1 shadow-none ",
+        staticClass: "btn m-0 p-1 shadow-none",
+        class: {
+          "red-text": this.isLikedBy,
+          "animated heartBeat fast": this.gotToLike,
+        },
         attrs: { type: "button" },
         on: { click: _vm.clickLike },
       },
-      [
-        _c("i", {
-          staticClass: "fas fa-heart mr-1 ml-5",
-          class: { "red-text": this.isLikedBy },
-        }),
-      ]
+      [_c("i", { staticClass: "fas fa-heart mr-1 ml-5 fa-2x" })]
     ),
     _vm._v("\n  " + _vm._s(_vm.countLikes) + "\n"),
   ])
