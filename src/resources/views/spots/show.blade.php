@@ -2,7 +2,19 @@
 
 @section('content')
     <div class="container">
-      <h1>詳細画面</h1>
+      <div class="d-flex mt-5">
+        <h1>詳細画面</h1>
+        <div class="buttons d-flex">
+          <div class="button">
+            <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
+          </div>
+          <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
+            @csrf
+            {{ method_field('delete') }}
+            <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
+          </form>
+        </div>
+      </div>
       <p>投稿者: {{ $spot->user->name }}</p>
         <div class="spot_show__contant">
           <div class="new_spot">
@@ -17,9 +29,15 @@
           </div>
           <div class="address_likes">
             <p>{{ $spot->address}}</p>
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart ml-5 mt-1"></i>x0
           </div>
-          <p>{{ $spot->review}}</p>
+
+          <div class="card my-2">
+            <p>レビュー</p>
+            <div class="card-body">
+              <p>{{ $spot->review}}</p>
+            </div>
+          </div>
 
           <div id="spot{{$spot->id}}_point"></div>
           <input type="hidden" id="spot_{{$spot->id}}__latitude" value="{{ $spot->latitude }}">
@@ -29,17 +47,37 @@
         <div id="show_{{$spot->id}}_map" style="height:500px">
         </div>
         @if ($spot->user_id === Auth::id())
-        <div class="buttons d-flex">
-          <div class="button">
-            <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
-          </div>
-          <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
-            @csrf
-            {{ method_field('delete') }}
-            <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
-          </form>
-        </div>
         @endif
+
+        <div class="comments mt-5">
+          <p>コメント一覧</p>
+          @if ($spot->comments)
+              @foreach ($spot->comments as $comment)
+                <div class="comment card mt-3">
+                  <div class="card-body">
+                    <div class="user_name d-flex">
+                      <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50">
+                      <p>{{ $comment->user->name }}</p>
+                    </div>
+                    <div class="comment_content">
+                      <p>{{ $comment->content }}</p>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+          @else
+            <p>コメントは何もありません</p>
+          @endif
+        </div>
+
+
+        <form action="{{ route('comments.store') }}" method="post" class="mt-5">
+          @csrf
+          <label for="content">コメントをする</label>
+          <textarea id="content" class="form-control" name="content" rows="10"></textarea>
+          <input type="hidden" name="spot_id" value="{{ $spot->id }}">
+          <button type="submit" class="btn btn-primary mt-2 btn-block px-0">コメントする</button>
+        </form>
     </div>
 @endsection
 

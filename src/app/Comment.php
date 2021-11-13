@@ -4,20 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Spot extends Model
+class Comment extends Model
 {
-    protected $casts = [
-        'image' => 'json',
-    ];
-
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    public function comments()
+    public function spot()
     {
-        return $this->hasMany('App\Comment');
+        return $this->belongsTo('App\Spot');
     }
 }
-

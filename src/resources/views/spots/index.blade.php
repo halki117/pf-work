@@ -21,20 +21,22 @@
       @if (!($spots->isEmpty()))
       @foreach ($spots as $spot)
         @if ($spot->public == true)
-          <div class="card col-4">
-            <a href="{{ route('spots.show', $spot->id) }}">
-              <div class="card-body">
-                @php
-                  $images = $spot->image
-                @endphp
-                <div class="new_spot">
-                  <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+          <div class="col-4">
+            <div class="card px-3">
+              <a href="{{ route('spots.show', $spot->id) }}">
+                <div class="card-body">
+                  @php
+                    $images = $spot->image
+                  @endphp
+                  <div class="new_spot">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  </div>
+                  <i class="fas fa-heart"></i>
+                  <p>{{ $spot->address}}</p>
+                  <p>{{ $spot->review}}</p>
                 </div>
-                <i class="fas fa-heart"></i>
-                <p>{{ $spot->address}}</p>
-                <p>{{ $spot->review}}</p>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         @endif
       @endforeach
@@ -49,21 +51,23 @@
       @if (!($spots->isEmpty()))
       @foreach ($spots as $spot)
         @if ($spot->public == true)
-        <div class="card col-4">
-          <a href="{{ route('spots.show', $spot->id) }}">
-            <div class="card-body">
-              @php
-                $images = $spot->image
-              @endphp
-              <div class="new_spot">
-                <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
-              </div>
-              <i class="fas fa-heart"></i>
-              <p>{{ $spot->address}}</p>
-              <p>{{ $spot->review}}</p>
+          <div class="col-4">
+            <div class="card px-3">
+              <a href="{{ route('spots.show', $spot->id) }}">
+                <div class="card-body">
+                  @php
+                    $images = $spot->image
+                  @endphp
+                  <div class="new_spot">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  </div>
+                  <i class="fas fa-heart"></i>
+                  <p>{{ $spot->address}}</p>
+                  <p>{{ $spot->review}}</p>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
+          </div>
         @endif
       @endforeach
       @else
