@@ -31,7 +31,7 @@
                   <div class="new_spot">
                     <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
                   </div>
-                  <spot-like></spot-like>
+                  <i class="fas fa-heart"></i>
                   <p>{{ $spot->address}}</p>
                   <p>{{ $spot->review}}</p>
                 </div>

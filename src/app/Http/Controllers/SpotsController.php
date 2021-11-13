@@ -101,4 +101,27 @@ class SpotsController extends Controller
         $spot->delete();
         return redirect(route('spots.index'))->with('success', '投稿を削除しました');
     }
+
+    public function like(Request $request, $id){
+        $spot = Spot::find($id);
+        $spot->likes()->detach($request->user()->id);
+        $spot->likes()->attach($request->user()->id);
+
+        return [
+            'id' => $spot->id,
+            'countLikes' => $spot->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, $id)
+    {
+        $spot = Spot::find($id);
+        $spot->likes()->detach($request->user()->id);
+
+        return [
+            'id' => $spot->id,
+            'countLikes' => $spot->count_likes,
+        ];
+    }
+    
 }
