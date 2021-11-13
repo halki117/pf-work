@@ -70,7 +70,6 @@
           @endif
         </div>
 
-
         <form action="{{ route('comments.store') }}" method="post" class="mt-5">
           @csrf
           <label for="content">コメントをする</label>
