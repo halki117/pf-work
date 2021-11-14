@@ -31,7 +31,7 @@
                   <div class="new_spot">
                     <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
                   </div>
-                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
                   <p>{{ $spot->address}}</p>
                   <p>{{ $spot->review}}</p>
                 </div>
@@ -61,7 +61,7 @@
                   <div class="new_spot">
                     <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
                   </div>
-                  <i class="fas fa-heart"></i>
+                  <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
                   <p>{{ $spot->address}}</p>
                   <p>{{ $spot->review}}</p>
                 </div>

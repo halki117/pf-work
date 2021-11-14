@@ -29,7 +29,7 @@
                     <p>{{ $spot->review}}</p>
                   </div>
                   <div class="likes">
-                    <i class="fas fa-heart"></i>x0
+                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
                   </div>
                 </div>
               </div> 
