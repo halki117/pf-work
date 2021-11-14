@@ -24,3 +24,8 @@ Route::resource('spots', 'SpotsController')->middleware('verified');
 Route::resource('users', 'usersController');
 
 Route::resource('comments', 'commentsController');
+
+Route::prefix('spots')->name('spots.')->group(function () {
+    Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
+    Route::delete('/{spots}/like', 'SpotsController@unlike')->name('unlike')->middleware('auth');
+});

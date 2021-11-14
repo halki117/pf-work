@@ -61,4 +61,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Spot', "likes")->withTimestamps();
+    }
 }

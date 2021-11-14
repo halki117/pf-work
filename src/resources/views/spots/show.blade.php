@@ -29,7 +29,14 @@
           </div>
           <div class="address_likes">
             <p>{{ $spot->address}}</p>
-            <i class="fas fa-heart ml-5 mt-1"></i>x0
+            
+            <spot-like
+              :initial-is-liked-by='@json($spot->isLikedBy(Auth::user()))'
+              :initial-count-likes='@json($spot->count_likes)'
+              :authorized='@json(Auth::check())'
+              endpoint="{{ route('spots.like', $spot->id) }}"
+            ></spot-like>
+
           </div>
 
           <div class="card my-2">
@@ -69,7 +76,6 @@
             <p>コメントは何もありません</p>
           @endif
         </div>
-
 
         <form action="{{ route('comments.store') }}" method="post" class="mt-5">
           @csrf

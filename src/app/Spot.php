@@ -19,5 +19,22 @@ class Spot extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\User', "likes")->withTimestamps();
+    }
+
+    public function isLikedBy(?User $user)
+    {
+        return $user
+            ? (bool)$this->likes->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function getCountLikesAttribute()
+    {
+        return $this->likes->count();
+    }
 }
 
