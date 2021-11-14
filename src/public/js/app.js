@@ -43076,7 +43076,7 @@ var render = function () {
       },
       [_c("i", { staticClass: "fas fa-heart mr-1 ml-5 fa-2x" })]
     ),
-    _vm._v("\n  " + _vm._s(_vm.countLikes) + "\n"),
+    _vm._v("\n  x" + _vm._s(_vm.countLikes) + "\n"),
   ])
 }
 var staticRenderFns = []

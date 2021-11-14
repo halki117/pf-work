@@ -9,7 +9,7 @@
       <i class="fas fa-heart mr-1 ml-5 fa-2x"
       />
     </button>
-    {{ countLikes }}
+    x{{ countLikes }}
   </div>
 </template>
 
