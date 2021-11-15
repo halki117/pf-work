@@ -64,6 +64,7 @@
         <div class="form-group mt-5">
           <label for="tags">■タグの追加</label>
           <spot-tags-input
+            :autocomplete-items='@json($allTagNames ?? [])'
           >
           </spot-tags-input>
         </div>

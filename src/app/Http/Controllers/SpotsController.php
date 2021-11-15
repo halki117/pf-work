@@ -23,8 +23,12 @@ class SpotsController extends Controller
     }
 
 
-    public function create(){ 
-        return view('spots.create');
+    public function create(){
+        $allTagNames = Tag::all()->map(function($tag){
+            return ['text' => $tag->name];
+        });
+
+        return view('spots.create', compact('allTagNames'));
     }
 
 
@@ -72,10 +76,16 @@ class SpotsController extends Controller
 
     public function edit($id){
         $spot = Spot::find($id);
-        $tagName = $spot->tags->map(function($tag){
+
+        $tagNames = $spot->tags->map(function($tag){
             return ['text' => $tag->name];
         });
-        return view('spots.edit', compact('spot', 'tagName'));
+
+        $allTagNames = Tag::all()->map(function($tag){
+            return ['text' => $tag->name];
+        });
+
+        return view('spots.edit', compact('spot', 'tagNames', 'allTagNames'));
     }
 
 
@@ -106,6 +116,13 @@ class SpotsController extends Controller
         $spot->longitude = $request->longitude;
 
         $spot->update();
+
+        $spot->tags()->detach();
+        $request->tags->each(function ($tagName) use ($spot) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $spot->tags()->attach($tag);
+        });
+
         return redirect('spots');
     }
 

@@ -22838,6 +22838,11 @@ ul.stepper li.completed a .label {
   bottom: 0px;
 }
 
+.mypage_content .mypage_leftcontent .tags {
+  position: absolute;
+  bottom: 0px;
+}
+
 .mypage_content .mypage_leftcontent .buttons {
   position: absolute;
   bottom: 0px;
