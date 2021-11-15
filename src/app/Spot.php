@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Spot extends Model
 {
+
+    protected $fillable = [
+        'address', 'review','latitude','longitude','image','tags','public',
+    ];
+
     protected $casts = [
         'image' => 'json',
     ];

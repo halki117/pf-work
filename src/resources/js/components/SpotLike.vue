@@ -41,12 +41,10 @@
     },
     methods: {
       clickLike() {
-        console.log('ok');
         if (!this.authorized) {
           alert('いいね機能はログイン中のみ使用できます')
           return
         }
-
         this.isLikedBy
           ? this.unlike()
           : this.like()

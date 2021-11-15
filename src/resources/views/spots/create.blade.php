@@ -18,12 +18,10 @@
           <div class="place_input">
             <div class="form-group row">
               <div class="col-8">
-                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="name" autofocus>
+                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
   
                   @error('address')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
+                    <strong class="red-text">{{ $message }}</strong>
                   @enderror
               </div>
             </div>
@@ -45,9 +43,7 @@
             <textarea id="review" class="form-control" name="review" rows="10"></textarea>
   
             @error('review')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                <strong class="red-text">{{ $message }}</strong>
             @enderror
           </div>
         </div>
@@ -60,6 +56,9 @@
           </div>
           
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
+          @error('image')
+            <strong class="red-text">{{ $message }}</strong>
+          @enderror
         </div>
   
         <div class="form-group mt-5">

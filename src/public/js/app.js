@@ -6575,8 +6575,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     clickLike: function clickLike() {
-      console.log('ok');
-
       if (!this.authorized) {
         alert('いいね機能はログイン中のみ使用できます');
         return;

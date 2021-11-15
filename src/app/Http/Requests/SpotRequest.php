@@ -31,4 +31,22 @@ class SpotRequest extends FormRequest
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'address.required' => '所在地は必須です',
+            'review.required' => 'レビューは必須です',
+            'image.required' => '画像は必須です',
+        ];
+    }
+
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+        ->slice(0.5)
+        ->map(function($requestTag){
+            return $requestTag->text;
+        });
+    }
 }
