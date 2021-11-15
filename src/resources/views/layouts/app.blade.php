@@ -96,6 +96,9 @@
         <main class="main">
             @yield('content')
         </main>
+        
+        <div class="space">
+        </div>
         <footer class="footer">
             <p>Copyright © ○○○○ All Rights Reserved.</p>
         </footer>

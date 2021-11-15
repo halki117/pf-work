@@ -29,3 +29,5 @@ Route::prefix('spots')->name('spots.')->group(function () {
     Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
     Route::delete('/{spots}/like', 'SpotsController@unlike')->name('unlike')->middleware('auth');
 });
+
+Route::get('/tags/{name}', 'TagsController@show')->name('tags.show');

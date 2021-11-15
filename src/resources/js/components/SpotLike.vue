@@ -9,7 +9,7 @@
       <i class="fas fa-heart mr-1 ml-5 fa-2x"
       />
     </button>
-    {{ countLikes }}
+    x{{ countLikes }}
   </div>
 </template>
 
@@ -41,12 +41,10 @@
     },
     methods: {
       clickLike() {
-        console.log('ok');
         if (!this.authorized) {
           alert('いいね機能はログイン中のみ使用できます')
           return
         }
-
         this.isLikedBy
           ? this.unlike()
           : this.like()

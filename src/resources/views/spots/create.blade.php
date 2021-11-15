@@ -18,12 +18,10 @@
           <div class="place_input">
             <div class="form-group row">
               <div class="col-8">
-                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="name" autofocus>
+                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
   
                   @error('address')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
+                    <strong class="red-text">{{ $message }}</strong>
                   @enderror
               </div>
             </div>
@@ -45,9 +43,7 @@
             <textarea id="review" class="form-control" name="review" rows="10"></textarea>
   
             @error('review')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                <strong class="red-text">{{ $message }}</strong>
             @enderror
           </div>
         </div>
@@ -60,29 +56,19 @@
           </div>
           
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
+          @error('image')
+            <strong class="red-text">{{ $message }}</strong>
+          @enderror
         </div>
   
-        {{-- <div class="spots_tag mt-5">
-          <label for="tag" class="">■タグ</label>
-          <div class="tag_input">
-            <div class="form-group row">
-              <div class="col-8">
-                  <input id="tag" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('tag') }}" required autocomplete="tag" autofocus>
-  
-                  @error('tag')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-              <div class="col-4">
-                <button class="btn btn-primary">タグの登録</button>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-  
-  
+        <div class="form-group mt-5">
+          <label for="tags">■タグの追加</label>
+          <spot-tags-input
+            :autocomplete-items='@json($allTagNames ?? [])'
+          >
+          </spot-tags-input>
+        </div>
+
         <div class="spots_public mt-5">
           <label for="public" class="">■投稿の公開・非公開</label>
           <div class="form-group d-flex">

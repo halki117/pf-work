@@ -22838,6 +22838,11 @@ ul.stepper li.completed a .label {
   bottom: 0px;
 }
 
+.mypage_content .mypage_leftcontent .tags {
+  position: absolute;
+  bottom: 0px;
+}
+
 .mypage_content .mypage_leftcontent .buttons {
   position: absolute;
   bottom: 0px;
@@ -22865,6 +22870,10 @@ ul.stepper li.completed a .label {
   /* ←フッターの高さを指定 */
   box-sizing: border-box;
   /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+}
+
+.space {
+  margin-top: 150px;
 }
 
 footer {

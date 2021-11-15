@@ -34,6 +34,11 @@
   /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
+
+.space{
+  margin-top: 150px;
+}
+
 footer{
   width: 100%;
   position: absolute;/* ←絶対位置 */

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Spot;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SpotRequest;
 use Intervention\Image\Facades\Image;
 
 class SpotsController extends Controller
@@ -14,16 +16,23 @@ class SpotsController extends Controller
         return view('spots.index', compact('spots'));
     }
 
+
     public function show($id){
         $spot = Spot::find($id);
         return view('spots.show', compact('spot'));
     }
 
-    public function create(){ 
-        return view('spots.create');
+
+    public function create(){
+        $allTagNames = Tag::all()->map(function($tag){
+            return ['text' => $tag->name];
+        });
+
+        return view('spots.create', compact('allTagNames'));
     }
 
-    public function store(Request $request){
+
+    public function store(SpotRequest $request){
 
         $spot = new Spot;
         
@@ -55,15 +64,32 @@ class SpotsController extends Controller
 
         $spot->save();
 
+        $request->tags->each(function($tagName) use ($spot){
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $spot->tags()->attach($tag);
+        });
+
+
         return redirect('/spots');
     }
 
+
     public function edit($id){
         $spot = Spot::find($id);
-        return view('spots.edit', compact('spot'));
+
+        $tagNames = $spot->tags->map(function($tag){
+            return ['text' => $tag->name];
+        });
+
+        $allTagNames = Tag::all()->map(function($tag){
+            return ['text' => $tag->name];
+        });
+
+        return view('spots.edit', compact('spot', 'tagNames', 'allTagNames'));
     }
 
-    public function update($id, Request $request){
+
+    public function update($id, SpotRequest $request){
         $spot = Spot::find($id);
         $spot->address = $request->address;
 
@@ -90,8 +116,16 @@ class SpotsController extends Controller
         $spot->longitude = $request->longitude;
 
         $spot->update();
+
+        $spot->tags()->detach();
+        $request->tags->each(function ($tagName) use ($spot) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $spot->tags()->attach($tag);
+        });
+
         return redirect('spots');
     }
+
 
     public function destroy($id){
         $spot = Spot::find($id);
@@ -101,6 +135,7 @@ class SpotsController extends Controller
         $spot->delete();
         return redirect(route('spots.index'))->with('success', '投稿を削除しました');
     }
+
 
     public function like(Request $request, $id){
         $spot = Spot::find($id);
@@ -112,6 +147,7 @@ class SpotsController extends Controller
             'countLikes' => $spot->count_likes,
         ];
     }
+
 
     public function unlike(Request $request, $id)
     {
