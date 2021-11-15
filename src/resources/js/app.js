@@ -28,6 +28,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('spot-like', require('./components/SpotLike.vue').default);
 Vue.component('sample-component', require('./components/SampleComponent.vue').default);
+Vue.component('spot-tags-input', require('./components/SpotTagsInput.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

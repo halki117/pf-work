@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Spot;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SpotRequest;
 use Intervention\Image\Facades\Image;
 
 class SpotsController extends Controller
@@ -23,7 +24,7 @@ class SpotsController extends Controller
         return view('spots.create');
     }
 
-    public function store(Request $request){
+    public function store(SpotRequest $request){
 
         $spot = new Spot;
         
@@ -63,7 +64,7 @@ class SpotsController extends Controller
         return view('spots.edit', compact('spot'));
     }
 
-    public function update($id, Request $request){
+    public function update($id, SpotRequest $request){
         $spot = Spot::find($id);
         $spot->address = $request->address;
 
@@ -102,7 +103,7 @@ class SpotsController extends Controller
         return redirect(route('spots.index'))->with('success', '投稿を削除しました');
     }
 
-    public function like(Request $request, $id){
+    public function like(SpotRequest $request, $id){
         $spot = Spot::find($id);
         $spot->likes()->detach($request->user()->id);
         $spot->likes()->attach($request->user()->id);
@@ -113,7 +114,7 @@ class SpotsController extends Controller
         ];
     }
 
-    public function unlike(Request $request, $id)
+    public function unlike(SpotRequest $request, $id)
     {
         $spot = Spot::find($id);
         $spot->likes()->detach($request->user()->id);

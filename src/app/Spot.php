@@ -36,5 +36,10 @@ class Spot extends Model
     {
         return $this->likes->count();
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
 }
 

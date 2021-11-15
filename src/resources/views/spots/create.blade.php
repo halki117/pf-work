@@ -62,27 +62,13 @@
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
         </div>
   
-        {{-- <div class="spots_tag mt-5">
-          <label for="tag" class="">■タグ</label>
-          <div class="tag_input">
-            <div class="form-group row">
-              <div class="col-8">
-                  <input id="tag" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('tag') }}" required autocomplete="tag" autofocus>
-  
-                  @error('tag')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-              <div class="col-4">
-                <button class="btn btn-primary">タグの登録</button>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-  
-  
+        <div class="form-group mt-5">
+          <label for="tags">■タグの追加</label>
+          <spot-tags-input
+          >
+          </spot-tags-input>
+        </div>
+
         <div class="spots_public mt-5">
           <label for="public" class="">■投稿の公開・非公開</label>
           <div class="form-group d-flex">
