@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-  
   <div class="container-fluid">
-    
-    <div class="row mypage_content">
-      <div class="col-8 mypage_leftcontent">
-        <div class="btn-group">
-          <a href="#!" class="btn btn-info active">投稿したスポット</a>
-          <a href="#!" class="btn btn-light">いいねしたスポット</a>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h2 class="h4 card-title m-0">{{ $tag->hashtag }}</h2>
+        <div class="card-text text-right">
+          {{ $tag->spots->count() }}件
         </div>
-        @if (!($spots->isEmpty()))
-        @foreach ($spots as $spot)
+      </div>
+    </div>
+    @foreach($tag->spots as $spot)
+      <div class="content">
           <div class="card mb-3">
             <a href="{{ route('spots.show', $spot->id) }}">
               <div class="card-body row">
@@ -50,30 +50,7 @@
               </div> 
             </a>
           </div>
-        @endforeach
-        @else
-          <p>何も投稿がありません</p>
-        @endif
       </div>
-      <div class="col-4 mypage_rightcontent">
-        <div class="mypage_rightcontent__username">
-          <h1>{{ $user->name }}</h1>
-        </div>
-        <div class="mypage_rightcontent__profilephoto">
-          <img src="{{ asset('storage/user_icon.png' ) }}" alt="">
-        </div>
-        <div class="mypage_rightcontent__prefecture">
-          <p>居住地:{{ $user->prefecture }}</p>
-        </div>
-        <div class="mypage_rightcontent__profileintroduction">
-          <p>プロフィール</p>
-          <div class="profile_content ">
-            <p>{{ $user->profile_introduction }}</p>
-          </div>
-        </div>
-        <button class="btn btn-warning btn-lg">ユーザー情報編集</button>
-      </div>
-    </div>
+    @endforeach
   </div>
-  
 @endsection
