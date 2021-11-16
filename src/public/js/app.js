@@ -56139,6 +56139,8 @@ __webpack_require__(/*! ./sample */ "./resources/js/sample.js");
 
 __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
+__webpack_require__(/*! ./searching */ "./resources/js/searching.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56595,6 +56597,27 @@ $(function () {
 //     console.log('ok');
 //   });
 // });
+
+/***/ }),
+
+/***/ "./resources/js/searching.js":
+/*!***********************************!*\
+  !*** ./resources/js/searching.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('[name="btn"]:radio').change(function () {
+    if ($('[id=a]').prop('checked')) {
+      $('.text').fadeOut();
+      $('.text01').fadeIn();
+    } else if ($('[id=b]').prop('checked')) {
+      $('.text').fadeOut();
+      $('.text02').fadeIn();
+    }
+  });
+});
 
 /***/ }),
 

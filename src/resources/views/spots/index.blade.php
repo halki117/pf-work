@@ -8,7 +8,7 @@
   </picture>
   <div class="hero_right__contents float-right">
     <h3>自分に最適なスポットを発見しよう!!!</h3>
-    <button class="btn btn-success">スポットを検索</button>
+    <a href="{{ route('spots.searching') }}" class="btn btn-success">スポットを検索</a>
   </div>
 </div>
 <div class="container">

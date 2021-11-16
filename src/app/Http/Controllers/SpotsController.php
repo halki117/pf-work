@@ -8,6 +8,7 @@ use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
 class SpotsController extends Controller
 {
@@ -160,4 +161,55 @@ class SpotsController extends Controller
         ];
     }
     
+
+    public function searching()
+    {
+        $tags = Tag::all();
+        return view('spots.searching', compact('tags'));
+    }
+
+
+    public function searched(Request $request)
+    { 
+
+        $latitude  = $request->latitude;  // 起点の緯度 queryに入っているテイ
+        $longitude = $request->longitude; // 起点の経度 queryに入っているテイ
+
+        $spots = Spot::select('*', 
+            DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
+            + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
+            ->orderBy('distance')
+            ->withCount('likes')
+            ->get();
+
+        if($request->range_time){
+            $spots = $spots->filter(function($value){
+                global $request;
+                return $value->distance <= ($request->range_time * 80 / 1000);
+            });
+        }
+        
+        if($request->range_distance){
+            $spots = $spots->filter(function($value){
+                global $request;
+                return $value->distance <= $request->range_distance;
+            });
+        }
+
+        if($request->sort === "order_new")
+        {
+            $spots = $spots->sortByDesc('created_at');
+        } 
+        elseif($request->sort === "order_likes")
+        {
+            $spots = $spots->sortByDesc('likes_count');
+        }
+
+        // if($request->tags){
+        //     $spots = $spots;
+        // }
+
+        return view('spots.searched', compact('spots'));
+    }
+
 }
