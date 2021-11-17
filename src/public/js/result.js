@@ -68,7 +68,9 @@
           zoom: 13,
         });
 
-        // 検索実行ボタンが押下されたとき
+
+
+        // 検索実行ボタンが押下されたときの処理、住所から座標を割り出しマップ城にマーキングする
         document.getElementById('search').addEventListener('click', function() {
 
           var place = document.getElementById('keyword').value;
@@ -121,8 +123,41 @@
 
       }
 
+
+      // マップをクリックすることによって細かな座標を指定できる
+      map.addListener('click', function(e) {
+        clickMap(e.latLng, map);
+      });
+
+      function clickMap(geo, map) {
+        lat = geo.lat();
+        lng = geo.lng();
+        
+        //小数点以下6桁に丸める場合
+        //lat = Math.floor(lat * 1000000) / 1000000);
+        //lng = Math.floor(lng * 1000000) / 1000000);
+        
+        document.getElementById('input_latitude').value = lat;
+        document.getElementById('input_longitude').value = lng;
+
+        //中心にスクロール
+        // map.panTo(geo);
+        
+        //マーカーの更新
+        deleteMakers();
+        marker = new google.maps.Marker({
+          map: map, position: geo 
+        });
+        
+      }
+
+
+
+      // 細かな処理を関数にまとめた 
+
       // マーカーのセットを実施する
       function setMarker(setplace) {
+        console.log('ok');
         // 既にあるマーカーを削除
         deleteMakers();
 

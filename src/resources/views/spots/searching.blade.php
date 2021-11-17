@@ -44,18 +44,19 @@
           <div class="form-group">
             <label for="range">■指定箇所からの範囲</label>
 
-            <ul>
-              <li><input type="radio" name="btn" id="a" checked="checked">徒歩何分以内</li>
-              <div class="text text01">
-                <input type="text" name="range_time" class="form-control" >分
+              <div class="mt-3">
+                <input type="radio" name="btn" id="a" checked="checked">徒歩何分以内
+                <div class="text text01">
+                  <input type="text" name="range_time" class="form-control" ><strong>分</strong>
+                </div>
               </div>
-
-              <li><input type="radio" name="btn" id="b">距離何km以内</li>
-              <div class="text text02">
-                <input type="text" name="range_distance" class="form-control" >km
+              
+              <div class="mt-3">
+                <input type="radio" name="btn" id="b">距離何km以内
+                <div class="text text02">
+                  <input type="text" name="range_distance" class="form-control" ><strong>km</strong>
+                </div>
               </div>
-            </ul>
-
             
             @error('range')
                 <strong class="red-text">{{ $message }}</strong>
