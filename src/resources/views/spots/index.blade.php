@@ -18,8 +18,8 @@
   <div class="new_spot">
     <h3>新着スポット</h3>
     <div class="row">
-      @if (!($spots->isEmpty()))
-      @foreach ($spots as $spot)
+      @if (!($new_spots->isEmpty()))
+      @foreach ($new_spots as $spot)
         @if ($spot->public == true)
           <div class="col-4">
             <div class="card px-3">
@@ -61,8 +61,8 @@
   <div class="popular_spot mt-5">
     <h3>人気のスポット</h3>
     <div class="row">
-      @if (!($spots->isEmpty()))
-      @foreach ($spots as $spot)
+      @if (!($popular_spots->isEmpty()))
+      @foreach ($popular_spots as $spot)
         @if ($spot->public == true)
           <div class="col-4">
             <div class="card px-3">

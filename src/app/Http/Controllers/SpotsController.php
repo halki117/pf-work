@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\DB;
 class SpotsController extends Controller
 {
     public function index(){
-        $spots = Spot::orderBy('created_at', 'desc')->limit(3)->get();
-        return view('spots.index', compact('spots'));
+        $new_spots = Spot::orderBy('created_at', 'desc')->limit(3)->get();
+        $popular_spots = Spot::withCount('likes')->orderBy('likes_count', 'desc')->limit(3)->get();
+        return view('spots.index', compact('new_spots', 'popular_spots'));
     }
 
 
@@ -161,6 +162,11 @@ class SpotsController extends Controller
         ];
     }
     
+    public function favorites() {
+        $user = Auth::user();
+        $spots = $user->likes;
+        return view('spots.favorites', compact('user','spots'));
+    }
 
     public function searching()
     {
@@ -172,8 +178,8 @@ class SpotsController extends Controller
     public function searched(Request $request)
     { 
 
-        $latitude  = $request->latitude;  // 起点の緯度 queryに入っているテイ
-        $longitude = $request->longitude; // 起点の経度 queryに入っているテイ
+        $latitude  = $request->latitude;
+        $longitude = $request->longitude;
 
         $spots = Spot::select('*', 
             DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 

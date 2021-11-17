@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
 Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched');
+Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
 Route::resource('spots', 'SpotsController')->middleware('verified');
 
 
