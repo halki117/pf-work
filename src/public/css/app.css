@@ -22825,11 +22825,19 @@ ul.stepper li.completed a .label {
   margin-top: auto;
 }
 
-.text {
+.text1 {
   display: none;
 }
 
-.text01 {
+.text1-1 {
+  display: block;
+}
+
+.text2 {
+  display: none;
+}
+
+.text2-1 {
   display: block;
 }
 

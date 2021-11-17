@@ -7,25 +7,56 @@
       <h1>スポットを検索する</h1>
 
       {{-- 住所から場所検索 --}}
-      <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div>
+      {{-- <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div> --}}
+
+
+      <div class="place_range mt-5">
+        <div class="form-group">
+          <label for="range">■指定箇所を決める</label>
+
+            <div class="mt-3">
+              <input type="radio" name="btn1" id="a" checked="checked">住所または施設名から指定
+              <div class="text1 text1-1">
+                <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索する</button>
+                {{-- <button class="btn btn-warning m-2" id="clear">結果クリア</button> --}}
+              </div>
+            </div>
+            
+            <div class="mt-3">
+              <input type="radio" name="btn1" id="b">地図から直接場所を指定
+              <div class="text1 text1-2">
+                <div id="target"></div>
+              </div>
+            </div>
+          
+          @error('range')
+              <strong class="red-text">{{ $message }}</strong>
+          @enderror
+        </div>
+      </div>
+
+
+{{-- 
       <div>住所もしくは施設名で称検索</div>
       <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索実行</button>
       <button class="btn btn-warning m-2" id="clear">結果クリア</button>
-      <div id="target"></div>
+      <div id="target"></div> --}}
 
       
       <form action="{{ route('spots.searched') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="spots_place mt-5">
-          <label for="address" class="">■所在地表示</label>
+          <label for="address" class="">指定箇所の表示</label>
           <div class="place_input">
             <div class="form-group row">
               <div class="col-8">
-                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+                  <p id="result_address"></p>
+
+                  {{-- <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus> --}}
   
-                  @error('address')
+                  {{-- @error('address')
                     <strong class="red-text">{{ $message }}</strong>
-                  @enderror
+                  @enderror --}}
               </div>
             </div>
           </div>
@@ -45,15 +76,15 @@
             <label for="range">■指定箇所からの範囲</label>
 
               <div class="mt-3">
-                <input type="radio" name="btn" id="a" checked="checked">徒歩何分以内
-                <div class="text text01">
+                <input type="radio" name="btn2" id="c" checked="checked">徒歩何分以内
+                <div class="text2 text2-1">
                   <input type="text" name="range_time" class="form-control" ><strong>分</strong>
                 </div>
               </div>
               
               <div class="mt-3">
-                <input type="radio" name="btn" id="b">距離何km以内
-                <div class="text text02">
+                <input type="radio" name="btn2" id="d">距離何km以内
+                <div class="text2 text2-2">
                   <input type="text" name="range_distance" class="form-control" ><strong>km</strong>
                 </div>
               </div>
