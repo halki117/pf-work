@@ -56619,9 +56619,11 @@ $(function () {
   });
   $('[name="btn2"]:radio').change(function () {
     if ($('[id=c]').prop('checked')) {
+      $('#range_distance').val('');
       $('.text2').fadeOut();
       $('.text2-1').fadeIn();
     } else if ($('[id=d]').prop('checked')) {
+      $('#range_time').val('');
       $('.text2').fadeOut();
       $('.text2-2').fadeIn();
     }

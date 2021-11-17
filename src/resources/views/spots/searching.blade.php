@@ -12,7 +12,7 @@
 
       <div class="place_range mt-5">
         <div class="form-group">
-          <label for="range">■指定箇所を決める</label>
+          <label for="range"><h4>1.指定箇所を決める</h4></label>
 
             <div class="mt-3">
               <input type="radio" name="btn1" id="a" checked="checked">住所または施設名から指定
@@ -73,19 +73,19 @@
   
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="range">■指定箇所からの範囲</label>
+            <label for="range"><h4>2.指定箇所からの範囲</h4></label>
 
               <div class="mt-3">
                 <input type="radio" name="btn2" id="c" checked="checked">徒歩何分以内
                 <div class="text2 text2-1">
-                  <input type="text" name="range_time" class="form-control" ><strong>分</strong>
+                  <input type="text" name="range_time" id="range_time" class="form-control" ><strong>分</strong>
                 </div>
               </div>
               
               <div class="mt-3">
                 <input type="radio" name="btn2" id="d">距離何km以内
                 <div class="text2 text2-2">
-                  <input type="text" name="range_distance" class="form-control" ><strong>km</strong>
+                  <input type="text" name="range_distance" id="range_distance" class="form-control" ><strong>km</strong>
                 </div>
               </div>
             
@@ -98,7 +98,7 @@
 
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="sort">■並び替え（任意）</label>
+            <label for="sort"><h4>3.並び替え（任意)</h4></label>
             <select name="sort" id="select_sort" class="form-control">
               <option value="">--指定なし--</option>
               <option value="order_new">新着順</option>
@@ -114,7 +114,7 @@
 
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="search_tags">■タグで絞り込む（任意）</label>
+            <label for="search_tags"><h4>4.タグで絞り込む（任意）</h4></label>
 
             <div class="select_contents d-flex">
               @foreach ($tags as $tag)
