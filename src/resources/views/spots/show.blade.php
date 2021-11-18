@@ -4,16 +4,18 @@
     <div class="container">
       <div class="d-flex mt-5">
         <h1>詳細画面</h1>
-        <div class="buttons d-flex">
-          <div class="button">
-            <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
+        @if ($spot->user_id === Auth::id())
+          <div class="buttons d-flex">
+            <div class="button">
+              <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
+            </div>
+            <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
+              @csrf
+              {{ method_field('delete') }}
+              <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
+            </form>
           </div>
-          <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
-            @csrf
-            {{ method_field('delete') }}
-            <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
-          </form>
-        </div>
+        @endif
       </div>
       <p>投稿者: {{ $spot->user->name }}</p>
         <div class="spot_show__contant">
@@ -83,6 +85,13 @@
                     <div class="comment_content">
                       <p>{{ $comment->content }}</p>
                     </div>
+                    @if ($comment->user_id === Auth::id())
+                    <form action="{{ route('comments.destroy', $spot->id) }}" method="post" class="mr-2">
+                      @csrf
+                      {{ method_field('delete') }}
+                      <input  type="submit" class="btn btn-danger  mx-1" value="コメントを削除" onclick="return confirm('コメントを削除してもよろしいですか？')">
+                    </form>
+                    @endif
                   </div>
                 </div>
               @endforeach
