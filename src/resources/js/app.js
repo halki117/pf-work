@@ -12,6 +12,8 @@ require("./sample");
 
 require("./image_upload");
 
+require("./searching");
+
 window.Vue = require('vue');
 
 /**

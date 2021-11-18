@@ -22825,6 +22825,22 @@ ul.stepper li.completed a .label {
   margin-top: auto;
 }
 
+.text1 {
+  display: none;
+}
+
+.text1-1 {
+  display: block;
+}
+
+.text2 {
+  display: none;
+}
+
+.text2-1 {
+  display: block;
+}
+
 .mypage_content {
   margin-top: 100px;
 }

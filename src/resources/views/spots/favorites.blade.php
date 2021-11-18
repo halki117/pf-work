@@ -7,8 +7,8 @@
     <div class="row mypage_content">
       <div class="col-8 mypage_leftcontent">
         <div class="btn-group">
-          <a href="#!" class="btn btn-info active">投稿したスポット</a>
-          <a href="{{ route('spots.favorites') }}" class="btn btn-light">いいねしたスポット</a>
+          <a href="{{ route('users.show', Auth::id() ) }}" class="btn btn-light ">投稿したスポット</a>
+          <a href="{{ route('spots.favorites') }}" class="btn btn-info active">いいねしたスポット</a>
         </div>
         @if (!($spots->isEmpty()))
         @foreach ($spots as $spot)

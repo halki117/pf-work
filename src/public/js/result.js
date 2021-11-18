@@ -68,7 +68,47 @@
           zoom: 13,
         });
 
-        // 検索実行ボタンが押下されたとき
+        // マップをクリックすることによって細かな座標を指定できる
+        map.addListener('click', function(e) {
+          clickMap(e.latLng, map);
+        });
+
+        function clickMap(geo, map) {
+          lat = geo.lat();
+          lng = geo.lng();
+          
+          //小数点以下6桁に丸める場合
+          //lat = Math.floor(lat * 1000000) / 1000000);
+          //lng = Math.floor(lng * 1000000) / 1000000);
+          
+          document.getElementById('input_latitude').value = lat;
+          document.getElementById('input_longitude').value = lng;
+
+          //中心にスクロール
+          // map.panTo(geo);
+          
+          //マーカーの更新
+          deleteMakers();
+          marker = new google.maps.Marker({
+            map: map, position: geo 
+          });
+
+          var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'latLng': geo}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    for (var i in results) {
+                        document.getElementById('result_address').textContent = (results[0].formatted_address);
+                    }
+                }
+                else {
+                    window.alert("google.maps.GeocoderStatus is not OK. due to " + status);
+                }
+            });
+        }
+
+
+
+        // 検索実行ボタンが押下されたときの処理、住所から座標を割り出しマップ城にマーキングする
         document.getElementById('search').addEventListener('click', function() {
 
           var place = document.getElementById('keyword').value;
@@ -99,9 +139,18 @@
                   // マーカーにクリックイベントを追加
                   markerEvent();
 
-                  document.getElementById('input_address').value = address;
+
+                  if(!!document.getElementById('input_address')){
+                    document.getElementById('input_address').value = address
+                  }
+                  // document.getElementById('input_address').value = address;
                   document.getElementById('input_latitude').value = latlng.lat();
                   document.getElementById('input_longitude').value = latlng.lng();
+
+                  document.getElementById('result_address').textContent = (results[0].formatted_address);
+                  if(!!document.getElementById('result_address')){
+                    document.getElementById('result_address').textContent = address
+                  }
                 }
               }
             } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
@@ -121,8 +170,13 @@
 
       }
 
+
+
+      // 細かな処理を関数にまとめた 
+
       // マーカーのセットを実施する
       function setMarker(setplace) {
+        console.log('ok');
         // 既にあるマーカーを削除
         deleteMakers();
 

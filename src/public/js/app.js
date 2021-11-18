@@ -56139,6 +56139,8 @@ __webpack_require__(/*! ./sample */ "./resources/js/sample.js");
 
 __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
+__webpack_require__(/*! ./searching */ "./resources/js/searching.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56595,6 +56597,38 @@ $(function () {
 //     console.log('ok');
 //   });
 // });
+
+/***/ }),
+
+/***/ "./resources/js/searching.js":
+/*!***********************************!*\
+  !*** ./resources/js/searching.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('[name="btn1"]:radio').change(function () {
+    if ($('[id=a]').prop('checked')) {
+      $('.text1').fadeOut();
+      $('.text1-1').fadeIn();
+    } else if ($('[id=b]').prop('checked')) {
+      $('.text1').fadeOut();
+      $('.text1-2').fadeIn();
+    }
+  });
+  $('[name="btn2"]:radio').change(function () {
+    if ($('[id=c]').prop('checked')) {
+      $('#range_distance').val('');
+      $('.text2').fadeOut();
+      $('.text2-1').fadeIn();
+    } else if ($('[id=d]').prop('checked')) {
+      $('#range_time').val('');
+      $('.text2').fadeOut();
+      $('.text2-2').fadeIn();
+    }
+  });
+});
 
 /***/ }),
 
