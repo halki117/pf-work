@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class SpotsController extends Controller
 {
@@ -45,8 +46,8 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('public', $file_name);
-            // Image::make($file)->resize(1080, null, function ($constraint) {$constraint->aspectRatio();})->storeAs('public', $file_name);
+            // $file->storeAs('public', $file_name);
+            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
             $image_data[] = $file_name;
         }
 
@@ -181,12 +182,22 @@ class SpotsController extends Controller
         $latitude  = $request->latitude;
         $longitude = $request->longitude;
 
-        $spots = Spot::select('*', 
+        $query = Spot::select('*', 
             DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
             + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
             ->orderBy('distance')
-            ->withCount('likes')
-            ->get();
+            ->withCount('likes');
+        
+        if($request->tags){
+            foreach($request->tags as $tag_id){
+                $query->whereHas('tags', function (Builder $query)use($tag_id) {
+                    // dd($tag_id);
+                    $query->where('tags.id', $tag_id);
+                });
+            }
+        }
+
+        $spots = $query->get();
 
         if($request->range_time){
             $spots = $spots->filter(function($value){
@@ -210,10 +221,6 @@ class SpotsController extends Controller
         {
             $spots = $spots->sortByDesc('likes_count');
         }
-
-        // if($request->tags){
-        //     $spots = $spots;
-        // }
 
         return view('spots.searched', compact('spots'));
     }

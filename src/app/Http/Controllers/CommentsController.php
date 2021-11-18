@@ -16,4 +16,9 @@ class CommentsController extends Controller
         $comment->save();
         return redirect(route('spots.show', $request->spot_id))->with('success', 'コメントしました！');
     }
+
+    public function destroy($id){
+        $comment = Comment::find($id);
+        $comment->delete();
+    }
 }
