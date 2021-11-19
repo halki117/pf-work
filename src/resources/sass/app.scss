@@ -64,3 +64,9 @@ li{
 a{
   color: #000000;
 }
+
+.notice_content{
+  display: none;
+  position: absolute;
+  z-index: 100;
+}

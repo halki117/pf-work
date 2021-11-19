@@ -36,3 +36,6 @@ Route::prefix('spots')->name('spots.')->group(function () {
 });
 
 Route::get('/tags/{name}', 'TagsController@show')->name('tags.show');
+
+
+Route::get('notifications', 'NotificationsController@index')->name('notifications.index');

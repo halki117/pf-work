@@ -56135,7 +56135,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
 
-__webpack_require__(/*! ./sample */ "./resources/js/sample.js");
+__webpack_require__(/*! ./notification */ "./resources/js/notification.js");
 
 __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
@@ -56585,18 +56585,18 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/sample.js":
-/*!********************************!*\
-  !*** ./resources/js/sample.js ***!
-  \********************************/
+/***/ "./resources/js/notification.js":
+/*!**************************************!*\
+  !*** ./resources/js/notification.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// $(function(){
-//   $('.container').click(function(){
-//     console.log('ok');
-//   });
-// });
+$(function () {
+  $('.notice_link').click(function () {
+    $('.notice_content').toggle();
+  });
+});
 
 /***/ }),
 

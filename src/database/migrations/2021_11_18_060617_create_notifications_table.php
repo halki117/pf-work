@@ -17,9 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->bigIncrements('id');
             $table->uuid('notifer_id');
             $table->foreign('notifer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->uuid('passive_user_id');
+            $table->uuid('passive_user_id')->nullable();
             $table->foreign('passive_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('passive_spot_id');
+            $table->unsignedBigInteger('passive_spot_id')->nullable();
             $table->foreign('passive_spot_id')->references('id')->on('spots')->onDelete('cascade');
             $table->string('notice_type');
             $table->boolean('checked')->default(false);
