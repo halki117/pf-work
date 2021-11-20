@@ -145,6 +145,15 @@ class SpotsController extends Controller
         $spot->likes()->detach($request->user()->id);
         $spot->likes()->attach($request->user()->id);
 
+        // 通知機能
+        $notification = app()->make('App\Http\Controllers\NotificationsController');
+        $notifer_id = Auth::id();
+        $passive_user_id = $spot->user_id;
+        $passive_spot_id = $spot->id;
+        $notice_type = 'like';
+        $notification->store($notifer_id, $passive_user_id, $passive_spot_id, $notice_type);
+        //
+
         return [
             'id' => $spot->id,
             'countLikes' => $spot->count_likes,

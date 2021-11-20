@@ -86,11 +86,11 @@
                       <p>{{ $comment->content }}</p>
                     </div>
                     @if ($comment->user_id === Auth::id())
-                    <form action="{{ route('comments.destroy', $spot->id) }}" method="post" class="mr-2">
-                      @csrf
-                      {{ method_field('delete') }}
-                      <input  type="submit" class="btn btn-danger  mx-1" value="コメントを削除" onclick="return confirm('コメントを削除してもよろしいですか？')">
-                    </form>
+                      <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="mr-2">
+                        @csrf
+                        {{ method_field('delete') }}
+                        <input  type="submit" class="btn btn-danger  mx-1" value="コメントを削除" onclick="return confirm('コメントを削除してもよろしいですか？')">
+                      </form>
                     @endif
                   </div>
                 </div>

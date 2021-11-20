@@ -39,3 +39,4 @@ Route::get('/tags/{name}', 'TagsController@show')->name('tags.show');
 
 
 Route::get('notifications', 'NotificationsController@index')->name('notifications.index');
+Route::get('notifications/{id}', 'NotificationsController@checked')->name('notifications.checked');

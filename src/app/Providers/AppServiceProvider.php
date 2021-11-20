@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Notification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,8 +24,9 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        $notifications = Notification::all();
+    {   
+        // 通知のインスタンスは共通画面で使用したいのでAppServiceProviderに定義する
+        $notifications = Notification::where('checked', false)->get();
         view()->share('notifications', $notifications);
     }
 }

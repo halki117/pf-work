@@ -53,30 +53,11 @@
                             <a class="nav-link text-light" href="#">{{ __('Contact') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light notice_link" href="#">{{ __('Notification') }}</a>
-                            @if (!($notifications->isEmpty()))
-                                <div class="card notice_content">
-                                    <div class="card-body">
-                                        @foreach ($notifications as $notification)
-                                            @if ($notification->notice_type === "like")
-                                                <p>{{ $notification->notifer->name }} さんがあなたの投稿にいいねしました！</p>
-                                            @elseif ($notification->notice_type === "commenet")
-                                                <p>{{ $notification->notifer->name }} さんがあなたの投稿にコメントしました！</p>
-                                            @else
-                                                <p>運営からのお知らせ</p>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('users.show', Auth::id() ) }}">{{ __('Mypage') }}</a>
                         </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -95,6 +76,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            @include('notifications')
+                        </li>
                     </ul>
                 </div>
             </div>
