@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
       
-      <form action="{{ route('users.update', $user->id) }}" method="POST" >
+      <form action="{{ route('users.update', $user->id) }}" method="POST" enctype='multipart/form-data'>
         @csrf
         
         <div class="form-group mt-5">
-          <div class="input_user__name">
+          <div class="content_user_name">
               <label for="name" class="">ユーザー名</label>
               <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
@@ -19,29 +19,34 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row pref_form">
           <label for="prefecture">{{ __('Prefecture') }}</label>
 
           <select type="text" class="form-control" name="prefecture" >
-              <option hidden class="text-center">{{ $user->prefecture}}</option>
+              <option hidden class="text-center">{{ $user->prefecture }}</option>
               @foreach(config('pref') as $key => $score)
                   <option value="{{ $score }}">{{ $score }}</option>
               @endforeach
           </select>
         </div>
 
-        <div class="place_image mt-5">
+        <div class="mt-5">
           <label for="profile_photo">プロフィール写真</label>
-          <div id="profile_photo" class="profile_photo" style="display:none"></div>
-          
-          <input class="btn btn-success" id="profile_photo" type="file" name="profile_photo" onchange="OnFileSelect( this );">
+          <div class="content_profile_photo">
+            <div id="profile_photo" class="profile_photo__space">
+              @if ($user->profile_photo)
+                <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
+              @endif
+            </div>
+            <input class="btn btn-success btn-block btn-profile-photo" id="profile_photo__input" type="file" name="profile_photo">
+          </div>
         </div>
 
         <div class="mt-5">
           <div class="form-group">
             <label for="profile_introduction">プロフィール文</label>
-            <textarea class="form-control" name="profile_introduction" rows="10"></textarea>
-  
+            <textarea class="form-control" name="profile_introduction" rows="10">{{ $user->profile_introduction }}</textarea>
+
             @error('profile_introduction')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
