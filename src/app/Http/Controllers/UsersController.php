@@ -14,4 +14,10 @@ class UsersController extends Controller
         $spots = Spot::where('user_id', $id)->get();
         return view('users.show', compact('user', 'spots'));
     }
+
+    public function edit($id){
+        $user = User::find($id);
+        
+        return view('users.edit', compact('user'));
+    }
 }

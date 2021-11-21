@@ -7,9 +7,9 @@ use App\Spot;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Image;
 
 class SpotsController extends Controller
 {
@@ -46,8 +46,11 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            // $file->storeAs('public', $file_name);
-            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
+            // dd($file_name);
+            $file->storeAs('public', $file_name);
+            // Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
+            // Image::make('app/storage/public/'.$file_name)->resize(300, 300, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
+            // Image::make(storage_path('app/public/'.$file_name))->fit(300, 300)->save(storage_path('app/public/'.$file_name));
             $image_data[] = $file_name;
         }
 

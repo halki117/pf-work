@@ -22780,12 +22780,17 @@ ul.stepper li.completed a .label {
   font-weight: bold;
 }
 
+.top_contents .card {
+  min-height: 460px;
+}
+
 .new_spot {
   margin-top: 50px;
 }
 
 .new_spot img.new_spot__img {
-  width: 300px;
+  width: 250px;
+  height: 200px;
 }
 
 .place_map {
