@@ -40,3 +40,10 @@ Route::get('/tags/{name}', 'TagsController@show')->name('tags.show');
 
 Route::get('notifications', 'NotificationsController@index')->name('notifications.index');
 Route::get('notifications/{id}', 'NotificationsController@checked')->name('notifications.checked');
+
+
+Route::group(['middleware' => ['can:admin']], function(){
+    Route::get('admin/users', 'admin\UsersController@index')->name('admin.users.index');
+    Route::get('admin/users/{id}', 'admin\UsersController@show')->name('admin.users.show');
+    // Route::get('admin/spots, 'admin\SpotsController@index')->name('admin.spots.index');
+});

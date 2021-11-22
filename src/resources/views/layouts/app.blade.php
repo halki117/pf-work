@@ -49,6 +49,11 @@
                                 </li>
                             @endif
                         @else
+                        @can('admin')
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ route('admin.users.index') }}">管理画面</a>
+                            </li>
+                        @endcan
                         <li class="nav-item">
                             <a class="nav-link text-light" href="#">{{ __('Contact') }}</a>
                         </li>
