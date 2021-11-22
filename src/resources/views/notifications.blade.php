@@ -24,7 +24,7 @@
                   <a href="{{ route('notifications.checked', $notification->id) }}"><p>{{ $notification->notifer->name }} さんがあなたの投稿にコメントしました！</p></a>
                   <hr>
               @elseif ($notification->notice_type === "announce")
-                  <a href=""><p>運営からのお知らせ</p></a>
+                  <a href="{{ route('notifications.checked', $notification->id) }}"><p>運営からのお知らせ</p></a>
                   <hr>
               @else
                   <p>お知らせは何もありません</p>

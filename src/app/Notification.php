@@ -11,4 +11,9 @@ class Notification extends Model
         return $this->belongsTo('App\User', 'notifer_id');
     }
 
+    Public function announcement()
+    {
+        return $this->hasOne('App\Announcement');
+    }
+
 }
