@@ -45,5 +45,6 @@ Route::get('notifications/{id}', 'NotificationsController@checked')->name('notif
 Route::group(['middleware' => ['can:admin']], function(){
     Route::get('admin/users', 'admin\UsersController@index')->name('admin.users.index');
     Route::get('admin/users/{id}', 'admin\UsersController@show')->name('admin.users.show');
-    // Route::get('admin/spots, 'admin\SpotsController@index')->name('admin.spots.index');
+    Route::get('admin/spots', 'admin\SpotsController@index')->name('admin.spots.index');
+    Route::get('admin/spots/{id}', 'admin\SpotsController@show')->name('admin.spots.show');
 });
