@@ -12,10 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect( route('spots.index') );
 });
 
 Auth::routes(['verify' => true]);
+Route::get('/previous_register', function () {
+    return view('auth.previous_register');
+})->name('previous_register');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
@@ -23,8 +26,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
 Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched');
 Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
-Route::resource('spots', 'SpotsController')->middleware('verified');
-
+Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('verified');
+Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
 Route::resource('users', 'usersController');
 
