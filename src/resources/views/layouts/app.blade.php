@@ -81,9 +81,13 @@
                                 </div>
                             </li>
                         @endguest
-                        <li class="nav-item">
-                            @include('notifications')
-                        </li>
+
+                        @auth
+                            <li class="nav-item">
+                                @include('notifications')
+                            </li>
+                        @endauth
+                        
                     </ul>
                 </div>
             </div>
@@ -123,31 +127,6 @@
     {{-- 逆ジオコーディング --}}
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script> --}}
 
-
-    <script>
-        // function setMap(){
-        //     var textbox = document.getElementById("address");
-        //     var value = textbox.value;
-
-        //     var map = document.getElementById('map');
-        //     var oldsrc = map.getAttribute('src');
-        //     var newsrc = oldsrc.replace('大阪', value);
-        //     map.setAttribute('src', newsrc);
-
-        //     // XMLHttpRequestオブジェクトの作成
-        //     var request = new XMLHttpRequest();
-
-        //     // URLを開く
-        //     request.open('GET', newsrc, true);
-
-        //     // リクエストをURLに送信
-        //     request.send();
-        // }
-
-    //   var SearchButton = document.getElementById("map-search");
-    //   console.log(SearchButton);
-    //   SearchButton.addEventListener('click', setMap);
-    </script>
 </body>
 </html>
 

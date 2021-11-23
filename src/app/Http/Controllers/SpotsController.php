@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Spot;
 use App\Tag;
+use App\Announcement;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +15,10 @@ use Image;
 class SpotsController extends Controller
 {
     public function index(){
+        $announcements = Announcement::orderBy('created_at', 'desc')->get();
         $new_spots = Spot::orderBy('created_at', 'desc')->limit(3)->get();
         $popular_spots = Spot::withCount('likes')->orderBy('likes_count', 'desc')->limit(3)->get();
-        return view('spots.index', compact('new_spots', 'popular_spots'));
+        return view('spots.index', compact('new_spots', 'popular_spots', 'announcements'));
     }
 
 
