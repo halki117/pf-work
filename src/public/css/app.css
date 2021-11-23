@@ -22780,12 +22780,17 @@ ul.stepper li.completed a .label {
   font-weight: bold;
 }
 
+.top_contents .card {
+  min-height: 460px;
+}
+
 .new_spot {
   margin-top: 50px;
 }
 
 .new_spot img.new_spot__img {
-  width: 300px;
+  width: 250px;
+  height: 200px;
 }
 
 .place_map {
@@ -22869,8 +22874,35 @@ ul.stepper li.completed a .label {
   text-align: center;
 }
 
-.mypage_content .mypage_rightcontent__profilephoto img {
+.pref_form {
+  width: 100%;
+  margin-left: 0;
+}
+
+.content_profile_photo {
+  height: 450px;
+  background-color: gainsboro;
+  padding-top: 50px;
+}
+
+.content_profile_photo .profile_photo__space {
+  background-color: whitesmoke;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
+  margin: 0 auto;
+}
+
+.content_profile_photo .profile_img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.content_profile_photo .btn-profile-photo {
+  width: 30%;
+  margin: 40px auto;
 }
 
 .form-group {
@@ -22920,5 +22952,26 @@ li {
 
 a {
   color: #000000;
+}
+
+.notice_mark {
+  position: relative;
+}
+
+.notice_mark .new_notice {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  z-index: 100;
+  top: 0.9vh;
+  right: 0.4vw;
+}
+
+.notice_content {
+  display: none;
+  position: absolute;
+  z-index: 100;
 }
 

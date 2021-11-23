@@ -56135,7 +56135,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
 
-__webpack_require__(/*! ./sample */ "./resources/js/sample.js");
+__webpack_require__(/*! ./notification */ "./resources/js/notification.js");
 
 __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
@@ -56557,6 +56557,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 $(function () {
+  // スポット投稿機能の処理
   $('#image').change(function () {
     if (!this.files.length) {
       return;
@@ -56580,23 +56581,42 @@ $(function () {
     }
 
     $('#preview').css('display', 'block');
+  }); // ユーザー情報編集の処理
+
+  $('#profile_photo__input').change(function (e) {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+
+    if (file.type.indexOf("image") < 0) {
+      alert("画像ファイルを指定してください");
+      return false;
+    }
+
+    reader.onload = function (e) {
+      $('#profile_photo').empty();
+      var src = e.target.result;
+      var img = '<div class="img"><img  class="profile_img" src="' + src + '"></div>';
+      $('#profile_photo').append(img);
+    };
+
+    reader.readAsDataURL(file);
   });
 });
 
 /***/ }),
 
-/***/ "./resources/js/sample.js":
-/*!********************************!*\
-  !*** ./resources/js/sample.js ***!
-  \********************************/
+/***/ "./resources/js/notification.js":
+/*!**************************************!*\
+  !*** ./resources/js/notification.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// $(function(){
-//   $('.container').click(function(){
-//     console.log('ok');
-//   });
-// });
+$(function () {
+  $('.notice_link').click(function () {
+    $('.notice_content').toggle();
+  });
+});
 
 /***/ }),
 

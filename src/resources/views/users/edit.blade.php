@@ -2,75 +2,71 @@
 
 @section('content')
     <div class="container">
-      編集画面
-      {{-- 住所から場所検索 --}}
-      <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div>
-      <div>住所もしくは施設名で称検索</div>
-      <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索実行</button>
-      <button class="btn btn-warning m-2" id="clear">結果クリア</button>
-      <div id="target"></div>
-
       
-      <form action="{{ route('spots.update', $spot->id) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('users.update', $user->id) }}" method="POST" enctype='multipart/form-data'>
         @csrf
-        <div class="spots_place mt-5">
-          <label for="address" class="">■所在地表示</label>
-          <div class="place_input">
-            <div class="form-group row">
-              <div class="col-8">
-                  <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ $spot->address }}" required autocomplete="name" autofocus>
-  
-                  @error('address')
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-            </div>
-          </div>
-  
-          {{-- <div class="place_map" id="map">
-          </div> --}}
-
-          {{-- <div id="map" style="height:500px">
-          </div>
-          <p id="place">大阪城</p> --}}
-
-
-          {{-- リバースジオコーディング用 --}}
-          {{-- <div id="gmap" style="height:400px;width:600px"></div> --}}
-          
-        </div>
         
-        <div class="latlng_form">
-          緯度<input type="text" id="input_latitude" value="{{ $spot->latitude }}" name="latitude">  
-          経度<input type="text" id="input_longitude" value="{{ $spot->longitude }}" name="longitude">
+        <div class="form-group mt-5">
+          <div class="content_user_name">
+              <label for="name" class="">ユーザー名</label>
+              <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+
+              @error('name')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+          </div>
         </div>
-  
-        <div class="place_review mt-5">
+
+        <div class="form-group row pref_form">
+          <label for="prefecture">{{ __('Prefecture') }}</label>
+
+          <select type="text" class="form-control" name="prefecture" >
+              <option hidden class="text-center">{{ $user->prefecture }}</option>
+              @foreach(config('pref') as $key => $score)
+                  <option value="{{ $score }}">{{ $score }}</option>
+              @endforeach
+          </select>
+        </div>
+
+        <div class="mt-5">
+          <label for="profile_photo">プロフィール写真</label>
+          <div class="content_profile_photo">
+            <div id="profile_photo" class="profile_photo__space">
+              @if ($user->profile_photo)
+                <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
+              @endif
+            </div>
+            <input class="btn btn-success btn-block btn-profile-photo" id="profile_photo__input" type="file" name="profile_photo">
+          </div>
+        </div>
+
+        <div class="mt-5">
           <div class="form-group">
-            <label for="review">■レビュー</label>
-            <textarea id="review" class="form-control" name="review" rows="10">{{ $spot->review }}</textarea>
-  
-            @error('review')
+            <label for="profile_introduction">プロフィール文</label>
+            <textarea class="form-control" name="profile_introduction" rows="10">{{ $user->profile_introduction }}</textarea>
+
+            @error('profile_introduction')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
           </div>
         </div>
-  
-  
-        <div class="place_image mt-5">
-          
-          <label for="place_image">■写真を挿入</label>
-          <div class="place_images row mt-3">
-@extends('layouts.app')
 
-@section('content')
+        {{ method_field('put') }}
+        <button type="submit" class="btn btn-success btn-block mt-5">ユーザー情報更新</button>
+
+      </form>
+    </div>
+
+@endsection 
+
+{{-- @section('content')
     <div class="container">
       編集画面
-      {{-- 住所から場所検索 --}}
+      
       <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div>
       <div>住所もしくは施設名で称検索</div>
       <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索実行</button>
@@ -96,16 +92,6 @@
             </div>
           </div>
   
-          {{-- <div class="place_map" id="map">
-          </div> --}}
-
-          {{-- <div id="map" style="height:500px">
-          </div>
-          <p id="place">大阪城</p> --}}
-
-
-          {{-- リバースジオコーディング用 --}}
-          {{-- <div id="gmap" style="height:400px;width:600px"></div> --}}
           
         </div>
         
@@ -137,7 +123,7 @@
           </div>
           
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
-          {{-- <button class="btn btn-primary mt-3">写真の追加</button> --}}
+          
         </div>
   
         <div class="form-group mt-5">
@@ -169,4 +155,4 @@
 
     </div>
 
-@endsection
+@endsection --}}

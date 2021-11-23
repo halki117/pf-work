@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // 管理者の場合にtrueを返す
+        Gate::define('admin', function($user){
+            //DB内のboolenの値は1か0で保存されるのでtrueの場合は1とする
+            return $user->admin === 1;
+        });
     }
 }

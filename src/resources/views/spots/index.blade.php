@@ -11,7 +11,8 @@
     <a href="{{ route('spots.searching') }}" class="btn btn-success">スポットを検索</a>
   </div>
 </div>
-<div class="container">
+<div class="container top_contents">
+
   {{-- @php
     $arr_spots = $spots->toArray();
   @endphp --}}

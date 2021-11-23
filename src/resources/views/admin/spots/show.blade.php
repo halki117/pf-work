@@ -4,18 +4,15 @@
     <div class="container">
       <div class="d-flex mt-5">
         <h1>詳細画面</h1>
-        @if ($spot->user_id === Auth::id())
+        @can ('admin')
           <div class="buttons d-flex">
-            <div class="button">
-              <a href="{{ route('spots.edit', $spot->id) }}" class="btn btn-success btn-lg px-5 mx-1">投稿内容を編集</a>
-            </div>
             <form action="{{ route('spots.destroy', $spot->id) }}" method="post" class="mr-2">
               @csrf
               {{ method_field('delete') }}
               <input  type="submit" class="btn btn-danger btn-lg px-5 mx-1" value="投稿を削除" onclick="return confirm('投稿を削除してもよろしいですか？')">
             </form>
           </div>
-        @endif
+        @endcan
       </div>
       <p>投稿者: {{ $spot->user->name }}</p>
         <div class="spot_show__contant">
@@ -31,14 +28,6 @@
           </div>
           <div class="address_likes">
             <p>{{ $spot->address}}</p>
-            
-            <spot-like
-              :initial-is-liked-by='@json($spot->isLikedBy(Auth::user()))'
-              :initial-count-likes='@json($spot->count_likes)'
-              :authorized='@json(Auth::check())'
-              endpoint="{{ route('spots.like', $spot->id) }}"
-            ></spot-like>
-
           </div>
 
           @foreach($spot->tags as $tag)

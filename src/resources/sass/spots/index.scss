@@ -21,9 +21,16 @@
   }
 }
 
+.top_contents{
+  .card{
+    min-height: 460px;
+  }
+}
+
 .new_spot{
   margin-top: 50px;
   img.new_spot__img{
-    width: 300px;
+    width: 250px;
+    height: 200px;
   }
 }

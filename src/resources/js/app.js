@@ -8,7 +8,7 @@ require('./bootstrap');
 
 require("./fontawesome");
 
-require("./sample");
+require("./notification");
 
 require("./image_upload");
 
