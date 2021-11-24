@@ -32,6 +32,8 @@ Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCal
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
 Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched');
 Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
+
+// Route::resource('spots', 'SpotsController')->middleware('verified');
 Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('verified');
 Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
@@ -39,8 +41,7 @@ Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 Route::resource('users', 'usersController');
 
 
-Route::resource('comments', 'commentsController');
-
+Route::resource('comments', 'commentsController')->middleware('auth');
 
 Route::prefix('spots')->name('spots.')->group(function () {
     Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
