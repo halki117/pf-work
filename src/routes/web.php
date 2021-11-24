@@ -16,11 +16,17 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+
 Route::get('/previous_register', function () {
     return view('auth.previous_register');
 })->name('previous_register');
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+// SNS認証
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
@@ -29,14 +35,18 @@ Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorite
 Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('verified');
 Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
+
 Route::resource('users', 'usersController');
 
+
 Route::resource('comments', 'commentsController');
+
 
 Route::prefix('spots')->name('spots.')->group(function () {
     Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
     Route::delete('/{spots}/like', 'SpotsController@unlike')->name('unlike')->middleware('auth');
 });
+
 
 Route::get('/tags/{name}', 'TagsController@show')->name('tags.show');
 

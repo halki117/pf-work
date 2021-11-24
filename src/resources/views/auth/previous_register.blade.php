@@ -16,7 +16,9 @@
       <button class="btn btn-primary"><i class="fab fa-twitter fa-2x mr-3"></i>Twitter</button>
     </div>
     <div class="d-flex align-items-center justify-content-center ">
-      <button class="btn btn-danger"><i class="fab fa-google fa-2x mr-3"></i>google</button>
+      <a href="/login/google">
+        <button class="btn btn-danger"><i class="fab fa-google fa-2x mr-3"></i>google</button>
+      </a>
     </div>
 </div>
 @endsection
