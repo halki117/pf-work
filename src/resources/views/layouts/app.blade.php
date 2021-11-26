@@ -55,7 +55,7 @@
                             </li>
                         @endcan
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">{{ __('Contact') }}</a>
+                            <a class="nav-link text-light" href="{{ route('contacts.create') }}">{{ __('Contact') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('spots.create') }}">{{ __('Upoload') }}</a>

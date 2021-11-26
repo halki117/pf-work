@@ -5,6 +5,7 @@
   <div class="btn-group">
     <a href="#" class="btn btn-info  active">ユーザー一覧</a>
     <a href="{{ route('admin.spots.index') }}" class="btn btn-light">投稿スポット一覧</a>
+    <a href="{{ route('admin.contacts.index') }}" class="btn btn-light">お問い合わせ一覧</a>
     <a href="{{ route('admin.announcements.index') }}" class="btn btn-light">運営からのお知らせ</a>
   </div>
 	<div class="card">

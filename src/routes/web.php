@@ -62,8 +62,16 @@ Route::group(['middleware' => ['can:admin']], function(){
     Route::get('admin/users/{id}', 'admin\UsersController@show')->name('admin.users.show');
     Route::get('admin/spots', 'admin\SpotsController@index')->name('admin.spots.index');
     Route::get('admin/spots/{id}', 'admin\SpotsController@show')->name('admin.spots.show');
+    Route::get('admin/contacts', 'admin\ContactsController@index')->name('admin.contacts.index');
+    Route::get('admin/contacts/{id}', 'admin\ContactsController@show')->name('admin.contacts.show');
     Route::get('admin/announcements', 'admin\AnnouncementsController@index')->name('admin.announcements.index');
     Route::get('admin/announcements/create', 'admin\AnnouncementsController@create')->name('admin.announcements.create');
     Route::post('admin/announcements', 'admin\AnnouncementsController@store')->name('admin.announcements.store');
     Route::get('admin/announcements/{id}', 'admin\AnnouncementsController@show')->name('admin.announcements.show');
 });
+
+
+Route::get('/contacts/create', 'ContactsController@create')->name('contacts.create')->middleware('auth');
+Route::get('/contacts/confirm', 'ContactsController@confirm')->name('contacts.confirm')->middleware('auth');
+Route::post('/contacts', 'ContactsController@store')->name('contacts.store')->middleware('auth');
+Route::get('/contacts/complete', 'ContactsController@complete')->name('contacts.complete')->middleware('auth');

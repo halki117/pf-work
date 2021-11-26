@@ -5,24 +5,24 @@
   <div class="btn-group">
     <a href="{{ route('admin.users.index') }}" class="btn btn-light">ユーザー一覧</a>
     <a href="{{ route('admin.spots.index') }}" class="btn btn-light">投稿スポット一覧</a>
-    <a href="{{ route('admin.contacts.index') }}" class="btn btn-light">お問い合わせ一覧</a>
-    <a href="#" class="btn btn-info active">運営からのお知らせ</a>
+    <a href="{{ route('admin.contacts.index') }}" class="btn btn-info active">お問い合わせ一覧</a>
+    <a href="{{ route('admin.announcements.index') }}" class="btn btn-light">運営からのお知らせ</a>
   </div>
 
   <a class="btn btn-success float-right" href="{{ route('admin.announcements.create') }}">お知らせを作成する</a>
   {{-- <button class="btn btn-success float-right">お知らせを作成する</button> --}}
   
 	<div class="card">
-		<div class="card-header">お知らせ一覧</div>
+		<div class="card-header">お問い合わせ一覧</div>
 		<div class="card-body">
 
 			<ul class="list-group">
-        @if (!($announcements->isEmpty()))
-          @foreach ($announcements as $announcement)
+        @if (!($contacts->isEmpty()))
+          @foreach ($contacts as $contact)
           <li class="list-group-item d-flex">
             <div class="ml-3 mt-3">
-              <a href="{{ route('admin.announcements.show', $announcement->id) }}">
-                <p>{{ $announcement->title }}</p>
+              <a href="{{ route('admin.contacts.show', $contact->id) }}">
+                <p>{{ $contact->title }}</p>
               </a>
             </div>
           </li>
