@@ -8,10 +8,6 @@
     <a href="{{ route('admin.contacts.index') }}" class="btn btn-info active">お問い合わせ一覧</a>
     <a href="{{ route('admin.announcements.index') }}" class="btn btn-light">運営からのお知らせ</a>
   </div>
-
-  <a class="btn btn-success float-right" href="{{ route('admin.announcements.create') }}">お知らせを作成する</a>
-  {{-- <button class="btn btn-success float-right">お知らせを作成する</button> --}}
-  
 	<div class="card">
 		<div class="card-header">お問い合わせ一覧</div>
 		<div class="card-body">
