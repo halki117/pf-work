@@ -105,6 +105,9 @@
           <label for="content">コメントをする</label>
           <textarea id="content" class="form-control" name="content" rows="10"></textarea>
           <input type="hidden" name="spot_id" value="{{ $spot->id }}">
+          @error('content')
+            <strong class="red-text">{{ $message }}</strong>
+          @enderror
           <button type="submit" class="btn btn-primary mt-2 btn-block px-0">コメントする</button>
         </form>
     </div>
