@@ -177,7 +177,7 @@ class SpotsController extends Controller
     
     public function favorites() {
         $user = Auth::user();
-        $spots = $user->likes;
+        $spots = $user->likes()->paginate(10);
         return view('spots.favorites', compact('user','spots'));
     }
 
@@ -233,6 +233,7 @@ class SpotsController extends Controller
         {
             $spots = $spots->sortByDesc('likes_count');
         }
+
 
         return view('spots.searched', compact('spots'));
     }

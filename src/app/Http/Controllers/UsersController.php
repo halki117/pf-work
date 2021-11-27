@@ -11,7 +11,7 @@ class UsersController extends Controller
 {
     public function show($id){
         $user = User::find($id);
-        $spots = Spot::where('user_id', $id)->get();
+        $spots = Spot::where('user_id', $id)->paginate(10);
         return view('users.show', compact('user', 'spots'));
     }
 
