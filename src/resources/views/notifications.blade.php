@@ -25,10 +25,15 @@
               @elseif ($notification->notice_type === "announce")
                   <a href="{{ route('notifications.checked', $notification->id) }}"><p>運営からのお知らせ</p></a>
                   <hr>
-              @else
-                  <p>お知らせは何もありません</p>
               @endif
           @endforeach
       </div>
   </div>
+@else
+    <div class="card notice_content">
+        <div class="card-body">
+           <p>お知らせは何もありません</p>
+           <hr>
+        </div>
+    </div>
 @endif
