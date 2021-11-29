@@ -130,7 +130,7 @@ class SpotsController extends Controller
             $spot->tags()->attach($tag);
         });
 
-        return redirect('spots');
+        return redirect(route('spots.show', $id))->with('success', '投稿を編集しました');
     }
 
 

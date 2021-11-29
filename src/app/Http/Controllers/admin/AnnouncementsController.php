@@ -8,11 +8,12 @@ use App\Notification;
 use App\Announcement;
 use App\Http\Controllers\NotificationsController;
 use Illuminate\Http\Request;
+use App\Http\Requests\AnnouncementRequest;
 
 class AnnouncementsController extends Controller
 {
     public function index(){
-        $announcements = Announcement::all();
+        $announcements = Announcement::orderBy('created_at', 'desc')->get();
         return view('admin.announcements.index', compact('announcements'));
     }
 
@@ -25,7 +26,7 @@ class AnnouncementsController extends Controller
         return view('admin.announcements.create');
     }
 
-    public function store(Request $request){
+    public function store(AnnouncementRequest $request){
 
         // 一般ユーザーに通知がいく様にNotificationsControllerも動かす
         $notification = app()->make('App\Http\Controllers\NotificationsController');

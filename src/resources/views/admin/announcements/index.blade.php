@@ -19,10 +19,13 @@
 			<ul class="list-group">
         @if (!($announcements->isEmpty()))
           @foreach ($announcements as $announcement)
-          <li class="list-group-item d-flex">
+          <li class="list-group-item">
             <div class="ml-3 mt-3">
               <a href="{{ route('admin.announcements.show', $announcement->id) }}">
-                <p>{{ $announcement->title }}</p>
+                <div class="d-flex justify-content-between align-middle">
+                  <p>{{ $announcement->title }}</p>
+                  <p>{{ $announcement->created_at }}</p>
+                </div>
               </a>
             </div>
           </li>

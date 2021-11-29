@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Contact;
 use App\Mail\ContactMail;
@@ -15,18 +16,17 @@ class ContactsController extends Controller
         return view('contacts.create');
     }
 
-    public function confirm(Request $request){
-
-        //  バリデーションは後ほどフォームリクエストにまとめる
-        $request->validate([
-            'title'    => 'required',
-            'content' => 'required',
-        ]);
+    public function confirm(ContactRequest $request){
+        // //  バリデーションは後ほどフォームリクエストにまとめる
+        // $request->validate([
+        //     'title'    => 'required',
+        //     'content' => 'required',
+        // ]);
         
         return view('contacts.confirm', compact('request'));
     }
 
-    public function store(Request $request){
+    public function store(ContactRequest $request){
         $action = $request->get('action');
         $input  = $request->except('action');
         

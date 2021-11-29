@@ -15,10 +15,13 @@
 			<ul class="list-group">
         @if (!($contacts->isEmpty()))
           @foreach ($contacts as $contact)
-          <li class="list-group-item d-flex">
+          <li class="list-group-item">
             <div class="ml-3 mt-3">
               <a href="{{ route('admin.contacts.show', $contact->id) }}">
-                <p>{{ $contact->title }}</p>
+                <div class="d-flex justify-content-between align-middle">
+                  <p>{{ $contact->title }}</p>
+                  <p>{{ $contact->created_at }}</p>
+                </div>
               </a>
             </div>
           </li>

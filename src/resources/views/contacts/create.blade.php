@@ -6,26 +6,22 @@
     
     <div class="form-group mt-5">
       <div class="content_annoucement_title">
-          <label for="title" class="">件名</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="title" autofocus>
+          <label for="title" class="">件名(必須)</label>
+          <input type="text" class="form-control" name="title" autocomplete="title" autofocus>
 
           @error('title')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
+            <strong class="red-text">{{ $message }}</strong>
           @enderror
       </div>
     </div>
 
     <div class="mt-5">
       <div class="form-group content_annoucement_title">
-        <label for="content">お問い合わせ内容</label>
+        <label for="content">お問い合わせ内容（必須）</label>
         <textarea class="form-control" name="content" rows="10"></textarea>
 
         @error('content')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+            <strong class="red-text">{{ $message }}</strong>
         @enderror
       </div>
     </div>

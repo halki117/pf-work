@@ -10,7 +10,7 @@ use App\User;
 class ContactsController extends Controller
 {
     public function index(){
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
         
         return view('admin.contacts.index', compact('contacts'));
     }
