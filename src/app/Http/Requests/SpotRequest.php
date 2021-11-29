@@ -22,11 +22,11 @@ class SpotRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {   
         return [
             'address' => 'required',
             'review' => 'required|max:500',
-            'image' => 'required',
+            'image.*' => 'required|mimes:jpg, png, gif, tif',
             'public' => 'required',
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
@@ -38,7 +38,9 @@ class SpotRequest extends FormRequest
             'address.required' => '所在地は必須です',
             'review.required' => 'レビューは必須です',
             'image.required' => '画像は必須です',
+            'image.*.mimes' => '画像の拡張子が対応していません',
         ];
+
     }
 
     public function passedValidation()

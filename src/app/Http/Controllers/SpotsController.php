@@ -8,6 +8,7 @@ use App\Tag;
 use App\Announcement;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Image;
@@ -188,7 +189,7 @@ class SpotsController extends Controller
     }
 
 
-    public function searched(Request $request)
+    public function searched(SearchRequest $request)
     { 
 
         $latitude  = $request->latitude;

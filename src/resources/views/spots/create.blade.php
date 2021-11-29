@@ -3,6 +3,10 @@
 @section('content')
     <div class="container">
 
+      @php
+          var_dump($errors);
+      @endphp
+
       {{-- 住所から場所検索 --}}
       <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div>
       <div>住所もしくは施設名で称検索</div>
@@ -40,7 +44,7 @@
         <div class="place_review mt-5">
           <div class="form-group">
             <label for="review">■レビュー</label>
-            <textarea id="review" class="form-control" name="review" rows="10"></textarea>
+            <textarea id="review" class="form-control" name="review" rows="10">{{ old('review') }}</textarea>
   
             @error('review')
                 <strong class="red-text">{{ $message }}</strong>
@@ -50,7 +54,7 @@
   
   
         <div class="place_image mt-5">
-          <label for="place_image">■写真を挿入</label>
+          <label for="place_image">■写真を挿入(3枚まで投稿可能)</label>
           <div class="place_images row mt-3">
             <div id="preview" class="preview" style="display:none"></div>
           </div>
@@ -59,6 +63,7 @@
           @error('image')
             <strong class="red-text">{{ $message }}</strong>
           @enderror
+          
         </div>
   
         <div class="form-group mt-5">
@@ -83,7 +88,7 @@
           </div>
         </div>
         
-        <button type="submit" class="btn btn-success btn-block">投稿する</button>
+        <button type="submit" class="btn btn-success btn-block" id="spots_upload">投稿する</button>
       </form> 
 
     </div>

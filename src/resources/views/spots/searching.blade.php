@@ -6,19 +6,17 @@
     <div class="container">
       <h1>スポットを検索する</h1>
 
-      {{-- 住所から場所検索 --}}
-      {{-- <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div> --}}
-
-
       <div class="place_range mt-5">
         <div class="form-group">
-          <label for="range"><h4>1.指定箇所を決める</h4></label>
+          <label for="range"><h4>1.指定箇所を決める(必須)</h4></label>
+          @error('latitude')
+            <strong class="red-text">{{ $message }}</strong>
+          @enderror
 
             <div class="mt-3">
               <input type="radio" name="btn1" id="a" checked="checked">住所または施設名から指定
               <div class="text1 text1-1">
                 <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索する</button>
-                {{-- <button class="btn btn-warning m-2" id="clear">結果クリア</button> --}}
               </div>
             </div>
             
@@ -28,21 +26,9 @@
                 <div id="target"></div>
               </div>
             </div>
-          
-          @error('range')
-              <strong class="red-text">{{ $message }}</strong>
-          @enderror
         </div>
       </div>
 
-
-{{-- 
-      <div>住所もしくは施設名で称検索</div>
-      <input type="text" id="keyword" class="form-control"><button class="btn btn-primary m-2" id="search">検索実行</button>
-      <button class="btn btn-warning m-2" id="clear">結果クリア</button>
-      <div id="target"></div> --}}
-
-      
       <form action="{{ route('spots.searched') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="spots_place mt-5">
@@ -51,29 +37,30 @@
             <div class="form-group row">
               <div class="col-8">
                   <p id="result_address"></p>
-
-                  {{-- <input id="input_address" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus> --}}
-  
-                  {{-- @error('address')
-                    <strong class="red-text">{{ $message }}</strong>
-                  @enderror --}}
               </div>
             </div>
           </div>
-
-          {{-- リバースジオコーディング用 --}}
-          {{-- <div id="gmap" style="height:400px;width:600px"></div> --}}
-          
         </div>
         
         <div class="latlng_form">
           緯度<input type="text" id="input_latitude" value="{{ old('latitude') }}" name="latitude">  
           経度<input type="text" id="input_longitude" value="{{ old('longitude') }}" name="longitude">
         </div>
+
   
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="range"><h4>2.指定箇所からの範囲</h4></label>
+            <label for="range"><h4>2.指定箇所からの範囲(必須)</h4></label>
+
+              @if ($errors->any())
+                @error('range_time')
+                  <strong class="red-text">{{ $message }}</strong>
+                @enderror
+                <strong>または</strong>
+                @error('range_distance')
+                  <strong class="red-text">{{ $message }}</strong>
+                @enderror
+              @endif
 
               <div class="mt-3">
                 <input type="radio" name="btn2" id="c" checked="checked">徒歩何分以内
@@ -89,9 +76,6 @@
                 </div>
               </div>
             
-            @error('range')
-                <strong class="red-text">{{ $message }}</strong>
-            @enderror
           </div>
         </div>
 

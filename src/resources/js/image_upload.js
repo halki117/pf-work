@@ -20,6 +20,11 @@ $(function(){
  
       fr.readAsDataURL(file);
     }
+    
+    if(len > 3){
+      alert("アップロード可能な画像は3枚までです");
+      $('#spots_upload').prop('disabled', true);
+    }
  
     $('#preview').css('display','block');
   });
