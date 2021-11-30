@@ -43843,7 +43843,7 @@ var render = function () {
         attrs: { type: "button" },
         on: { click: _vm.clickLike },
       },
-      [_c("i", { staticClass: "fas fa-heart mr-1 ml-5 fa-2x" })]
+      [_c("i", { staticClass: "fas fa-heart mr-1 fa-2x" })]
     ),
     _vm._v("\n  x" + _vm._s(_vm.countLikes) + "\n"),
   ])
@@ -56141,6 +56141,8 @@ __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
 __webpack_require__(/*! ./searching */ "./resources/js/searching.js");
 
+__webpack_require__(/*! ./result */ "./resources/js/result.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56622,6 +56624,17 @@ $(function () {
     $('.notice_content').toggle();
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/result.js":
+/*!********************************!*\
+  !*** ./resources/js/result.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/var/www/html/resources/js/result.js'");
 
 /***/ }),
 

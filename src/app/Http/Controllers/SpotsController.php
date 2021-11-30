@@ -49,9 +49,8 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            // dd($file_name);
-            // $file->storeAs('public', $file_name);
-            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+            // Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+            Image::make($file)->fit(300, 300)->save(storage_path('app/public/'.$file_name));
             $image_data[] = $file_name;
         }
 
@@ -105,7 +104,7 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('public', $file_name);
+            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
             $image_data[] = $file_name;
         }
 

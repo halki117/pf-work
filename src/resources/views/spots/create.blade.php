@@ -2,11 +2,6 @@
 
 @section('content')
     <div class="container">
-
-      @php
-          var_dump($errors);
-      @endphp
-
       {{-- 住所から場所検索 --}}
       <div id="header" class="mt-5"><b>Google Maps - 場所検索</b></div>
       <div>住所もしくは施設名で称検索</div>
@@ -30,9 +25,6 @@
               </div>
             </div>
           </div>
-
-          {{-- リバースジオコーディング用 --}}
-          {{-- <div id="gmap" style="height:400px;width:600px"></div> --}}
           
         </div>
         

@@ -22788,9 +22788,30 @@ ul.stepper li.completed a .label {
   margin-top: 50px;
 }
 
+.new_spot h3 {
+  display: inline-block;
+  background-color: #d52b1e;
+  color: #ffffff;
+  padding: 10px;
+}
+
 .new_spot img.new_spot__img {
   width: 250px;
   height: 200px;
+}
+
+.popular_spot h3 {
+  display: inline-block;
+  background-color: #d52b1e;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.announce_head {
+  display: inline-block;
+  background-color: #2ca559;
+  color: #ffffff;
+  padding: 10px;
 }
 
 .place_map {

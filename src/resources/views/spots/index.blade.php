@@ -22,32 +22,34 @@
       @if (!($new_spots->isEmpty()))
       @foreach ($new_spots as $spot)
         @if ($spot->public == true)
-          <div class="col-4">
+          <div class="col-lg-4 col-12">
             <div class="card px-3 spot_card">
               <a href="{{ route('spots.show', $spot->id) }}">
-                <div class="card-body">
+                <div class="">
                   @php
                     $images = $spot->image
                   @endphp
-                  <div class="new_spot">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  <div class="card-header p-0">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
                   </div>
-                  <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
-                  <p>{{ $spot->address}}</p>
-                  <p>{{ $spot->review}}</p>
-                  @foreach($spot->tags as $tag)
-                    @if($loop->first)
-                      <div class="card-body pt-0 pb-4 pl-3">
-                        <div class="card-text line-height">
-                    @endif
-                          <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
-                            {{ $tag->hashtag }}
-                          </a>
-                    @if($loop->last)
+                  <div class="card-body">
+                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+                    <p>{{ $spot->address}}</p>
+                    <p>{{ $spot->review}}</p>
+                    @foreach($spot->tags as $tag)
+                      @if($loop->first)
+                        <div class="card-body pt-0 pb-4 pl-3">
+                          <div class="card-text line-height">
+                      @endif
+                            <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                              {{ $tag->hashtag }}
+                            </a>
+                      @if($loop->last)
+                          </div>
                         </div>
-                      </div>
-                    @endif
-                  @endforeach
+                      @endif
+                    @endforeach
+                  </div>
                 </div>
               </a>
             </div>
@@ -65,32 +67,34 @@
       @if (!($popular_spots->isEmpty()))
       @foreach ($popular_spots as $spot)
         @if ($spot->public == true)
-          <div class="col-4">
+          <div class="col-lg-4 col-12">
             <div class="card px-3 spot_card">
               <a href="{{ route('spots.show', $spot->id) }}">
-                <div class="card-body">
+                <div class="">
                   @php
                     $images = $spot->image
                   @endphp
-                  <div class="new_spot">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+                  <div class="card-head">
+                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
                   </div>
-                  <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
-                  <p>{{ $spot->address}}</p>
-                  <p>{{ $spot->review}}</p>
-                  @foreach($spot->tags as $tag)
-                    @if($loop->first)
-                      <div class="card-body pt-0 pb-4 pl-3">
-                        <div class="card-text line-height">
-                    @endif
-                          <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
-                            {{ $tag->hashtag }}
-                          </a>
-                    @if($loop->last)
+                  <div class="card-body">
+                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+                    <p>{{ $spot->address}}</p>
+                    <p>{{ $spot->review}}</p>
+                    @foreach($spot->tags as $tag)
+                      @if($loop->first)
+                        <div class="card-body pt-0 pb-4 pl-3">
+                          <div class="card-text line-height">
+                      @endif
+                            <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                              {{ $tag->hashtag }}
+                            </a>
+                      @if($loop->last)
+                          </div>
                         </div>
-                      </div>
-                    @endif
-                  @endforeach
+                      @endif
+                    @endforeach
+                  </div>
                 </div>
               </a>
             </div>
@@ -103,7 +107,7 @@
     </div>
   </div>
 
-  <h3 class="mt-5">運営からのお知らせ</h3>
+  <h3 class="mt-5 announce_head">運営からのお知らせ</h3>
   <div class="card">
     <div class="card-body" style="height:300px;overflow:auto;">
       @if (!($announcements->isEmpty()))
