@@ -6,7 +6,6 @@
       var infoWindow;
 
       function initMap() {
-
         //マップ初期表示の位置設定
         var target = document.getElementById('target');
 
@@ -25,6 +24,7 @@
         });
 
         function clickMap(geo, map) {
+          
           lat = geo.lat();
           lng = geo.lng();
           
@@ -36,7 +36,7 @@
           document.getElementById('input_longitude').value = lng;
 
           //中心にスクロール
-          // map.panTo(geo);
+          map.panTo(geo);
           
           //マーカーの更新
           deleteMakers();
@@ -48,8 +48,10 @@
             geocoder.geocode({'latLng': geo}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     for (var i in results) {
-                        document.getElementById('result_address').textContent = (results[0].formatted_address);
+                      document.getElementById('result_address').textContent = (results[0].formatted_address);
+                      document.getElementById('input_address').value = (results[0].formatted_address);
                     }
+                    
                 }
                 else {
                     window.alert("google.maps.GeocoderStatus is not OK. due to " + status);
@@ -78,6 +80,7 @@
                   var latlng = results[0].geometry.location;
                   console.log(latlng.lat());
                   console.log(latlng.lng());
+
                   // 住所を取得
                   var address = results[0].formatted_address;
                   console.log(address);
@@ -85,12 +88,14 @@
                   bounds.extend(latlng);
                   // マーカーのセット
                   setMarker(latlng);
+                  //中心にスクロール
+                  map.panTo(latlng);
                   // マーカーへの吹き出しの追加
                   setInfoW(place, latlng, address);
                   // マーカーにクリックイベントを追加
                   markerEvent();
 
-
+                  
                   if(!!document.getElementById('input_address')){
                     document.getElementById('input_address').value = address
                   }
@@ -117,6 +122,9 @@
         // 結果クリアーボタン押下時
         document.getElementById('clear').addEventListener('click', function() {
           deleteMakers();
+          document.getElementById('input_address').value = '';
+          document.getElementById('keyword').value = '';
+          document.getElementById('result_address').textContent = '';
         });
 
       }
@@ -135,7 +143,7 @@
           marker = new google.maps.Marker({
             position: setplace,
             map: map,
-            icon: iconUrl
+            icon: iconUrl,
           });
       }
 

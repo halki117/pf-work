@@ -4,11 +4,13 @@
 
   <div class="container-fluid">
     <div class="container">
-      <h1>スポットを検索する</h1>
-
+      <h1 class="mt-5" style="padding: 1rem 2rem;border-left: 6px double #000;">指定箇所から周辺のスポットを検索しよう！！</h1>
       <div class="place_range mt-5">
         <div class="form-group">
-          <label for="range"><h4>1.指定箇所を決める(必須)</h4></label>
+          <label for="range">
+            <h4><span class="badge bg-dark text-dark mt-4 mr-2">1</span>指定箇所をきめる(必須)</h4>
+            <p>・住所、施設名から場所を指定。または、地図から直接場所を指定するか選んでください</p>
+          </label>
           @error('latitude')
             <strong class="red-text">{{ $message }}</strong>
           @enderror
@@ -32,26 +34,26 @@
       <form action="{{ route('spots.searched') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="spots_place mt-5">
-          <label for="address" class="">指定箇所の表示</label>
+          <label for="address" class="">指定箇所</label>
           <div class="place_input">
             <div class="form-group row">
               <div class="col-8">
                   <p id="result_address"></p>
+                  <hr>
               </div>
             </div>
           </div>
         </div>
         
         <div class="latlng_form">
-          緯度<input type="text" id="input_latitude" value="{{ old('latitude') }}" name="latitude">  
-          経度<input type="text" id="input_longitude" value="{{ old('longitude') }}" name="longitude">
+          <input type="hidden" id="input_latitude" value="{{ old('latitude') }}" name="latitude">  
+          <input type="hidden" id="input_longitude" value="{{ old('longitude') }}" name="longitude">
         </div>
 
-  
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="range"><h4>2.指定箇所からの範囲(必須)</h4></label>
-
+            <label for="range"><h4><span class="badge bg-dark text-dark mt-4 mr-2">2</span>指定箇所からの範囲(必須)</h4></label>
+            <p>・徒歩何分以内。または、距離何km以内かを選んでください</p>
               @if ($errors->any())
                 @error('range_time')
                   <strong class="red-text">{{ $message }}</strong>
@@ -78,10 +80,9 @@
           </div>
         </div>
 
-
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="sort"><h4>3.並び替え（任意)</h4></label>
+            <label for="sort"><h4><span class="badge bg-dark text-dark mt-4 mr-2">3</span>並び替え（任意)</h4></label>
             <select name="sort" id="select_sort" class="form-control">
               <option value="">--指定なし--</option>
               <option value="order_new">新着順</option>
@@ -97,7 +98,7 @@
 
         <div class="place_range mt-5">
           <div class="form-group">
-            <label for="search_tags"><h4>4.タグで絞り込む（任意）</h4></label>
+            <label for="search_tags"><h4><span class="badge bg-dark text-dark mt-4 mr-2">4</span>タグで絞り込む（任意）</h4></label>
 
             <div class="select_contents d-flex">
               @foreach ($tags as $tag)
