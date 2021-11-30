@@ -26,8 +26,8 @@ class SearchRequest extends FormRequest
         return [
             'latitude' => 'required',
             'longitude' => 'required',
-            'range_time' => 'required',
-            'range_distance' => 'required',
+            'range_time' => 'required_without:range_distance|integer',
+            'range_distance' => 'integer',
         ];
     }
 
@@ -35,8 +35,9 @@ class SearchRequest extends FormRequest
     {
         return [
             'latitude.required' => '基準となる場所を決めてください',
-            'range_time.required' => '基準からの徒歩時間を決めてください',
-            'range_distance.required' => '基準からの距離を決めてください',
+            'range_time.required_without' => '基準からの徒歩時間、もしくは距離を入力してください',
+            'range_time.integer' => '半角数字で入力してください',
+            'range_distance.integer' => '半角数字で入力してください',
         ];
     }
 

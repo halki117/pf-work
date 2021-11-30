@@ -56,8 +56,7 @@
                 @error('range_time')
                   <strong class="red-text">{{ $message }}</strong>
                 @enderror
-                <strong>または</strong>
-                @error('range_distance')
+                @error('range_dictance')
                   <strong class="red-text">{{ $message }}</strong>
                 @enderror
               @endif
@@ -107,13 +106,6 @@
                 </div>
               @endforeach
             </div>
-            {{-- <select name="search_tags" id="select_tags" class="form-control" >
-              <option value="">--Please choose an option--</option>
-              @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-              @endforeach
-            </select>
-             --}}
             @error('search_tags')
                 <strong class="red-text">{{ $message }}</strong>
             @enderror
