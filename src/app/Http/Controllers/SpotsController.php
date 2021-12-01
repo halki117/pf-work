@@ -197,32 +197,41 @@ class SpotsController extends Controller
         $query = Spot::select('*', 
             DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
             + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
-            ->orderBy('distance')
             ->withCount('likes');
         
         if($request->tags){
-            foreach($request->tags as $tag_id){
-                $query->whereHas('tags', function (Builder $query)use($tag_id) {
-                    $query->where('tags.id', $tag_id);
+            foreach($request->tags as $key => $tag_id){
+                $query->whereHas('tags', function (Builder $query)use($key, $tag_id) {
+                    $query->whereRaw('tags.id = :tag_id_'.$key);
                 });
             }
         }
 
-        $spots = $query->get();
+        // $spots = $query->get();
+        $sql = $query->toSql();
+
+        $query2 = DB::table(DB::raw('('.$sql.') AS spot'));
+        $query2->whereRaw('distance <= :distance');
+        $array = [];
 
         if($request->range_time){
-            $spots = $spots->filter(function($value){
-                global $request;
-                return $value->distance <= ($request->range_time * 80 / 1000);
-            });
+            $array[':distance'] = $request->range_time * 80 / 1000;
         }
         
         if($request->range_distance){
-            $spots = $spots->filter(function($value){
-                global $request;
-                return $value->distance <= $request->range_distance;
-            });
+            $array[':distance'] = $request->range_distance;
         }
+
+        if($request->tags){
+            foreach($request->tags as $key => $tag_id){
+                $array[':tag_id_'.$key] = $tag_id;
+            }
+        }
+
+        $query2->setBindings($array)->orderBy('distance');
+
+        // dd($query2->toSql());
+        $spots = $query2->paginate(10);
 
         if($request->sort === "order_new")
         {
