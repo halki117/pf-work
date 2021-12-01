@@ -26,8 +26,8 @@ class SearchRequest extends FormRequest
         return [
             'latitude' => 'required',
             'longitude' => 'required',
-            'range_time' => 'required_without:range_distance|integer',
-            'range_distance' => 'integer',
+            'range_time' => 'required_without:range_distance|nullable|integer',
+            'range_distance' => 'nullable|integer',
         ];
     }
 

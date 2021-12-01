@@ -24,10 +24,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-light" href="{{ route('spots.index') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    RELIANCE
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon bg-light"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -107,7 +107,7 @@
         
         <div class="space">
         </div>
-        <footer class="footer">
+        <footer class="footer bg-dark">
             <p>Copyright © ○○○○ All Rights Reserved.</p>
         </footer>
     </div>

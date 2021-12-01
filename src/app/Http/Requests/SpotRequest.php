@@ -26,6 +26,7 @@ class SpotRequest extends FormRequest
         return [
             'address' => 'required',
             'review' => 'required|max:500',
+            'image' => 'required',
             'image.*' => 'required|mimes:jpg, png, gif, tif',
             'public' => 'required',
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',

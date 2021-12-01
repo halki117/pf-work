@@ -203,7 +203,6 @@ class SpotsController extends Controller
         if($request->tags){
             foreach($request->tags as $tag_id){
                 $query->whereHas('tags', function (Builder $query)use($tag_id) {
-                    // dd($tag_id);
                     $query->where('tags.id', $tag_id);
                 });
             }

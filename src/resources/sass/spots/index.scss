@@ -1,9 +1,19 @@
 .hero{
   position: relative;
-  background-color: #FFFFE0;
   height: 800px;
+  .hero_top{
+    position: absolute;
+    z-index: 100;
+    margin-left: 35vw;
+    margin-top: 5%;
+    color: #ffffff;
+    font-family: fantasy;
+    font-size: 60px;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
   img{
-    object-fit: contain;
+    object-fit:cover;
     position: absolute;
     width: 100%;
     height: 100%;

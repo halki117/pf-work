@@ -58,9 +58,23 @@
   
         <div class="place_image mt-5">
           <h4><span class="badge bg-dark text-dark mt-5 mr-2">3</span>写真を挿入(必須、3枚まで投稿可能)</h4>
-          <div class="place_images row mt-3">
-            <div id="preview" class="preview" style="display:none"></div>
+          <div class="images_now">
+            <p class="text-warning mt-4">変更前の写真</p>
+            <div class="d-flex justify-content-around " style="background-color:#F5F5F5;">
+              @foreach ($spot->image as $image)
+                <div class="img py-3"><img src="{{ asset('storage/'.$image )}}" style="width:350px; height:235px;"></div>
+              @endforeach
+            </div>
           </div>
+
+          <div class="image_after">
+            <p class="text-info mt-4">変更後の写真</p>
+            <div class="place_images mt-3" style="background-color: #F5F5F5;height:267px;">
+              <p style="padding-top:10vh; padding-left:20vw;" id="image_message">画像を挿入してください<p>
+              <div id="preview" class="preview d-flex justify-content-around"></div>
+            </div>
+          </div>
+
           
           <input class="btn btn-success" id="image" type="file" name="image[]" onchange="OnFileSelect( this );" multiple>
           @error('image')

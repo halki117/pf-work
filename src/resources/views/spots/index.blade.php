@@ -4,7 +4,8 @@
 <div class="hero">
   
   <picture>
-    <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="" >
+    <h1 class="hero_top">Wellcome to RELIANCE!!!<br>Enjoy Good Discovery!!!</h1>
+    <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="">
   </picture>
   <div class="hero_right__contents float-right">
     <h3>自分に最適なスポットを発見しよう!!!</h3>

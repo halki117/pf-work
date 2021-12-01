@@ -56573,10 +56573,11 @@ $(function () {
 
       fr.onload = function (e) {
         var src = e.target.result;
-        var img = '<div class="img"><img src="' + src + '"></div>';
+        var img = '<div class="img mt-3"><img src="' + src + '" style="width:350px; height:235px;"></div>';
         $('#preview').append(img);
       };
 
+      $("#image_message").remove();
       fr.readAsDataURL(file);
     }
 

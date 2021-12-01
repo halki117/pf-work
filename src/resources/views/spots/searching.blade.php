@@ -34,12 +34,12 @@
       <form action="{{ route('spots.searched') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="spots_place mt-5">
-          <label for="address" class="">指定箇所</label>
+          <label for="address" class="text-info">指定箇所</label>
           <div class="place_input">
             <div class="form-group row">
               <div class="col-8">
                   <p id="result_address"></p>
-                  <hr>
+                  <hr color="#33b5e5">
               </div>
             </div>
           </div>
@@ -53,12 +53,12 @@
         <div class="place_range mt-5">
           <div class="form-group">
             <label for="range"><h4><span class="badge bg-dark text-dark mt-4 mr-2">2</span>指定箇所からの範囲(必須)</h4></label>
-            <p>・徒歩何分以内。または、距離何km以内かを選んでください</p>
+              <p>・徒歩何分以内。または、距離何km以内かを選んでください</p>
               @if ($errors->any())
                 @error('range_time')
                   <strong class="red-text">{{ $message }}</strong>
                 @enderror
-                @error('range_dictance')
+                @error('range_distance')
                   <strong class="red-text">{{ $message }}</strong>
                 @enderror
               @endif
