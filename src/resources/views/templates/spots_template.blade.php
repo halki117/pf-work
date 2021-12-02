@@ -11,6 +11,7 @@
       </div>
       <div class="col-8 pt-3">
         <h5>{{ $spot->address}}</h5>
+        <p>{{$spot->created_at}}</p>
         <div class="review mt-3">
           <p>{{ $spot->review}}</p>
         </div>
