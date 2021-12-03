@@ -25,9 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
-        // 通知のインスタンスは共通画面で使用したいのでAppServiceProviderに定義する
-        $notifications = Notification::where('checked', false)->get();
-        view()->share('notifications', $notifications);
-
+        //
     }
 }
