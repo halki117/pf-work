@@ -8,7 +8,9 @@ jobs:
       - DB_CONNECTION: circle_testing
     steps:
       - checkout
-      - run: sudo composer self-update --1
+      - run:
+          name: Update apt-get
+          command: sudo apt-get update
       - run:
           name: Docker php extensions install
           command: sudo docker-php-ext-install pdo_mysql
