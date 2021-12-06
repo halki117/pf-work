@@ -9,6 +9,9 @@ jobs:
     steps:
       - checkout
       - run: sudo composer self-update --1
+      - run:
+          name: Docker php extensions install
+          command: sudo docker-php-ext-install pdo_mysql
       - run: composer install -n --prefer-dist --working-dir=./src
       - run:
           command: npm ci
