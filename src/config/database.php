@@ -113,7 +113,7 @@ return [
 
         'circle_testing' => [
             'driver' => 'mysql',
-            'host' => '127.0.0.1',
+            'host' => '192.168.16.2',
             'port' => '3306',
             'database' => 'test_PortFolio',
             'username' => 'root',
