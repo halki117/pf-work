@@ -115,7 +115,7 @@ return [
             'driver' => 'mysql',
             'host' => '192.168.16.2',
             'port' => '3306',
-            'database' => 'test_PortFolio',
+            'database' => 'circle_test',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8mb4',
