@@ -16,7 +16,13 @@ jobs:
       - run:
           name: Docker php extensions install
           command: sudo docker-php-ext-install pdo_mysql
+      - restore_cache:
+          key: composer-v1-{{ checksum "composer.lock" }}
       - run: composer install -n --prefer-dist --working-dir=./src
+      - save_cache:
+          key: composer-v1-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
       - run:
           command: npm ci
           working_directory: src
