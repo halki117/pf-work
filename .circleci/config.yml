@@ -8,6 +8,7 @@ jobs:
       - DB_CONNECTION: circle_testing
       - MYSQL_ROOT_HOST: '%'
       - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    working_directory: src
     steps:
       - checkout
       - run:
@@ -18,19 +19,15 @@ jobs:
           command: sudo docker-php-ext-install pdo_mysql
       - restore_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
-      - run: composer install -n --prefer-dist --working-dir=./src
+      - run: composer install -n --prefer-dist
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
             - vendor
       - run:
           command: npm ci
-          working_directory: src
       - run: 
           command: npm run dev
-          working_directory: src
-
       - run:
           name: php test
           command: vendor/bin/phpunit
-          working_directory: src
