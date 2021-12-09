@@ -14,6 +14,7 @@
 
 @import 'spots/index';
 @import 'spots/create';
+@import 'spots/edit';
 @import 'spots/show';
 @import 'spots/searching';
 
@@ -46,7 +47,6 @@ footer{
   position: absolute;/* ←絶対位置 */
   bottom: 0;
   /* 以下 背景色やテキストカラーなどはお好みで指定してください */
-  background-color: #343a40;
   color: #ffffff;
   text-align: center;
   vertical-align:middle;

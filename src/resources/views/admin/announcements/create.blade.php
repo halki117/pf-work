@@ -9,12 +9,10 @@
         <div class="form-group mt-5">
           <div class="content_annoucement_title">
               <label for="title" class="">タイトル</label>
-              <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" required autocomplete="title" autofocus>
+              <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" autocomplete="title" autofocus>
 
               @error('title')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
+                <strong class="red-text">{{ $message }}</strong>
               @enderror
           </div>
         </div>
@@ -25,9 +23,7 @@
             <textarea class="form-control" name="content" rows="10"></textarea>
 
             @error('content')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+              <strong class="red-text">{{ $message }}</strong>
             @enderror
           </div>
         </div>

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Spot;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request){
+    public function store(CommentRequest $request){
         $comment = new Comment;
         $comment->content = $request->content;
         $comment->spot_id = $request->spot_id;

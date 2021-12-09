@@ -5,18 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Spot;
 use App\Tag;
+use App\Announcement;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SpotRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Image;
 
 class SpotsController extends Controller
 {
     public function index(){
+        $announcements = Announcement::orderBy('created_at', 'desc')->get();
         $new_spots = Spot::orderBy('created_at', 'desc')->limit(3)->get();
         $popular_spots = Spot::withCount('likes')->orderBy('likes_count', 'desc')->limit(3)->get();
-        return view('spots.index', compact('new_spots', 'popular_spots'));
+        return view('spots.index', compact('new_spots', 'popular_spots', 'announcements'));
     }
 
 
@@ -46,11 +50,8 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            // dd($file_name);
-            $file->storeAs('public', $file_name);
-            // Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
-            // Image::make('app/storage/public/'.$file_name)->resize(300, 300, function ($constraint) {$constraint->aspectRatio();})->save(public_path('/' . $file_name ));
-            // Image::make(storage_path('app/public/'.$file_name))->fit(300, 300)->save(storage_path('app/public/'.$file_name));
+            // Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
+            Image::make($file)->fit(300, 300)->save(storage_path('app/public/'.$file_name));
             $image_data[] = $file_name;
         }
 
@@ -104,7 +105,7 @@ class SpotsController extends Controller
         $files = $request->file('image');
         foreach($files as $file){
             $file_name = $file->getClientOriginalName();
-            $file->storeAs('public', $file_name);
+            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
             $image_data[] = $file_name;
         }
 
@@ -129,7 +130,7 @@ class SpotsController extends Controller
             $spot->tags()->attach($tag);
         });
 
-        return redirect('spots');
+        return redirect(route('spots.show', $id))->with('success', '投稿を編集しました');
     }
 
 
@@ -177,7 +178,7 @@ class SpotsController extends Controller
     
     public function favorites() {
         $user = Auth::user();
-        $spots = $user->likes;
+        $spots = $user->likes()->paginate(10);
         return view('spots.favorites', compact('user','spots'));
     }
 
@@ -188,7 +189,78 @@ class SpotsController extends Controller
     }
 
 
-    public function searched(Request $request)
+    // public function searched(SearchRequest $request)
+    // { 
+
+    //     $latitude  = $request->latitude;
+    //     $longitude = $request->longitude;
+
+    //     $query = Spot::select('*', 
+    //         DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
+    //         + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
+    //         ->withCount('likes');
+        
+    //     if($request->tags){
+    //         foreach($request->tags as $key => $tag_id){
+    //             $query->whereHas('tags', function (Builder $query)use($key, $tag_id) {
+    //                 $query->where('tags.id', $tag_id);
+    //             });
+    //         }
+    //     }
+
+    //     // $spots = $query->get();
+    //     $sql = $query->toSql();
+
+    //     $query2 = DB::table(DB::raw('('.$sql.') AS spot'));
+    //     $query2->mergeBindings($query->getQuery());
+
+    //     if($request->range_time){
+    //         $distance1 = $array[':distance'] = $request->range_time * 80 / 1000;
+    //         $query2->where('distance','<=', $distance1);
+    //     }
+        
+    //     if($request->range_distance){
+    //         $distance2 = $array[':distance'] = $request->range_distance;
+    //         $query2->where('distance','<=', $distance2);
+    //     }
+
+    //     // dd($query2->toSql());
+    //     if($request->sort === "order_new")
+    //     {
+    //         $query2->orderBy('created_at');
+    //     } 
+    //     elseif($request->sort === "order_likes")
+    //     {
+    //         $query2->orderBy('likes_count');
+    //     } else {
+    //         $query2->orderBy('distance');
+    //     }
+
+    //     $spots = $query2->paginate(10);
+
+    //     $spots_collection = $spots->getCollection()->map(function($obj){
+    //         $spot = new Spot;
+    //         $spot->id = $obj->id;
+    //         $spot->address = $obj->address;
+    //         $spot->longitude = $obj->longitude;
+    //         $spot->latitude = $obj->latitude;
+    //         $spot->image = json_decode($obj->image, true);
+    //         return $spot;
+    //     });
+
+    //     $spots = new LengthAwarePaginator(
+    //         $spots_collection,
+    //         $spots->total(),
+    //         10,
+    //         $request->page
+    //     );
+
+
+    //     return view('spots.searched', compact('spots'));
+    // }
+
+    
+    public function searched(SearchRequest $request)
     { 
 
         $latitude  = $request->latitude;
@@ -197,18 +269,18 @@ class SpotsController extends Controller
         $query = Spot::select('*', 
             DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
             + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
-            ->orderBy('distance')
+            ->orderBy('distance', 'asc')
             ->withCount('likes');
         
         if($request->tags){
             foreach($request->tags as $tag_id){
                 $query->whereHas('tags', function (Builder $query)use($tag_id) {
-                    // dd($tag_id);
                     $query->where('tags.id', $tag_id);
                 });
             }
         }
 
+        // $spots = $query->get();
         $spots = $query->get();
 
         if($request->range_time){
@@ -233,6 +305,7 @@ class SpotsController extends Controller
         {
             $spots = $spots->sortByDesc('likes_count');
         }
+
 
         return view('spots.searched', compact('spots'));
     }
