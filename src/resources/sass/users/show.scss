@@ -1,0 +1,22 @@
+.mypage_content{
+  margin-top: $margin_top;
+  .mypage_leftcontent{
+    position: relative;
+    .likes{
+      position: absolute;
+      bottom: 0px;
+    }
+    .tags{
+      position: absolute;
+      bottom: 0px;
+    }
+    .buttons{
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
+  }
+  .mypage_rightcontent{
+    text-align: center;
+  }
+}

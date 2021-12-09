@@ -1,0 +1,68 @@
+.hero{
+  position: relative;
+  height: 800px;
+  .hero_top{
+    position: absolute;
+    z-index: 100;
+    margin-left: 35vw;
+    margin-top: 5%;
+    color: #ffffff;
+    font-family: fantasy;
+    font-size: 60px;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+  img{
+    object-fit:cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .hero_right__contents{
+    position: absolute;
+    margin-top: 400px;
+    margin-left: 60%;
+    z-index: 100;
+    color: #ffffff;
+    h3{
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+}
+
+.top_contents{
+  .spot_card{
+    min-height: 460px;
+  }
+}
+
+.new_spot{
+  h3{
+    display: inline-block;
+    background-color: #d52b1e;
+    color: #ffffff;
+    padding: 10px;
+  }
+  margin-top: 50px;
+  img.new_spot__img{
+    width: 250px;
+    height: 200px;
+  }
+}
+
+.popular_spot{
+  h3{
+    display: inline-block;
+    background-color: #d52b1e;
+    color: #ffffff;
+    padding: 10px;
+  }
+}
+
+.announce_head{
+  display: inline-block;
+  background-color: #2ca559;
+  color: #ffffff;
+  padding: 10px;
+}
