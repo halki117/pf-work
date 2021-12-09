@@ -108,7 +108,7 @@
         <div class="space">
         </div>
         <footer class="footer bg-dark">
-            <p>Copyright © ○○○○ All Rights Reserved.</p>
+            <p>Copyright © RELIANCE All Rights Reserved.</p>
         </footer>
     </div>
 
