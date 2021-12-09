@@ -11,6 +11,7 @@ use App\Http\Requests\SpotRequest;
 use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Image;
 
 class SpotsController extends Controller
@@ -188,6 +189,77 @@ class SpotsController extends Controller
     }
 
 
+    public function searched(SearchRequest $request)
+    { 
+
+        $latitude  = $request->latitude;
+        $longitude = $request->longitude;
+
+        $query = Spot::select('*', 
+            DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
+            + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
+            ->withCount('likes');
+        
+        if($request->tags){
+            foreach($request->tags as $key => $tag_id){
+                $query->whereHas('tags', function (Builder $query)use($key, $tag_id) {
+                    $query->where('tags.id', $tag_id);
+                });
+            }
+        }
+
+        // $spots = $query->get();
+        $sql = $query->toSql();
+
+        $query2 = DB::table(DB::raw('('.$sql.') AS spot'));
+        $query2->mergeBindings($query->getQuery());
+
+        if($request->range_time){
+            $distance1 = $array[':distance'] = $request->range_time * 80 / 1000;
+            $query2->where('distance','<=', $distance1);
+        }
+        
+        if($request->range_distance){
+            $distance2 = $array[':distance'] = $request->range_distance;
+            $query2->where('distance','<=', $distance2);
+        }
+
+        // dd($query2->toSql());
+        if($request->sort === "order_new")
+        {
+            $query2->orderBy('created_at');
+        } 
+        elseif($request->sort === "order_likes")
+        {
+            $query2->orderBy('likes_count');
+        } else {
+            $query2->orderBy('distance');
+        }
+
+        $spots = $query2->paginate(10);
+
+        $spots_collection = $spots->getCollection()->map(function($obj){
+            $spot = new Spot;
+            $spot->id = $obj->id;
+            $spot->address = $obj->address;
+            $spot->longitude = $obj->longitude;
+            $spot->latitude = $obj->latitude;
+            $spot->image = json_decode($obj->image, true);
+            return $spot;
+        });
+
+        $spots = new LengthAwarePaginator(
+            $spots_collection,
+            $spots->total(),
+            10,
+            $request->page
+        );
+
+
+        return view('spots.searched', compact('spots'));
+    }
+
+    
     // public function searched(SearchRequest $request)
     // { 
 
@@ -197,41 +269,33 @@ class SpotsController extends Controller
     //     $query = Spot::select('*', 
     //         DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
     //         + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
+    //         ->orderBy('distance', 'asc')
     //         ->withCount('likes');
         
     //     if($request->tags){
-    //         foreach($request->tags as $key => $tag_id){
-    //             $query->whereHas('tags', function (Builder $query)use($key, $tag_id) {
-    //                 $query->whereRaw('tags.id = :tag_id_'.$key);
+    //         foreach($request->tags as $tag_id){
+    //             $query->whereHas('tags', function (Builder $query)use($tag_id) {
+    //                 $query->where('tags.id', $tag_id);
     //             });
     //         }
     //     }
 
     //     // $spots = $query->get();
-    //     $sql = $query->toSql();
-
-    //     $query2 = DB::table(DB::raw('('.$sql.') AS spot'));
-    //     $query2->whereRaw('distance <= :distance');
-    //     $array = [];
+    //     $spots = $query->get();
 
     //     if($request->range_time){
-    //         $array[':distance'] = $request->range_time * 80 / 1000;
+    //         $spots = $spots->filter(function($value){
+    //             global $request;
+    //             return $value->distance <= ($request->range_time * 80 / 1000);
+    //         });
     //     }
         
     //     if($request->range_distance){
-    //         $array[':distance'] = $request->range_distance;
+    //         $spots = $spots->filter(function($value){
+    //             global $request;
+    //             return $value->distance <= $request->range_distance;
+    //         });
     //     }
-
-    //     if($request->tags){
-    //         foreach($request->tags as $key => $tag_id){
-    //             $array[':tag_id_'.$key] = $tag_id;
-    //         }
-    //     }
-
-    //     $query2->setBindings($array)->orderBy('distance');
-
-    //     // dd($query2->toSql());
-    //     $spots = $query2->paginate(10);
 
     //     if($request->sort === "order_new")
     //     {
@@ -245,56 +309,5 @@ class SpotsController extends Controller
 
     //     return view('spots.searched', compact('spots'));
     // }
-
-    
-    public function searched(SearchRequest $request)
-    { 
-
-        $latitude  = $request->latitude;
-        $longitude = $request->longitude;
-
-        $query = Spot::select('*', 
-            DB::raw('6370 * ACOS(COS(RADIANS('.$latitude.')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS('.$longitude.')) 
-            + SIN(RADIANS('.$latitude.')) * SIN(RADIANS(latitude))) as distance'))
-            ->orderBy('distance', 'asc')
-            ->withCount('likes');
-        
-        if($request->tags){
-            foreach($request->tags as $tag_id){
-                $query->whereHas('tags', function (Builder $query)use($tag_id) {
-                    $query->where('tags.id', $tag_id);
-                });
-            }
-        }
-
-        // $spots = $query->get();
-        $spots = $query->get();
-
-        if($request->range_time){
-            $spots = $spots->filter(function($value){
-                global $request;
-                return $value->distance <= ($request->range_time * 80 / 1000);
-            });
-        }
-        
-        if($request->range_distance){
-            $spots = $spots->filter(function($value){
-                global $request;
-                return $value->distance <= $request->range_distance;
-            });
-        }
-
-        if($request->sort === "order_new")
-        {
-            $spots = $spots->sortByDesc('created_at');
-        } 
-        elseif($request->sort === "order_likes")
-        {
-            $spots = $spots->sortByDesc('likes_count');
-        }
-
-
-        return view('spots.searched', compact('spots'));
-    }
 
 }

@@ -16,7 +16,11 @@
           <p>{{ $spot->review}}</p>
         </div>
         <div class="likes">
-          <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+          @if (isset($spot->count_likes))
+            <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+          @else
+            <i class="fas fa-heart"></i> x{{ $spot->likes_count }}
+          @endif
         </div>
         <div class="tags">
           @foreach($spot->tags as $tag)

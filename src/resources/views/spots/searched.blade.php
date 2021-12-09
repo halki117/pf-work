@@ -6,5 +6,6 @@
     @foreach($spots as $spot)
       @include('templates.spots_template')
     @endforeach
+    {{ $spots->links() }}
   </div>
 @endsection
