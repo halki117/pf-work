@@ -54,7 +54,7 @@ jobs:
           command: |
             ssh -o StrictHostKeyChecking=no -t root@${HOST_NAME} "cd /var/www && \
               git pull origin main && \
-              docker-compose restart
+              docker-compose restart"
 
 workflows:
   version: 2
