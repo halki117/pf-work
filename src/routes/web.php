@@ -34,7 +34,7 @@ Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched'
 Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
 
 // Route::resource('spots', 'SpotsController')->middleware('verified');
-Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('verified');
+Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('auth');
 Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
 
