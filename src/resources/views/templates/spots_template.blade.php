@@ -7,9 +7,9 @@
         @endphp
         <div class="new_spot my-auto">
           @if (app()->isLocal())
-            <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+            <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
           @else
-            <img class="new_spot__img" src="{{ $images[0] }}" alt="" style="width:100%;height:250px;">
+            <img class="new_spot__img" src="{{ $images[0] }}" alt="">
           @endif
         </div>
       </div>
