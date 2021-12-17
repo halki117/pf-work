@@ -116,7 +116,6 @@
     </div>
   </div>
 
-
   <h3 class="mt-5 announce_head">運営からのお知らせ</h3>
   <div class="card">
     <div class="card-body" style="height:300px;overflow:auto;">
