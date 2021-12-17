@@ -5,7 +5,7 @@
       var marker;
       var infoWindow;
 
-      function initMap() {
+      window.onload = function initMap() {
         //マップ初期表示の位置設定
         var target = document.getElementById('target');
 
