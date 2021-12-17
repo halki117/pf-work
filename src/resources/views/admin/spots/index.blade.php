@@ -17,7 +17,11 @@
           @foreach ($spots as $spot)
             <li class="list-group-item d-flex">
               <div>
-                <img src="{{ asset('storage/'.$spot->image[0] )}}" alt="" style="width:100px;height:100px;">
+                @if (app()->isLocal())
+                  <img src="{{ asset('storage/'.$spot->image[0] )}}" alt="" style="width:100px;height:100px;">
+                @else
+                  <img src="{{ $spot->image[0] }}" alt="" style="width:100px;height:100px;">
+                @endif
               </div>
               <div class="ml-3 mt-3">
                 <a href="{{ route('admin.spots.show', $spot->id ) }}">

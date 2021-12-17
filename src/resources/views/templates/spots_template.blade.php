@@ -6,7 +6,11 @@
           $images = $spot->image
         @endphp
         <div class="new_spot my-auto">
-          <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="">
+          @if (app()->isLocal())
+            <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+          @else
+            <img class="new_spot__img" src="{{ $images[0] }}" alt="" style="width:100%;height:250px;">
+          @endif
         </div>
       </div>
       <div class="col-8 pt-3">

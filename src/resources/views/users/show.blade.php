@@ -24,10 +24,18 @@
           <h1>{{ $user->name }}</h1>
         </div>
         <div class="mypage_rightcontent__profilephoto mt-2">
-          @if ($user->profile_photo)
-            <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width:250px;height:250px;border-radius:50%;">
+          @if (app()->isLocal())
+            @if ($user->profile_photo)
+              <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width:250px;height:250px;border-radius:50%;">
+            @else
+              <img src="{{ asset('storage/user_icon.png' ) }}" alt="">
+            @endif
           @else
-            <img src="{{ asset('storage/user_icon.png' ) }}" alt="">
+            @if ($user->profile_photo)
+              <img src="{{ $user->profile_photo }}" alt="" style="width:250px;height:250px;border-radius:50%;">
+            @else
+              <img src="" alt="">
+            @endif
           @endif
         </div>
         <div class="mypage_rightcontent__prefecture mt-5">
