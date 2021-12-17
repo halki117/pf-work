@@ -118,7 +118,6 @@
     {{-- 住所から場所検索 --}}
     <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
 
-
 </body>
 </html>
 
