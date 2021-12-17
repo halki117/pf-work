@@ -31,7 +31,11 @@
                     $images = $spot->image
                   @endphp
                   <div class="card-header p-0">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+                    @if (app()->isLocal())
+                      <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+                    @else
+                      <img class="new_spot__img" src="{{ $images[0] }}" alt="" style="width:100%;height:250px;">
+                    @endif
                   </div>
                   <div class="card-body">
                     <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
@@ -76,7 +80,11 @@
                     $images = $spot->image
                   @endphp
                   <div class="card-head">
-                    <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+                    @if (app()->isLocal())
+                      <img class="new_spot__img" src="{{ asset('storage/'.$images[0] )}}" alt="" style="width:100%;height:250px;">
+                    @else
+                      <img class="new_spot__img" src="{{ $images[0] }}" alt="" style="width:100%;height:250px;">
+                    @endif
                   </div>
                   <div class="card-body">
                     <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
