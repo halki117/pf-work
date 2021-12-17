@@ -22801,7 +22801,7 @@ ul.stepper li.completed a .label {
 
 .new_spot h3 {
   display: inline-block;
-  background-color: #d52b1e;
+  background-color: black;
   color: #ffffff;
   padding: 10px;
 }
@@ -22813,7 +22813,7 @@ ul.stepper li.completed a .label {
 
 .popular_spot h3 {
   display: inline-block;
-  background-color: #d52b1e;
+  background-color: black;
   color: #ffffff;
   padding: 10px;
 }

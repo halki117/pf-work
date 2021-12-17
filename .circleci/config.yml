@@ -36,6 +36,9 @@ jobs:
           key: npm-v1-{{ checksum "src/package-lock.json" }}
           paths:
             - node_modules
+      - run: 
+          command: npm run dev
+          working_directory: src
       - run:
           name: php test
           working_directory: src
