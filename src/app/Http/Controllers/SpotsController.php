@@ -49,10 +49,18 @@ class SpotsController extends Controller
 
         $files = $request->file('image');
         foreach($files as $file){
-            $file_name = $file->getClientOriginalName();
-            // Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
-            Image::make($file)->fit(300, 300)->save(storage_path('app/public/'.$file_name));
-            $image_data[] = $file_name;
+            if(app()->isLocal()){
+                $file_name = $file->getClientOriginalName();
+                Image::make($file)->fit(300, 300)->save(storage_path('app/public/'.$file_name));
+                $image_data[] = $file_name;
+            } else {
+                $file_name = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $resize_img = Image::make($file)->fit(300, 300)->encode($extension);
+                Storage::disk('s3')->put('/uploads/'.$file_name,(string)$resize_img, 'public');
+                $url = Storage::disk('s3')->url('uploads/'.$file_name);
+                $image_data[] = $url;
+            }
         }
 
         $spot->image = $image_data;
@@ -104,9 +112,18 @@ class SpotsController extends Controller
 
         $files = $request->file('image');
         foreach($files as $file){
-            $file_name = $file->getClientOriginalName();
-            Image::make($file)->resize(300, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/public/'.$file_name));
-            $image_data[] = $file_name;
+            if(app()->isLocal()){
+                $file_name = $file->getClientOriginalName();
+                Image::make($file)->fit(300, 300)->save(storage_path('app/public/'.$file_name));
+                $image_data[] = $file_name;
+            } else {
+                $file_name = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $resize_img = Image::make($file)->fit(300, 300)->encode($extension);
+                Storage::disk('s3')->put('/uploads/'.$file_name,(string)$resize_img, 'public');
+                $url = Storage::disk('s3')->url('uploads/'.$file_name);
+                $image_data[] = $url;
+            }
         }
 
         $spot->image = $image_data;
