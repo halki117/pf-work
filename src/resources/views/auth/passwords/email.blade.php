@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card mt-5">
+                <div class="card-header">パスワードをリセットします</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,6 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    <p>フォーム内に登録中のアドレスを入力してください。パスワード変更のためのメールを送信します</p>
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
@@ -34,7 +36,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('パスワード変更の手続きをする') }}
                                 </button>
                             </div>
                         </div>

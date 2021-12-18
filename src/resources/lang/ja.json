@@ -7,5 +7,10 @@
   "Confirm Password": "パスワード再入力",
   "Prefecture": "在住中の都道府県",
   "Remember Me": "ログイン状態を保存",
-  "Forgot Your Password?": "パスワードをお忘れですか？"
+  "Forgot Your Password?": "パスワードをお忘れですか？",
+  "Admin": "管理画面",
+  "Contact": "お問い合わせ",
+  "Upoload": "投稿をする",
+  "Mypage": "マイページ",
+  "Logout": "ログアウト"
 }

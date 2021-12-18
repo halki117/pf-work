@@ -14,9 +14,6 @@
 </div>
 <div class="container top_contents">
 
-  {{-- @php
-    $arr_spots = $spots->toArray();
-  @endphp --}}
   <div class="new_spot">
     <h3>新着スポット</h3>
     <div class="row">
