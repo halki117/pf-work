@@ -41,7 +41,7 @@ Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 Route::resource('users', 'UsersController');
 
 
-Route::resource('comments', 'commentsController')->middleware('auth');
+Route::resource('comments', 'CommentsController')->middleware('auth');
 
 Route::prefix('spots')->name('spots.')->group(function () {
     Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
