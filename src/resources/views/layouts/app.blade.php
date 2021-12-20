@@ -10,14 +10,24 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @if (app()->isLocal())
+        <script src="{{ asset('js/app.js') }}" defer></script>
+    @else
+        <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    @endif
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if (app()->isLocal())
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    @endif
+
 </head>
 <body>
     <div class="footerFixed" id="app">
