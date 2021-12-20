@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
@@ -74,6 +75,7 @@ class LoginController extends Controller
                'name'               => $provided_user->name,
                'provider'           => $provider,
                'provided_user_id'   => $provided_user->id,
+               'email_verified_at'  => Carbon::now(),
             ]);
         }
 
