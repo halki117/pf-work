@@ -34,7 +34,7 @@
             @if ($user->profile_photo)
               <img src="{{ $user->profile_photo }}" alt="" style="width:250px;height:250px;border-radius:50%;">
             @else
-              <img src="" alt="">
+              <img src="https://portfolio-bucket-images.s3.ap-northeast-1.amazonaws.com/uploads/user_icon.png" alt="" style="width:250px;height:250px;border-radius:50%;">
             @endif
           @endif
         </div>

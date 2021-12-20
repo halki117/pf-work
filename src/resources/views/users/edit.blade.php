@@ -34,8 +34,14 @@
           <label for="profile_photo">プロフィール写真</label>
           <div class="content_profile_photo">
             <div id="profile_photo" class="profile_photo__space">
-              @if ($user->profile_photo)
-                <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
+              @if (app()->isLocal())
+                @if ($user->profile_photo)
+                  <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
+                @endif
+              @else
+                @if ($user->profile_photo)
+                  <img src="{{ $user->profile_photo }}" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
+                @endif
               @endif
             </div>
             <input class="btn btn-success btn-block btn-profile-photo" id="profile_photo__input" type="file" name="profile_photo">

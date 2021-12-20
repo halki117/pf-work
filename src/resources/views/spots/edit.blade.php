@@ -61,9 +61,15 @@
           <div class="images_now">
             <p class="text-warning mt-4">変更前の写真</p>
             <div class="d-flex justify-content-around " style="background-color:#F5F5F5;">
-              @foreach ($spot->image as $image)
-                <div class="img py-3"><img src="{{ asset('storage/'.$image )}}" style="width:350px; height:235px;"></div>
-              @endforeach
+              @if (app()->isLocal())
+                @foreach ($spot->image as $image)
+                  <div class="img py-3"><img src="{{ asset('storage/'.$image )}}" style="width:350px; height:235px;"></div>
+                @endforeach
+              @else
+                @foreach ($spot->image as $image)
+                  <div class="img py-3"><img src="{{ $image }}" style="width:350px; height:235px;"></div>
+                @endforeach
+              @endif
             </div>
           </div>
 
@@ -112,3 +118,9 @@
     </div>
 
 @endsection
+
+{{-- google map api用js --}}
+<script src="{{ asset('/js/result.js') }}"></script>
+
+{{-- 住所から場所検索 --}}
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAH-4wGibx9deEeUHIyUEiTMqzzoaXgTqA&callback=initMap" async defer></script>
