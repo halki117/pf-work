@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Spot;
+use Storage;
 
 class UsersController extends Controller
 {
@@ -29,9 +30,17 @@ class UsersController extends Controller
         $user->prefecture = $request->prefecture;
 
         $file = $request->file('profile_photo');
-        $file_name = $file->getClientOriginalName();
-        $file->storeAs('public', $file_name);
-        $user->profile_photo = $file_name;
+        if(app()->isLocal()){
+            $file_name = $file->getClientOriginalName();
+            $file->storeAs('public', $file_name);
+            $user->profile_photo = $file_name;
+        } else {
+            $file_name = $file->getClientOriginalName();
+            Storage::disk('s3')->putFile('/uploads', $file);
+            $url = Storage::disk('s3')->url('uploads/'.$file_name);
+            $user->profile_photo = $url;
+        }
+
 
         $user->profile_introduction = $request->profile_introduction;
 
