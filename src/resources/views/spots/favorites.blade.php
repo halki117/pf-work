@@ -39,7 +39,9 @@
             <p>{{ $user->profile_introduction }}</p>
           </div>
         </div>
-        <button class="btn btn-warning btn-lg">ユーザー情報編集</button>
+        <a href="{{ route('users.edit', $user->id ) }}">
+          <button class="btn btn-warning btn-lg">ユーザー情報編集</button>
+        </a>
       </div>
     </div>
   </div>
