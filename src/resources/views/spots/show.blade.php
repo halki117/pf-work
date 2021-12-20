@@ -88,7 +88,19 @@
                 <div class="comment card mt-3">
                   <div class="card-body">
                     <div class="user_name d-flex">
-                      <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50">
+                      @if (app()->isLocal())
+                        @if ($comment->user->profile_photo)
+                          <img src="{{ asset('storage/'.$comment->user->profile_photo ) }}" alt="" width="60" height="50">
+                        @else
+                          <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50">
+                        @endif
+                      @else
+                        @if ($comment->user->profile_photo)
+                          <img src="{{ $comment->user->profile_photo }}" alt="" width="60" height="50">
+                        @else
+                          <img src="https://portfolio-bucket-images.s3.ap-northeast-1.amazonaws.com/uploads/user_icon.png" alt="" width="60" height="50">
+                        @endif
+                      @endif
                       <p>{{ $comment->user->name }}</p>
                     </div>
                     <div class="comment_content">
