@@ -17,10 +17,18 @@
           @foreach ($users as $user)
             <li class="list-group-item d-flex">
               <div>
-                @if ($user->profile_photo)
-                  <img src="{{ asset('storage/'.$user->profile_photo )}}" alt="" style="width:50px;height:50px;border-radius:50%;">
+                @if (app()->isLocal())
+                  @if ($user->profile_photo)
+                    <img src="{{ asset('storage/'.$user->profile_photo )}}" alt="" style="width:50px;height:50px;border-radius:50%;">
+                  @else
+                    <img src="{{ asset('storage/user_icon.png' ) }}" alt="" style="width:50px;height:50px;border-radius:50%;">
+                  @endif
                 @else
-                  <img src="{{ asset('storage/user_icon.png' ) }}" alt="" style="width:50px;height:50px;border-radius:50%;">
+                  @if ($user->profile_photo)
+                    <img src="{{ $user->profile_photo }}" alt="" style="width:50px;height:50px;border-radius:50%;">
+                  @else
+                    <img src="https://portfolio-bucket-images.s3.ap-northeast-1.amazonaws.com/uploads/user_icon.png" alt="" style="width:50px;height:50px;border-radius:50%;">
+                  @endif
                 @endif
               </div>
               <a href="{{ route('admin.users.show', $user->id ) }}">
