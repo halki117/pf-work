@@ -26,14 +26,14 @@ Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
 
 
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
 Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched');
 Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
 
-// Route::resource('spots', 'SpotsController')->middleware('verified');
+
 Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->middleware('verified');
 Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
