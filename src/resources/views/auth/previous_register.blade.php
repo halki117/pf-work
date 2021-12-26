@@ -10,16 +10,16 @@
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-center mt-5">
-       <h3>SNS,その他アカウントでの登録も可能です！！</h3>
+       <h3>SNS、その他アカウントでの登録も可能です！！</h3>
     </div>
     <div class="d-flex align-items-center justify-content-center ">
       <a href="/login/twitter">
-        <button class="btn btn-primary"><i class="fab fa-twitter fa-2x mr-3"></i>Twitter</button>
+        <button class="btn btn-primary" style="text-transform: none;"><i class="fab fa-twitter fa-2x mr-3"></i>Twitter</button>
       </a>
     </div>
     <div class="d-flex align-items-center justify-content-center ">
       <a href="/login/google">
-        <button class="btn btn-danger"><i class="fab fa-google fa-2x mr-3"></i>google</button>
+        <button class="btn btn-danger" style="text-transform: none;"><i class="fab fa-google fa-2x mr-3"></i>Google</button>
       </a>
     </div>
 </div>
