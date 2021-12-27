@@ -29,12 +29,14 @@ class Notifications
 
         $notifications = Notification::where('checked', false)
         ->where('notifer_id', '<>', Auth::id())
-        ->where(function($notifications){
-            $notifications
-                ->where('$value->passive_user_id', Auth::id())
-                ->orWhere('$value->notice_type', 'announce');
+        ->where(function($query){
+            $query
+                ->where('passive_user_id', Auth::id())
+                ->orWhere('notice_type', 'announce');
         })
         ->get();
+
+        // dd($notifications);
 
         $this->viewFactory->share('notifications', $notifications);
         return $next($request);
