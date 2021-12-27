@@ -1,10 +1,10 @@
 <div class="notice_mark">
   <a class="nav-link text-light notice_link" href="#"><i class="fas fa-bell text-white fa-2x"></i></a>
-  @php
+  {{-- @php
       $notifications = $notifications->filter(function($value){
           return $value->notifer_id !== Auth::id() && ($value->passive_user_id === Auth::id() || $value->notice_type === "announce");
       });
-  @endphp
+  @endphp --}}
 
   @if (!($notifications->isEmpty()))
       <div class="new_notice"></div>

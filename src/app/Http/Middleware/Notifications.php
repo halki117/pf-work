@@ -25,7 +25,16 @@ class Notifications
     public function handle($request, Closure $next)
     {   
         // 通知のインスタンスは共通画面で使用したいのでmiddlewareに定義する
-        $notifications = Notification::where('checked', false)->get();
+        // $notifications = Notification::where('checked', false)->get();
+
+        $notifications = Notification::where('checked', false)
+        ->where('notifer_id', '<>', Auth::id())
+        ->where(function($notifications){
+            $notifications
+                ->where('$value->passive_user_id', Auth::id())
+                ->orWhere('$value->notice_type', 'announce');
+        })
+        ->get();
 
         $this->viewFactory->share('notifications', $notifications);
         return $next($request);
