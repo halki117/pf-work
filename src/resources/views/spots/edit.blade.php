@@ -60,14 +60,14 @@
           <h4><span class="badge bg-dark text-dark mt-5 mr-2">3</span>写真を挿入(必須、3枚まで投稿可能)</h4>
           <div class="images_now">
             <p class="text-warning mt-4">変更前の写真</p>
-            <div class="d-flex justify-content-around " style="background-color:#F5F5F5;">
+            <div class="image_before" style="background-color:#F5F5F5;">
               @if (app()->isLocal())
                 @foreach ($spot->image as $image)
-                  <div class="img py-3"><img src="{{ asset('storage/'.$image )}}" style="width:350px; height:235px;"></div>
+                  <div class="img py-3"><img src="{{ asset('storage/'.$image )}}"></div>
                 @endforeach
               @else
                 @foreach ($spot->image as $image)
-                  <div class="img py-3"><img src="{{ $image }}" style="width:350px; height:235px;"></div>
+                  <div class="img py-3"><img src="{{ $image }}"></div>
                 @endforeach
               @endif
             </div>
@@ -76,8 +76,8 @@
           <div class="image_after">
             <p class="text-info mt-4">変更後の写真</p>
             <div class="place_images mt-3" style="background-color: #F5F5F5;height:267px;">
-              <p style="padding-top:10vh; padding-left:20vw;" id="image_message">画像を挿入してください<p>
-              <div id="preview" class="preview d-flex justify-content-around"></div>
+              <p id="image_message">画像を挿入してください<p>
+              <div id="preview" class="preview"></div>
             </div>
           </div>
 

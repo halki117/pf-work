@@ -22874,6 +22874,53 @@ ul.stepper li.completed a .label {
   }
 }
 
+.image_before {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media not all and (min-width: 600px) {
+  .image_before {
+    display: inline-block;
+  }
+}
+
+.image_before .img img {
+  width: 340px;
+  height: 235px;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .image_before .img img {
+    width: 220px;
+  }
+}
+
+@media not all and (min-width: 600px) {
+  .place_images {
+    display: block;
+  }
+}
+
+.place_images #image_message {
+  padding-top: 10vh;
+  padding-left: 20vw;
+}
+
+@media not all and (min-width: 600px) {
+  .place_images #image_message {
+    padding-top: 15vh;
+    padding-left: 25vw;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .place_images #image_message {
+    padding-top: 9vh;
+    padding-left: 36vw;
+  }
+}
+
 .address_likes {
   display: flex;
 }

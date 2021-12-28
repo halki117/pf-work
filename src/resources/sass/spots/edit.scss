@@ -1,0 +1,36 @@
+
+.image_before{
+  display: flex;
+  justify-content: space-around;
+  @media not all and (min-width: 600px) {
+    display: inline-block;
+  }
+  .img{
+    img{
+      width:340px; 
+      height:235px;
+      @media only screen and (min-width:600px) and (max-width: 1024px) {
+        width: 220px;
+      }
+    }
+  }
+}
+
+.place_images{
+  @media not all and (min-width: 600px) {
+    display: block;
+  }
+  #image_message{
+    padding-top:10vh; 
+    padding-left:20vw;
+    @media not all and (min-width: 600px) {
+      padding-top:15vh; 
+      padding-left:25vw;
+    }
+    @media only screen and (min-width:600px) and (max-width: 1024px) {
+      padding-top:9vh; 
+      padding-left:36vw;
+    }
+  }
+  
+}

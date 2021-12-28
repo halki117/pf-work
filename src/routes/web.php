@@ -38,7 +38,7 @@ Route::resource('spots', 'SpotsController', ['except' => ['index','show']])->mid
 Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 
 
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UsersController')->middleware('auth');
 
 
 Route::resource('comments', 'CommentsController')->middleware('auth');
