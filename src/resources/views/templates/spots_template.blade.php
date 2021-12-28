@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <a href="{{ route('spots.show', $spot->id) }}">
     <div class="card-body row">
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         @php
           $images = $spot->image
         @endphp
@@ -13,7 +13,7 @@
           @endif
         </div>
       </div>
-      <div class="col-8 pt-3">
+      <div class="col-12 col-lg-8 pt-3">
         <h5>{{ $spot->address}}</h5>
         <p>{{$spot->created_at}}</p>
         <div class="review mt-3">
@@ -32,9 +32,9 @@
               <div class="card-body pt-0 pb-4 pl-3">
                 <div class="card-text line-height">
             @endif
-                  <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                  <span data-url="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted JS_Click_TransitionToTagPage">
                     {{ $tag->hashtag }}
-                  </a>
+                  </span>
             @if($loop->last)
                 </div>
               </div>

@@ -56141,6 +56141,8 @@ __webpack_require__(/*! ./image_upload */ "./resources/js/image_upload.js");
 
 __webpack_require__(/*! ./searching */ "./resources/js/searching.js");
 
+__webpack_require__(/*! ./transition */ "./resources/js/transition.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56573,7 +56575,7 @@ $(function () {
 
       fr.onload = function (e) {
         var src = e.target.result;
-        var img = '<div class="img mt-3"><img src="' + src + '" style="width:350px; height:235px;"></div>';
+        var img = '<div class="upload_img mt-3"><img src="' + src + '" style="width:350px; height:235px;float:left;margin:10px;"></div>';
         $('#preview').append(img);
       };
 
@@ -56654,6 +56656,32 @@ $(function () {
       $('.text2-2').fadeIn();
     }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/transition.js":
+/*!************************************!*\
+  !*** ./resources/js/transition.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  TransitionToTagPage();
+  console.log('good');
+
+  function TransitionToTagPage() {
+    console.log('initial');
+    $('.JS_Click_TransitionToTagPage').click(function (e) {
+      console.log('ok'); // 伝播をストップ
+
+      e.stopPropagation();
+      e.preventDefault(); // URLを取得して飛ばす
+
+      location.href = $(this).attr('data-url');
+    });
+  }
 });
 
 /***/ }),

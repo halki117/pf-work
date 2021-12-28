@@ -20,8 +20,8 @@
       @if (!($new_spots->isEmpty()))
       @foreach ($new_spots as $spot)
         @if ($spot->public == true)
-          <div class="col-lg-4 col-12">
-            <div class="card px-3 spot_card">
+          <div class="col-lg-4 col-md-6">
+            <div class="card px-3 mt-2 spot_card">
               <a href="{{ route('spots.show', $spot->id) }}">
                 <div class="">
                   @php
@@ -69,8 +69,8 @@
       @if (!($popular_spots->isEmpty()))
       @foreach ($popular_spots as $spot)
         @if ($spot->public == true)
-          <div class="col-lg-4 col-12">
-            <div class="card px-3 spot_card">
+          <div class="col-lg-4 col-md-6">
+            <div class="card px-3 mt-2 spot_card">
               <a href="{{ route('spots.show', $spot->id) }}">
                 <div class="">
                   @php

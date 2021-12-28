@@ -5,7 +5,7 @@
   <div class="container-fluid">
     
     <div class="row mypage_content">
-      <div class="col-8 mypage_leftcontent">
+      <div class="col-12 col-lg-8 mypage_leftcontent">
         <div class="btn-group">
           <a href="{{ route('users.show', Auth::id() ) }}" class="btn btn-light ">投稿したスポット</a>
           <a href="{{ route('spots.favorites') }}" class="btn btn-info active">いいねしたスポット</a>
@@ -19,7 +19,7 @@
         @endif
         {{ $spots->links() }}
       </div>
-      <div class="col-4 mypage_rightcontent">
+      <div class="col-12 col-lg-4 mypage_rightcontent mt-5">
         <div class="mypage_rightcontent__username">
           <h1>{{ $user->name }}</h1>
         </div>
@@ -28,7 +28,7 @@
             @if ($user->profile_photo)
               <img src="{{ asset('storage/'.$user->profile_photo ) }}" alt="" style="width:250px;height:250px;border-radius:50%;">
             @else
-              <img src="{{ asset('storage/user_icon.png' ) }}" alt="">
+              <img src="{{ asset('storage/user_icon.png' ) }}" alt="" style="width:250px;height:250px;border-radius:50%;">
             @endif
           @else
             @if ($user->profile_photo)

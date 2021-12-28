@@ -22770,6 +22770,19 @@ ul.stepper li.completed a .label {
   font-weight: bold;
 }
 
+@media not all and (min-width: 600px) {
+  .hero .hero_top {
+    margin-left: 13vw;
+    font-size: 50px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .hero .hero_top {
+    margin-left: 30vw;
+  }
+}
+
 .hero img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -22849,6 +22862,18 @@ ul.stepper li.completed a .label {
   height: 700px;
 }
 
+@media not all and (min-width: 600px) {
+  .preview {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .preview {
+    display: block;
+  }
+}
+
 .address_likes {
   display: flex;
 }
@@ -22882,11 +22907,6 @@ ul.stepper li.completed a .label {
 }
 
 .mypage_content .mypage_leftcontent .likes {
-  position: absolute;
-  bottom: 0px;
-}
-
-.mypage_content .mypage_leftcontent .tags {
   position: absolute;
   bottom: 0px;
 }

@@ -14,7 +14,7 @@ $(function(){
  
       fr.onload = function(e) {
         var src = e.target.result;
-        var img = '<div class="img mt-3"><img src="'+ src +'" style="width:350px; height:235px;"></div>';
+        var img = '<div class="upload_img mt-3"><img src="'+ src +'" style="width:350px; height:235px;float:left;margin:10px;"></div>';
         $('#preview').append(img);
       }
 
