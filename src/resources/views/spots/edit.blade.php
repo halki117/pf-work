@@ -75,8 +75,8 @@
 
           <div class="image_after">
             <p class="text-info mt-4">変更後の写真</p>
-            <div class="place_images mt-3" style="background-color: #F5F5F5;height:267px;">
-              <p id="image_message">画像を挿入してください<p>
+            <div class="place_images mt-3">
+              <p id="image_message">画像を選択してください<p>
               <div id="preview" class="preview"></div>
             </div>
           </div>

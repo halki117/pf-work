@@ -22879,7 +22879,7 @@ ul.stepper li.completed a .label {
   justify-content: space-around;
 }
 
-@media not all and (min-width: 600px) {
+@media not all and (min-width: 768px) {
   .image_before {
     display: inline-block;
   }
@@ -22890,7 +22890,7 @@ ul.stepper li.completed a .label {
   height: 235px;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
   .image_before .img img {
     width: 220px;
   }
@@ -22903,22 +22903,8 @@ ul.stepper li.completed a .label {
 }
 
 .place_images #image_message {
-  padding-top: 10vh;
-  padding-left: 20vw;
-}
-
-@media not all and (min-width: 600px) {
-  .place_images #image_message {
-    padding-top: 15vh;
-    padding-left: 25vw;
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-  .place_images #image_message {
-    padding-top: 9vh;
-    padding-left: 36vw;
-  }
+  text-align: center;
+  line-height: 267px;
 }
 
 .address_likes {
