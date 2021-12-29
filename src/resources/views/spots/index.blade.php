@@ -9,7 +9,7 @@
   </picture>
   <div class="hero_right__contents float-right">
     <h3>自分に最適なスポットを発見しよう!!!</h3>
-    <a href="{{ route('spots.searching') }}" class="btn btn-success">スポットを検索</a>
+    <a href="{{ route('spots.searching') }}" class="btn btn-success">スポットを探す!</a>
   </div>
 </div>
 <div class="container top_contents">
@@ -35,7 +35,7 @@
                     @endif
                   </div>
                   <div class="card-body">
-                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+                    {{-- <i class="fas fa-heart"></i> x{{ $spot->count_likes }} --}}
                     <p>{{ $spot->address}}</p>
                     <p>{{ $spot->review}}</p>
                     @foreach($spot->tags as $tag)
@@ -84,7 +84,7 @@
                     @endif
                   </div>
                   <div class="card-body">
-                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+                    {{-- <i class="fas fa-heart"></i> x{{ $spot->count_likes }} --}}
                     <p>{{ $spot->address}}</p>
                     <p>{{ $spot->review}}</p>
                     @foreach($spot->tags as $tag)

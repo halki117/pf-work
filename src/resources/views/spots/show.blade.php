@@ -87,24 +87,26 @@
               @foreach ($spot->comments as $comment)
                 <div class="comment card mt-3">
                   <div class="card-body">
-                    <div class="user_name d-flex">
-                      @if (app()->isLocal())
-                        @if ($comment->user->profile_photo)
-                          <img src="{{ asset('storage/'.$comment->user->profile_photo ) }}" alt="" width="60" height="50">
+                    <div class="d-flex">
+                      <div class="user_name">
+                        @if (app()->isLocal())
+                          @if ($comment->user->profile_photo)
+                            <img src="{{ asset('storage/'.$comment->user->profile_photo ) }}" alt="" width="60" height="50" style="border-radius: 50%;">
+                          @else
+                            <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50" style="border-radius: 50%;">
+                          @endif
                         @else
-                          <img src="{{ asset('storage/user_icon.png' ) }}" alt="" width="60" height="50">
+                          @if ($comment->user->profile_photo)
+                            <img src="{{ $comment->user->profile_photo }}" alt="" width="60" height="50" style="border-radius: 50%;">
+                          @else
+                            <img src="https://portfolio-bucket-images.s3.ap-northeast-1.amazonaws.com/uploads/user_icon.png" alt="" width="60" height="50" style="border-radius: 50%;">
+                          @endif
                         @endif
-                      @else
-                        @if ($comment->user->profile_photo)
-                          <img src="{{ $comment->user->profile_photo }}" alt="" width="60" height="50">
-                        @else
-                          <img src="https://portfolio-bucket-images.s3.ap-northeast-1.amazonaws.com/uploads/user_icon.png" alt="" width="60" height="50">
-                        @endif
-                      @endif
-                      <p>{{ $comment->user->name }}</p>
-                    </div>
-                    <div class="comment_content">
-                      <p>{{ $comment->content }}</p>
+                        <p style="opacity: 50%;text-align:center;">{{ $comment->user->name }}</p>
+                      </div>
+                      <div class="comment_content ml-3">
+                        <p>{{ $comment->content }}</p>
+                      </div>
                     </div>
                     @if ($comment->user_id === Auth::id())
                       <form action="{{ route('comments.destroy', $comment->id) }}" method="post" class="mr-2">

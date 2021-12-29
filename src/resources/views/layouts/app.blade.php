@@ -48,6 +48,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link bg-white rounded-pill mr-5" href="{{ route('spots.searching') }}"><i class="fas fa-search "></i>スポットを探す!</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
