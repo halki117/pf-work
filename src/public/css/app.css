@@ -22772,7 +22772,7 @@ ul.stepper li.completed a .label {
 
 @media not all and (min-width: 600px) {
   .hero .hero_top {
-    margin-left: 13vw;
+    margin-left: 10vw;
     font-size: 50px;
   }
 }
