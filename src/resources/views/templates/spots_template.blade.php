@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <a href="{{ route('spots.show', $spot->id) }}">
     <div class="card-body row">
-      <div class="col-12 col-lg-2">
+      <div class="col-12 col-lg-4">
         @php
           $images = $spot->image
         @endphp
@@ -13,7 +13,7 @@
           @endif
         </div>
       </div>
-      <div class="col-12 col-lg-10 pt-3">
+      <div class="col-12 col-lg-8 pt-3">
         <h5>{{ $spot->address}}</h5>
         <p>{{$spot->created_at}}</p>
         <div class="review mt-3">
