@@ -35,7 +35,7 @@
                     @endif
                   </div>
                   <div class="card-body">
-                    {{-- <i class="fas fa-heart"></i> x{{ $spot->count_likes }} --}}
+                    <p style="opacity: 50%;text-align:right;">「いいね!!」{{ $spot->count_likes }} 件</p>
                     <p>{{ $spot->address}}</p>
                     <p>{{ $spot->review}}</p>
                     @foreach($spot->tags as $tag)
@@ -84,7 +84,7 @@
                     @endif
                   </div>
                   <div class="card-body">
-                    {{-- <i class="fas fa-heart"></i> x{{ $spot->count_likes }} --}}
+                    <p style="opacity: 50%;text-align:right;">「いいね!!」{{ $spot->count_likes }} 件</p>
                     <p>{{ $spot->address}}</p>
                     <p>{{ $spot->review}}</p>
                     @foreach($spot->tags as $tag)

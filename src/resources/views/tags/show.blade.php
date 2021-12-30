@@ -33,9 +33,9 @@
                     <p>{{ $spot->review}}</p>
                   </div>
                   <div class="likes">
-                    <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+                    <p style="opacity: 50%;">「いいね!!」{{ $spot->count_likes }} 件</p>
                   </div>
-                  <div class="tags">
+                  <div class="tags mt-3">
                     @foreach($spot->tags as $tag)
                       @if($loop->first)
                         <div class="card-body pt-0 pb-4 pl-3">

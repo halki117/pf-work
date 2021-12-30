@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <a href="{{ route('spots.show', $spot->id) }}">
     <div class="card-body row">
-      <div class="col-12 col-lg-4">
+      <div class="col-12 col-lg-2">
         @php
           $images = $spot->image
         @endphp
@@ -13,7 +13,7 @@
           @endif
         </div>
       </div>
-      <div class="col-12 col-lg-8 pt-3">
+      <div class="col-12 col-lg-10 pt-3">
         <h5>{{ $spot->address}}</h5>
         <p>{{$spot->created_at}}</p>
         <div class="review mt-3">
@@ -21,9 +21,9 @@
         </div>
         <div class="likes">
           @if (isset($spot->count_likes))
-            <i class="fas fa-heart"></i> x{{ $spot->count_likes }}
+            <p style="opacity: 50%;">「いいね!!」{{ $spot->count_likes }} 件</p>
           @else
-            <i class="fas fa-heart"></i> x{{ $spot->likes_count }}
+            <p style="opacity: 50%;">「いいね!!」{{ $spot->likes_count }} 件</p>
           @endif
         </div>
         <div class="tags">
