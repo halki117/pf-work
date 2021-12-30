@@ -24,9 +24,9 @@
               @endphp
               @foreach ($images as $image)
                 @if (app()->isLocal())
-                  <li class="col-lg-4  col-md-6 col-12  mt-2"><img class="new_spot__img" src="{{ asset('storage/'.$image )}}" alt="" style="width:350px;"></li>
+                  <li class="col-lg-4 col-md-6 col-12  mt-2"><img class="new_spot__img" src="{{ asset('storage/'.$image )}}" alt="" style="width:350px;"></li>
                 @else
-                  <li class="col-lg-4 col-12  mt-2"><img class="new_spot__img" src="{{ $image }}" alt="" style="width:350px;"></li>
+                  <li class="col-lg-4 col-md-6 col-12  mt-2"><img class="new_spot__img" src="{{ $image }}" alt="" style="width:350px;"></li>
                 @endif
               @endforeach
             </ul>
