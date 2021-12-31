@@ -28,23 +28,17 @@ https://www.protfolio-reliance.com
 
 # 洗い出した要件
 スプレッドシートに記載
+
 https://docs.google.com/spreadsheets/d/1BNWOZ2_8p7NNNo-v20AAqWKB_9JSjMfgKz1W7eygtTw/edit#gid=0
 
 
 # データベース設計
 drow.ioにて設計
+
 https://drive.google.com/drive/u/0/my-drive
 
 
 # ネットワーク図
 drow.ioにて設計
+
 https://app.diagrams.net/#G1b_gKaZOMKqnDX5IB_cWMtltFoZAFy7BP
-
-実装した機能についてのGIFと説明
-実装した機能について、それぞれどのような特徴があるのか列挙します。GIFを添えることで、イメージがしやすくなります。
-
-実装予定の機能	
-洗い出した要件の中から、今後実装予定のものがあれば記述しましょう。
-
-利用方法	
-このアプリケーションの利用方法を説明します。
