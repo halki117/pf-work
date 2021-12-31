@@ -25,12 +25,12 @@ class SpotsControllerTest extends TestCase
         $response->assertStatus(200)->assertViewIs('spots.index');
     }
 
-    // public function test_未ログイン状態で投稿画面へ移るとverify機能に引っかかりログイン画面へ遷移する()
-    // {
-    //     $response = $this->get(route('spots.create'));
+    public function test_未ログイン状態で投稿画面へ移るとverify機能に引っかかりログイン画面へ遷移する()
+    {
+        $response = $this->get(route('spots.create'));
 
-    //     $response->assertRedirect('/email/verify');
-    // }
+        $response->assertRedirect('/email/verify');
+    }
 
     public function test_ログイン状態なら投稿画面へ遷移できる()
     {

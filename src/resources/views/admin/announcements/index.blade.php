@@ -10,8 +10,7 @@
   </div>
 
   <a class="btn btn-success float-right" href="{{ route('admin.announcements.create') }}">お知らせを作成する</a>
-  {{-- <button class="btn btn-success float-right">お知らせを作成する</button> --}}
-  
+
 	<div class="card">
 		<div class="card-header">お知らせ一覧</div>
 		<div class="card-body">

@@ -17,12 +17,6 @@ class ContactsController extends Controller
     }
 
     public function confirm(ContactRequest $request){
-        // //  バリデーションは後ほどフォームリクエストにまとめる
-        // $request->validate([
-        //     'title'    => 'required',
-        //     'content' => 'required',
-        // ]);
-        
         return view('contacts.confirm', compact('request'));
     }
 

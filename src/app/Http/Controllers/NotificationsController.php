@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
 {
-    // public function index(){
-    //     $notifications = Notification::all();
-    //     return view('notifications.index', compact('notifications'));
-    // }
-
     public function store($notifer_id, $passive_user_id, $passive_spot_id, $notice_type){
         $notification = new Notification;
 

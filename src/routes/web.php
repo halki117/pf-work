@@ -26,9 +26,6 @@ Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-
-
-
 Route::get('spots/searching', 'SpotsController@searching')->name('spots.searching');
 Route::post('spots/searched', 'SpotsController@searched')->name('spots.searched');
 Route::get('spots/favorites', 'SpotsController@favorites')->name('spots.favorites');
@@ -42,6 +39,7 @@ Route::resource('users', 'UsersController')->middleware('auth');
 
 
 Route::resource('comments', 'CommentsController')->middleware('auth');
+
 
 Route::prefix('spots')->name('spots.')->group(function () {
     Route::put('/{spots}/like', 'SpotsController@like')->name('like')->middleware('auth');
