@@ -12,10 +12,15 @@ https://www.protfolio-reliance.com
 
 # テスト用アカウント	
   一般ユーザー1(ユーザー名: sample1)
+
     アドレス: sample1@test.com  パスワード: sample1555
+
   一般ユーザー2(ユーザー名: sample2)
+
     アドレス: sample2@test.com  パスワード: sample2555
+
   管理者ユーザー(ユーザー名: admin)
+  
     アドレス: admin@test.com  パスワード: admin555
 
 
