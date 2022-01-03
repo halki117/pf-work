@@ -38,7 +38,7 @@ Route::resource('spots', 'SpotsController', ['only' => ['index','show']]);
 Route::resource('users', 'UsersController')->middleware('auth');
 
 
-Route::resource('comments', 'CommentsController')->middleware('auth');
+Route::resource('comments', 'CommentsController', ['only' => ['store','destroy']])->middleware('auth');
 
 
 Route::prefix('spots')->name('spots.')->group(function () {
