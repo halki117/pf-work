@@ -16,6 +16,8 @@ require("./searching");
 
 require("./transition");
 
+require("./top_hero");
+
 
 window.Vue = require('vue');
 

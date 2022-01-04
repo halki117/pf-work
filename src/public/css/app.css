@@ -22768,6 +22768,7 @@ ul.stepper li.completed a .label {
   font-size: 60px;
   letter-spacing: 3px;
   font-weight: bold;
+  text-shadow: 3px 3px 3px #000, -3px -3px 3px #000, -3px 3px 3px #000, 3px -3px 3px #000, 3px 0px 3px #000, -3px 0px 3px #000, 0px 3px 3px #000, 0px -3px 3px #000;
 }
 
 @media not all and (min-width: 600px) {
@@ -22802,6 +22803,7 @@ ul.stepper li.completed a .label {
 .hero .hero_right__contents h3 {
   font-size: 25px;
   font-weight: bold;
+  text-shadow: 3px 3px 3px #000, -3px -3px 3px #000, -3px 3px 3px #000, 3px -3px 3px #000, 3px 0px 3px #000, -3px 0px 3px #000, 0px 3px 3px #000, 0px -3px 3px #000;
 }
 
 .top_contents .spot_card {

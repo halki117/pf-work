@@ -56143,6 +56143,8 @@ __webpack_require__(/*! ./searching */ "./resources/js/searching.js");
 
 __webpack_require__(/*! ./transition */ "./resources/js/transition.js");
 
+__webpack_require__(/*! ./top_hero */ "./resources/js/top_hero.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56656,6 +56658,22 @@ $(function () {
       $('.text2-2').fadeIn();
     }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/top_hero.js":
+/*!**********************************!*\
+  !*** ./resources/js/top_hero.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $(".fade-img img:not(:first-child)").hide();
+  setInterval(function () {
+    $(".fade-img img:first-child").fadeOut("slow").next("img").fadeIn("slow").end().appendTo(".fade-img");
+  }, 5000);
 });
 
 /***/ }),

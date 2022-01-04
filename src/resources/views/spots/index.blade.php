@@ -5,7 +5,11 @@
   
   <picture>
     <h1 class="hero_top">Wellcome to RELIANCE!!!<br>Enjoy Good Discovery!!!</h1>
-    <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="">
+    <div class="fade-img">
+      <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="">
+      <img src="https://switch-box.net/wp-content/uploads/2015/01/free-resources-mac-photos-18.jpg" alt="">
+      <img src="https://www.pakutaso.com/shared/img/thumb/GORIPAKU2069_TP_V.jpg" alt="">
+    </div>
   </picture>
   <div class="hero_right__contents float-right">
     <h3>自分に最適なスポットを発見しよう!!!</h3>
