@@ -7,7 +7,7 @@
     <h1 class="hero_top">Wellcome to RELIANCE!!!<br>Enjoy Good Discovery!!!</h1>
     <div class="fade-img">
       <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="">
-      <img src="https://switch-box.net/wp-content/uploads/2015/01/free-resources-mac-photos-18.jpg" alt="">
+      <img src="https://tanabota.blog/wp-content/uploads/2020/01/interview2001-007.jpg" alt="">
       <img src="https://www.pakutaso.com/shared/img/thumb/GORIPAKU2069_TP_V.jpg" alt="">
     </div>
   </picture>
