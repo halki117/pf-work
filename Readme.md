@@ -55,8 +55,10 @@ https://app.diagrams.net/#G1b_gKaZOMKqnDX5IB_cWMtltFoZAFy7BP
 - ### 投稿機能（要ログイン）
 スポットを投稿できる機能です。ログイン後、画面上の「投稿する」のリンクから投稿画面へ移ることができます。
 https://i.gyazo.com/9ec6d4419332b615f6114c6c733a1ee7.mp4
+
 投稿画面で各項目を入力して「投稿する」ボタンを押すことで、投稿が完了します。
 https://i.gyazo.com/b11b8e128ddfd079b824ff8e33793ab8.mp4
+
 投稿後のコンテンツはトップページまたはマイページから確認できます。
 https://i.gyazo.com/1593b687c72b948d4332977dfa7ea5f3.mp4
 
