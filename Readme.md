@@ -40,7 +40,7 @@ https://docs.google.com/spreadsheets/d/1BNWOZ2_8p7NNNo-v20AAqWKB_9JSjMfgKz1W7eyg
 # データベース設計
 drow.ioにて設計
 
-https://drive.google.com/drive/u/0/my-drive
+https://app.diagrams.net/#G10ET2lddnibF2Nyy0LJ2k8UlG_d_dOHve
 
 
 # ネットワーク図
