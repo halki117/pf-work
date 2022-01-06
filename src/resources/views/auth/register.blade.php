@@ -75,7 +75,7 @@
 
                         <div class="form-group row mb-0 text-right">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn-gradient-radius">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Register') }}
                                 </button>
                             </div>
