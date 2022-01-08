@@ -22761,8 +22761,8 @@ ul.stepper li.completed a .label {
 .hero .hero_top {
   position: absolute;
   z-index: 100;
-  margin-left: 35vw;
-  margin-top: 5%;
+  margin-left: 25vw;
+  margin-top: 10%;
   color: #ffffff;
   font-family: fantasy;
   font-size: 60px;
