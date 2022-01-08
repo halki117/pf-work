@@ -41,20 +41,42 @@
                   <div class="card-body">
                     <p style="opacity: 50%;text-align:right;">「いいね!!」{{ $spot->count_likes }} 件</p>
                     <p>{{ $spot->address}}</p>
-                    <p>{{ $spot->review}}</p>
-                    @foreach($spot->tags as $tag)
-                      @if($loop->first)
-                        <div class="card-body pt-0 pb-4 pl-3">
-                          <div class="card-text line-height">
-                      @endif
+                    @if ( mb_strlen($spot->review) > 35 )
+                      <p>{{ Str::limit($spot->review, 35, '...') }}</p>
+                    @else
+                      <p>{{ $spot->review}}</p>
+                    @endif
+                    
+                    @if (count($spot->tags) > 2)
+                      @foreach($tags = $spot->tags->slice(0, 2) as $tag)
+                        @if($loop->first)
+                          <div class="card-body pt-0 pb-4 pl-3">
+                            <div class="card-text line-height">
+                        @endif
                             <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
                               {{ $tag->hashtag }}
                             </a>
-                      @if($loop->last)
+                        @if($loop->last)
+                            <span>...他</span>
+                            </div>
                           </div>
-                        </div>
-                      @endif
-                    @endforeach
+                        @endif
+                      @endforeach
+                    @else
+                      @foreach($spot->tags as $tag)
+                        @if($loop->first)
+                          <div class="card-body pt-0 pb-4 pl-3">
+                            <div class="card-text line-height">
+                        @endif
+                              <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                                {{ $tag->hashtag }}
+                              </a>
+                        @if($loop->last)
+                            </div>
+                          </div>
+                        @endif
+                      @endforeach
+                    @endif
                   </div>
                 </div>
               </a>
@@ -90,20 +112,42 @@
                   <div class="card-body">
                     <p style="opacity: 50%;text-align:right;">「いいね!!」{{ $spot->count_likes }} 件</p>
                     <p>{{ $spot->address}}</p>
-                    <p>{{ $spot->review}}</p>
-                    @foreach($spot->tags as $tag)
-                      @if($loop->first)
-                        <div class="card-body pt-0 pb-4 pl-3">
-                          <div class="card-text line-height">
-                      @endif
+                    @if ( mb_strlen($spot->review) > 35 )
+                      <p>{{ Str::limit($spot->review, 35, '...') }}</p>
+                    @else
+                      <p>{{ $spot->review}}</p>
+                    @endif
+
+                    @if (count($spot->tags) > 2)
+                      @foreach($tags = $spot->tags->slice(0, 2) as $tag)
+                        @if($loop->first)
+                          <div class="card-body pt-0 pb-4 pl-3">
+                            <div class="card-text line-height">
+                        @endif
                             <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
                               {{ $tag->hashtag }}
                             </a>
-                      @if($loop->last)
+                        @if($loop->last)
+                            <span>...他</span>
+                            </div>
                           </div>
-                        </div>
-                      @endif
-                    @endforeach
+                        @endif
+                      @endforeach
+                    @else
+                      @foreach($spot->tags as $tag)
+                        @if($loop->first)
+                          <div class="card-body pt-0 pb-4 pl-3">
+                            <div class="card-text line-height">
+                        @endif
+                              <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
+                                {{ $tag->hashtag }}
+                              </a>
+                        @if($loop->last)
+                            </div>
+                          </div>
+                        @endif
+                      @endforeach
+                    @endif
                   </div>
                 </div>
               </a>
