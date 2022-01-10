@@ -56577,7 +56577,7 @@ $(function () {
 
       fr.onload = function (e) {
         var src = e.target.result;
-        var img = '<div class="upload_img mt-3"><img src="' + src + '" style="width:340px; height:235px;float:left;margin-top:15px;margin-left:12.5px;margin-right:12.5px;"></div>';
+        var img = '<div class="upload_img mt-3" style="float: left;"><img src="' + src + '" style="width:340px; height:235px;margin-top:15px;margin-left:12.5px;margin-right:12.5px;"></div>';
         $('#preview').append(img);
       };
 

@@ -75,7 +75,7 @@
 
           <div class="image_after">
             <p class="text-info mt-4">変更後の写真</p>
-            <div class="place_images mt-3">
+            <div class="place_images mt-3" style="overflow: hidden">
               <p id="image_message">画像を選択してください<p>
               <div id="preview" class="preview"></div>
             </div>
