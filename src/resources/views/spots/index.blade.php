@@ -19,7 +19,7 @@
 <div class="container top_contents">
 
   <div class="new_spot">
-    <h3>新着スポット</h3>
+    <h3 class="rounded-pill px-5 py-3">新着スポット</h3>
     <div class="row">
       @if (!($new_spots->isEmpty()))
       @foreach ($new_spots as $spot)
@@ -91,7 +91,7 @@
   </div>
   <hr class="mt-5">
   <div class="popular_spot mt-5">
-    <h3>人気のスポット</h3>
+    <h3 class="rounded-pill px-5 py-3">人気のスポット</h3>
     <div class="row">
       @if (!($popular_spots->isEmpty()))
       @foreach ($popular_spots as $spot)
@@ -162,7 +162,7 @@
     </div>
   </div>
   <hr class="mt-5">
-  <h3 class="mt-5 announce_head">運営からのお知らせ</h3>
+  <h3 class="mt-5 announce_head rounded-pill px-5 py-3">運営からのお知らせ</h3>
   <div class="card">
     <div class="card-body" style="height:300px;overflow:auto;">
       @if (!($announcements->isEmpty()))
