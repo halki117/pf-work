@@ -1,5 +1,5 @@
 $(function() {
-  $(".card").hover(function(){
+  $(".card_opacity").hover(function(){
     $(this).fadeTo("5000",0.5); 
   },function(){
     $(this).fadeTo("6000",1.0);

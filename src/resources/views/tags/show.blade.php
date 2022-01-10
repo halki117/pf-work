@@ -12,7 +12,7 @@
     </div>
     @foreach($tag->spots as $spot)
       <div class="content">
-          <div class="card mb-3">
+          <div class="card mb-3 card_opacity">
             <a href="{{ route('spots.show', $spot->id) }}">
               <div class="card-body row">
                 <div class="col-4">

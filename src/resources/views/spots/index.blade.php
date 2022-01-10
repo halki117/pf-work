@@ -25,7 +25,7 @@
       @foreach ($new_spots as $spot)
         @if ($spot->public == true)
           <div class="col-lg-4 col-md-6">
-            <div class="card px-3 mt-2 spot_card">
+            <div class="card px-3 mt-2 spot_card card_opacity">
               <a href="{{ route('spots.show', $spot->id) }}">
                 <div class="">
                   @php
@@ -97,7 +97,7 @@
       @foreach ($popular_spots as $spot)
         @if ($spot->public == true)
           <div class="col-lg-4 col-md-6">
-            <div class="card px-3 mt-2 spot_card">
+            <div class="card px-3 mt-2 spot_card card_opacity">
               <a href="{{ route('spots.show', $spot->id) }}">
                 <div class="">
                   @php
