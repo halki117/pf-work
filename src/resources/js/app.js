@@ -18,6 +18,8 @@ require("./transition");
 
 require("./top_hero");
 
+require("./card");
+
 
 window.Vue = require('vue');
 

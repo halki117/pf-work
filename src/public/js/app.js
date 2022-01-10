@@ -56145,6 +56145,8 @@ __webpack_require__(/*! ./transition */ "./resources/js/transition.js");
 
 __webpack_require__(/*! ./top_hero */ "./resources/js/top_hero.js");
 
+__webpack_require__(/*! ./card */ "./resources/js/card.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -56214,6 +56216,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/card.js":
+/*!******************************!*\
+  !*** ./resources/js/card.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $(".card").hover(function () {
+    $(this).fadeTo("5000", 0.5);
+  }, function () {
+    $(this).fadeTo("6000", 1.0);
+  });
+});
 
 /***/ }),
 
