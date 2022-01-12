@@ -4,7 +4,7 @@
 <div class="hero">
   
   <picture>
-    <h1 class="hero_top">Wellcome to RELIANCE!!!<br>Enjoy Good Discovery!!!</h1>
+    <h1 class="hero_top">RELIANCEで新しい発見をしよう!!!</h1>
     <div class="fade-img">
       <img src="https://manablog.org/wp-content/uploads/2015/02/f1a9fcfd142669cb8ab064cb90251123.jpg" alt="">
       <img src="https://tanabota.blog/wp-content/uploads/2020/01/interview2001-007.jpg" alt="">
@@ -12,7 +12,7 @@
     </div>
   </picture>
   <div class="hero_right__contents float-right">
-    <h3>自分に最適なスポットを発見しよう!!!</h3>
+    <h3>自分に最適なスポットを探そう!!</h3>
     <a href="{{ route('spots.searching') }}" class="btn btn-success">スポットを探す!</a>
   </div>
 </div>
