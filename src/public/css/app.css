@@ -22760,6 +22760,9 @@ ul.stepper li.completed a .label {
 
 .hero .hero_top {
   position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   z-index: 100;
   left: 50%;
   top: 25%;
