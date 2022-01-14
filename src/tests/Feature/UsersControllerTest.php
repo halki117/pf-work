@@ -17,12 +17,20 @@ class UsersControllerTest extends TestCase
      * @return void
      */
 
-    public function test_未ログイン状態ならトップページにマイページのリンクが表示されない()
+    public function test_未ログイン状態ならトップページに「マイページ」のリンクが表示されない()
     {
         $response = $this->get('/');
 
         $response->assertStatus(302);
         $response->assertDontSee('マイページ');
+    }
+
+    public function test_未ログイン状態ならトップページに「投稿をする」のリンクが表示されない()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(302);
+        $response->assertDontSee('投稿をする');
     }
 
     public function test_ログイン状態ならマイページへ遷移できる()
