@@ -53,7 +53,7 @@
         <div class="place_range mt-5">
           <div class="form-group">
             <label for="range"><h4><span class="badge bg-dark text-dark mt-4 mr-2">2</span>指定箇所からの範囲(必須)</h4></label>
-              <p>・徒歩何分以内。または、距離何km以内かを選んでください</p>
+              <p>・徒歩何分以内。または、距離何km以内かを選んでください(半角入力)</p>
               @if ($errors->any())
                 @error('range_time')
                   <strong class="red-text">{{ $message }}</strong>
